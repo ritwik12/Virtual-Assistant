@@ -22,6 +22,11 @@ int main () {
       system("say opening google");
       system("firefox www.google.com");
    }
+   else if((strcmp(str, "weather") == 0) || (strcmp(str, "today's weather") == 0))
+   { 
+      system("say showing weather");
+      system("curl wttr.in/dehradun");
+   }
    else if(strcmp(str, "firefox") == 0 || strcmp(str, "open firefox") == 0 || strcmp(str,"run firefox") == 0 || strcmp(str, "start firefox") == 0) 
       {
       system("say opening firefox");
