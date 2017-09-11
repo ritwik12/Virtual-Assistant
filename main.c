@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
+#define SPACE ' '
 
 
 int main () {
 
-   char str[1000], location[1000];
+   char str[1000], *start, pv, location[1000];
+   int c, d;
+
    char * x="Hey, How can I help you?";
    printf("%s\n",x);                                      
    fgets (str, 1000, stdin);
@@ -15,6 +20,7 @@ int main () {
     char buffer[9999];
     char buff[9999];
     char weather[9999];
+
     sprintf(buffer, "say opening \%s",str);
 
  
@@ -22,14 +28,6 @@ int main () {
    { 
       system("say opening google");
       system("firefox www.google.com");
-   }
-   else if((strcmp(str, "weather") == 0) || (strcmp(str, "today's weather") == 0))
-   { 
-      system("say weather");		
-      printf("Enter Location \n");				
-      fgets(location,1000,stdin);   		
-      sprintf(weather, "curl wttr.in/\%s",location);		
-      system(weather);
    }
    else if(strcmp(str, "firefox") == 0 || strcmp(str, "open firefox") == 0 || strcmp(str,"run firefox") == 0 || strcmp(str, "start firefox") == 0) 
       {
@@ -41,11 +39,44 @@ int main () {
       system("say opening vlc");
       system("vlc");
    }
+   // Weather
+   else if((strcmp(str, "weather") == 0) || (strcmp(str, "today's weather") == 0))
+   { 
+      printf("Please enter location \n" );
+      fgets (location, 1000, stdin);
+
+      system("say showing weather");
+      sprintf(weather,"curl wttr.in/\%s",location);
+
+      system(weather);
+   }
    else  
    {
+       //To replace spaces with "+"
+      
+      start = malloc(strlen(str)+1);
+      
+
+      pv = 0;//previous character
+      for(d=c=0; str[c]; ++c){
+          if(str[c] == SPACE){
+              if(pv != SPACE)
+                  start[d++] = '+';
+              pv = SPACE;
+          } else {
+              pv = start[d++] = str[c];
+          }
+      }
+      start[d] = '\0';
+
+     
+
+      //--------------------------------   
+
+
       sprintf(buff,"say Do you mean \%s",str);
       system(buff);
-      sprintf(buf, "firefox https://www.google.co.in/search?q=%s&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=zkWgWc3fNeXI8AeCr5LYBw ", str); 
+      sprintf(buf, "firefox https://www.google.co.in/search?q=%s&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=zkWgWc3fNeXI8AeCr5LYBw ", start); 
       system(buf);
    }
       return 0;
