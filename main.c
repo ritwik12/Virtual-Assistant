@@ -4,7 +4,7 @@
 
 int main () {
 
-   char str[1000];
+   char str[1000], location[1000];
    char * x="Hey, How can I help you?";
    printf("%s\n",x);                                      
    fgets (str, 1000, stdin);
@@ -14,6 +14,7 @@ int main () {
     char buf[9999];
     char buffer[9999];
     char buff[9999];
+    char weather[9999];
     sprintf(buffer, "say opening \%s",str);
 
  
@@ -24,8 +25,11 @@ int main () {
    }
    else if((strcmp(str, "weather") == 0) || (strcmp(str, "today's weather") == 0))
    { 
-      system("say showing weather");
-      system("curl wttr.in/dehradun");
+      system("say weather");		
+      printf("Enter Location \n");				
+      fgets(location,1000,stdin);   		
+      sprintf(weather, "curl wttr.in/\%s",location);		
+      system(weather);
    }
    else if(strcmp(str, "firefox") == 0 || strcmp(str, "open firefox") == 0 || strcmp(str,"run firefox") == 0 || strcmp(str, "start firefox") == 0) 
       {
