@@ -1,3 +1,0 @@
-language: C
-compiler:
-  - gcc
