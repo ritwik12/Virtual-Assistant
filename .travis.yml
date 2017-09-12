@@ -1,1 +1,4 @@
 language: c
+script: scons
+compiler:
+  - gcc
