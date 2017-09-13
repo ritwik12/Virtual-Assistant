@@ -1,1 +1,2 @@
 language: C
+build: cc main.c
