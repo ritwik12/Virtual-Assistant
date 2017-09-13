@@ -1,2 +1,2 @@
 language: C
-build: cc main.c
+script: gcc main.c
