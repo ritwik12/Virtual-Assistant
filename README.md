@@ -24,6 +24,12 @@ say converts text to audible speech using the GNUstep speech engine.
 $ sudo apt-get install gnustep-gui-runtime
 $ say "hello"
 ```
+Firefox is needed to perform browser tasks such as opening google and youtube.
+
+```
+$ sudo apt-get install firefox
+```
+
 # Weather
 
 This feature requires curl.To use this feature you need to first install curl as follows-
