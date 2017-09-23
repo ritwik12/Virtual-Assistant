@@ -91,10 +91,10 @@ int main () {
    {
     
       printf("Here are the list of available songs\n");
-      system("ls /home/ritwik/songs/");
+      system("ls /home/ritwik/media/");
       printf("Which song do you want me to play? \n");
       fgets (songs, 1000, stdin);
-      sprintf(song,"vlc /home/ritwik/songs/\%s",songs);
+      sprintf(song,"vlc /home/ritwik/media/\%s",songs);
       system(song); 
     
 
