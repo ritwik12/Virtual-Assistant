@@ -34,7 +34,7 @@
 
 **Youtube**
 
->>> Commands that can be used to run youtube are: <<<
+>>> Commands that can be used for youtube search are: <<<
 
 ~ "search youtube for song_name"
 
