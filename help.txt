@@ -1,0 +1,50 @@
+﻿This guide will help you know how to use this Virtual Assistant:
+
+**Firefox**
+
+>>> Commands that can be used to run firefox are: <<<
+
+~ "firefox"
+~ "open firefox"
+~ "run firefox"
+~ "start firefox"
+
+**Google**
+
+>>> Commands that can be used to run google are: <<<
+
+~ "google"
+~ "open google"
+
+**VLC**
+
+>>> Commands that can be used to run VLC are: <<<
+
+~ "vlc"
+~ "open vlc"
+~ "run vlc"
+~ "start vlc"
+   
+**Weather**
+
+>>> Commands that can be used to show weather are: <<<
+
+~ "weather"
+~ "today's weather"
+
+**Youtube**
+
+>>> Commands that can be used for youtube search are: <<<
+
+~ "search youtube for videos"
+
+
+**Play Song**
+
+>>> Commands that can be used to play songs is: <<<
+
+~ "play song"
+
+
+Press q to quit
+

@@ -98,7 +98,12 @@ int main () {
       system(song); 
     
 
-   } 
+   }
+   //Help   
+   else if((strcmp(str, "help") == 0))   
+   {	
+         system("less /home/ritwik/help.txt");   
+   }
 
     else  
    {
