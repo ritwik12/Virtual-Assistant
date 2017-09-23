@@ -102,7 +102,7 @@ int main () {
    //Help   
    else if((strcmp(str, "help") == 0))   
    {	
-         system("less /home/ubuntu/help.txt");   
+         system("less /home/ritwik/help.txt");   
    }
 
     else  
