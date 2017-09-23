@@ -36,7 +36,7 @@
 
 >>> Commands that can be used for youtube search are: <<<
 
-~ "search youtube for song_name"
+~ "search youtube for videos"
 
 
 **Play Song**
