@@ -7,9 +7,10 @@
 
 int main () {
 
-      char str[1000], *start, pv, location[1000],youtube[1000],songs[100];
+      char str[1000], *start, pv, location[1000],youtube[1000],songs[100],cal[100];
       int c, d, len=0;
 
+      do{
       char * x="Hey, How can I help you?";
        printf("%s\n",x);                                      
        fgets (str, 1000, stdin);
@@ -21,6 +22,7 @@ int main () {
       char buff[9999];
       char weather[9999];
       char song[9999];
+      char calendar[100];
 
       sprintf(buffer, "say opening \%s",str);
 
@@ -99,13 +101,24 @@ int main () {
     
 
    }
+   else if((strcmp(str, "calendar") == 0) || (strcmp(str, "show calendar") == 0))
+   {
+   	printf("Which year calendar you want to see? \n");
+   	fgets (cal, 1000, stdin);
+   	sprintf(calendar,"cal \%s",cal);
+   	system(calendar);
+
+
+   }
+
    //Help   
    else if((strcmp(str, "help") == 0))   
    {	
          system("less /home/ritwik/help.txt");   
    }
 
-    else  
+
+   else if((strcmp(str, "stop") != 0))   
    {
       //-------------------------------------------------
       start = malloc(strlen(str)+1);
@@ -132,7 +145,8 @@ int main () {
       sprintf(buf, "firefox https://www.google.co.in/search?q=%s&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=zkWgWc3fNeXI8AeCr5LYBw ", start); 
       system(buf);
       
-   } 
+   }
+}	while((strcmp(str,"stop")!=0)); 
   
       return 0;
    
