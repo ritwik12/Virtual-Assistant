@@ -22,9 +22,9 @@ while(cfg_line[i-1]!=EOF)
 	cfg_line[i]=fgetc(fp);
 	i++;
 }
-cfg_line[i-2]='\0';
+cfg_line[i-1]='\0';
 char * HOME_DIR = strchr(cfg_line, '=');
-HOME_DIR = HOME_DIR+2;
+HOME_DIR = HOME_DIR+1;
 printf("̣\n%s\n",HOME_DIR);
 fclose(fp);
 
@@ -119,7 +119,7 @@ fclose(fp);
       system(sys_cmd);
       printf("Which song do you want me to play? \n");
       fgets (songs, 1000, stdin);
-      sprintf(song,"cvlc %smedia/\%s",HOME_DIR,songs);
+      sprintf(song,"vlc %smedia/\%s",HOME_DIR,songs);
       system(song);
 
 
