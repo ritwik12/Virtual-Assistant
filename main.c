@@ -24,7 +24,7 @@ while(cfg_line[i-1]!=EOF)
 }
 cfg_line[i-1]='\0';
 char * HOME_DIR = strchr(cfg_line, '=');
-HOME_DIR = HOME_DIR+1;
+HOME_DIR = HOME_DIR+2;
 printf("̣\n%s\n",HOME_DIR);
 fclose(fp);
 
