@@ -17,7 +17,7 @@ int i=0;
 char cfg_line[1000];
 cfg_line[i]=fgetc(fp);
 i++;
-while(cfg_line[i-1]!=EOF)
+while(cfg_line[i-1]!='\n')
 {
 	cfg_line[i]=fgetc(fp);
 	i++;
