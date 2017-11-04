@@ -5,12 +5,14 @@ A virtual assistant is a software agent that can perform tasks or services for a
 Virtual assistants use Artificial Intelligence to match user text input to executable commands.
 It can provide a wide variety of services, These includes:
 <ul>
-<li>Weather information of any place</li> 
+<li>Weather forecast of any place</li> 
 <li>Play multimedia files such as audio songs and video songs</li> 
 <li>Open Applications such as Web browsers, Media players(like vlc), text editors, etc</li>
 <li>Open directories in linux, Date and time</li> 
 <li>Search anything on Google</li> 
 <li>Open websites of user’s choice</li>
+<li>Search anything on Youtube</li>
+<li>Open Calendar of any year</li>  
 </ul>
 
 # Setup
@@ -37,7 +39,10 @@ This feature requires curl.To use this feature you need to first install curl as
 ```
 $ sudo apt-get install curl
 ```
-# Music
+
+![weather](https://user-images.githubusercontent.com/20038775/32407551-c93bc9b2-c1b0-11e7-8daf-51ee917136c6.PNG)
+
+# Media
 
 Virtual assistant can play any audio or video files of your choice.
 For playing media files vlc is needed.
@@ -45,18 +50,49 @@ Get it here
 ```
 $ sudo apt-get install vlc
 ```
+```
 Please configure your working directory location before using this feature in config file (value of HOME_DIR)
 ```
+![video](https://user-images.githubusercontent.com/20038775/32407550-c8dfc766-c1b0-11e7-8f29-65233b7d1861.PNG)
 
 # Youtube Search
 
 Virtual assistant can search anything on youtube.
 Just type -
 ```
-search youtube for Music
+search youtube for Artificial Intelligence
 ```
 This will show all the videos on youtube related to Music.
-Music is an example here, you can use anything you want to search.
+Artificial Intelligence is an example here, you can use anything you want to search.
+
+![youtube](https://user-images.githubusercontent.com/20038775/32407552-c986ec44-c1b0-11e7-9be2-d3a80426207c.PNG)
+
+# Google Search
+
+Virtual assistant can search anything on Google.
+
+![googlesearch](https://user-images.githubusercontent.com/20038775/32407547-c85a9352-c1b0-11e7-9a48-32bd2c94a332.PNG)
+
+# Calendar
+
+Virtual assistant can show calendar of any year.
+
+```
+open calendar
+```
+
+![calendar](https://user-images.githubusercontent.com/20038775/32407545-c8026a06-c1b0-11e7-81b5-31a089fd5b65.PNG)
+
+# Help
+
+Don't know how to use?
+Here use help command
+
+```
+help
+```
+
+![help](https://user-images.githubusercontent.com/20038775/32407549-c89d5cd2-c1b0-11e7-867a-d5032922315a.PNG)
 
 # Contributing Guide
 <ul>
