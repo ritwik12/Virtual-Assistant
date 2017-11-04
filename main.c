@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include <stdlib.h>
 
 #define SPACE ' '
@@ -17,7 +18,7 @@ int i=0;
 char cfg_line[1000];
 cfg_line[i]=fgetc(fp);
 i++;
-while(cfg_line[i-1]!=EOF)
+while(cfg_line[i-1]!='\n')
 {
 	cfg_line[i]=fgetc(fp);
 	i++;
@@ -25,7 +26,6 @@ while(cfg_line[i-1]!=EOF)
 cfg_line[i-1]='\0';
 char * HOME_DIR = strchr(cfg_line, '=');
 HOME_DIR = HOME_DIR+2;
-printf("̣\n%s\n",HOME_DIR);
 fclose(fp);
 
 
@@ -35,6 +35,10 @@ fclose(fp);
        fgets (str, 1000, stdin);
           if ((strlen(str)>0) && (str[strlen (str) - 1] == '\n'))
               str[strlen (str) - 1] = '\0';
+//change uppercase letters in str to lowercase for convenience
+	int i, s = strlen(str);
+	for (i = 0; i < s; i++)
+	    str[i] = tolower(str[i]);
 
       char buf[9999];
       char buffer[9999];

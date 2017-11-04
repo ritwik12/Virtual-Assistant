@@ -45,14 +45,7 @@ Get it here
 ```
 $ sudo apt-get install vlc
 ```
-Please configure your media folder location before using this feature.
-```
-$ system("ls /home/ritwik/media/");
-
-```
-And
-```
-$ sprintf(song,"vlc /home/ritwik/media/\%s",songs);
+Please configure your working directory location before using this feature in config file (value of HOME_DIR)
 ```
 
 # Youtube Search
