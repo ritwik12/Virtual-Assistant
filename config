@@ -1,1 +1,3 @@
 HOME_DIR = /home/username/Virtual-Assistant/Virtual-Assistant/
+MP = vlc
+Webbrowser = firefox
