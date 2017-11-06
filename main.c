@@ -9,7 +9,7 @@
 int main () 
 {
 
-  char str[1000], *start, pv, location[1000],youtube[1000],songs[100],cal[100],search[100];
+  char str[1000], *start, pv, location[1000],youtube[1000],songs[1000],cal[100],search[100];
   int c, d, len=0;
 
   //Getting home directory out of configuration file
@@ -19,7 +19,7 @@ int main ()
   char cfg_line[1000];
   cfg_line[i]=fgetc(fp);
   i++;
-  while(cfg_line[i-1]!='\n')
+  while(cfg_line[i-1]!='\n'&&cfg_line[i-1]!=EOF)  
   {
   	cfg_line[i]=fgetc(fp);
   	i++;
@@ -27,8 +27,48 @@ int main ()
   cfg_line[i-1]='\0';
   char * HOME_DIR = strchr(cfg_line, '=');
   HOME_DIR = HOME_DIR+2;
+
+//Get preffered media player from config file
+ i=0;
+ char media_player[1000];
+ media_player[i]=fgetc(fp);
+ i++;
+ while(media_player[i-1]!='\n'&&media_player[i-1]!=EOF)
+ {
+ 	media_player[i]=fgetc(fp);
+ 	i++;
+ }
+
+media_player[i-1]='\0';
+ char * M_P = strchr(media_player, '=');
+ M_P = M_P+2;
+ //-----------------------
+ //Get preffered Webbrowser out of config file
+ i=0;
+ char webbrowser[1000];
+ webbrowser[i]=fgetc(fp);
+ i++;
+ while(webbrowser[i-1]!='\n'&&webbrowser[i-1]!=EOF)
+ {
+ 	webbrowser[i]=fgetc(fp);
+ 	i++;
+ }
+ 
+ webbrowser[i-1]='\0';
+ char * WebBrowser = strchr(webbrowser, '=');
+ WebBrowser = WebBrowser+2;
+ 
+ 
   fclose(fp);
  
+//Inform user about preffered media player, as to config file
+ char preffered_media_player[1000];
+ sprintf(preffered_media_player,"say Your preffered media player is %s",M_P);
+ system(preffered_media_player);
+ //Inform user about preffered web browser, as to config file
+ char preffered_webbrowser[1000];
+ sprintf(preffered_webbrowser,"say Your preffered webbrowser is %s",WebBrowser);
+ system(preffered_webbrowser);
 
   do
   {
@@ -270,7 +310,7 @@ int main ()
             //--------------------------------
             sprintf(buff,"say searching youtube for \%s",youtube);
             system(buff);
-            sprintf(buf, "firefox   https://www.youtube.com/results?search_query=\%s", start);
+            sprintf(buf, "%s https://www.youtube.com/results?search_query=\%s", WebBrowser,start);
             system(buf);
 
     }
@@ -286,7 +326,7 @@ int main ()
             system("say which media do you want me to play");
             printf("Which media do you want me to play? \n");
             fgets (songs, 1000, stdin);
-            sprintf(song,"vlc %smedia/\%s",HOME_DIR,songs);
+            sprintf(song,"%s %smedia/\%s",M_P,HOME_DIR,songs);
             system(song);
 
     }
@@ -336,7 +376,7 @@ int main ()
                 //--------------------------------
                 sprintf(buff,"say Do you mean \%s",str);
                 system(buff);
-                sprintf(buf, "firefox https://www.google.co.in/search?q=%s&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=zkWgWc3fNeXI8AeCr5LYBw ", start);
+                sprintf(buf, "%s https://www.google.co.in/search?q=%s&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=zkWgWc3fNeXI8AeCr5LYBw ",WebBrowser, start);
                 system(buf);
 
             }
@@ -368,8 +408,7 @@ int main ()
 
                 //--------------------------------
 
-               
-                sprintf(buf, "firefox https://www.google.co.in/search?q=%s&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=zkWgWc3fNeXI8AeCr5LYBw ", start);
+                sprintf(buf, "%s https://www.google.co.in/search?q=%s&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=zkWgWc3fNeXI8AeCr5LYBw ",WebBrowser, start);
                 system(buf);
 
              }
