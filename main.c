@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <curl/curl.h>
-#include <json-c/json.h>
+#include <json/json.h>
 
 static size_t global_size = 0;
 
