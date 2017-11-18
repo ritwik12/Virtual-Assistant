@@ -1,2 +1,2 @@
 language: C
-script: gcc main.c $(pkg-config --libs --cflags libcurl) -l json -std=gnu11
+script: gcc main.c $(pkg-config --libs --cflags libcurl) -l json-c -std=gnu11
