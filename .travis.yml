@@ -1,2 +1,2 @@
 language: C
-script: gcc main.c -std=c99
+script: gcc main.c  $(pkg-config --libs --cflags libcurl) -l json -std=c99
