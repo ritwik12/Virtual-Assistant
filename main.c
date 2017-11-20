@@ -5,40 +5,55 @@
 #include <curl/curl.h>
 #include <json/json.h>
 
-static size_t global_size = 0;
 
 #define SPACE ' '
 
 //Function used by libcurl to allocate memory to data received from the HTTP response
-static size_t get_geolocation_callback_func(void *buffer, size_t size, size_t nmemb, void *userp) {
-char **response_ptr = (char **)userp;
-size_t total = size * nmemb;
 
-    /* Assuming the response is a string */
-    if (global_size == 0) { /* First call */
-        *response_ptr = strndup(buffer, total);
-    }
-    else { /* Subsequent calls */
-        *response_ptr = realloc(*response_ptr, global_size+total);
-        strncpy(&(*response_ptr)[global_size], buffer, total);
-    }
-    global_size += total;
-    return total;
+struct MemoryStruct {
+  char *memory;
+  size_t size;
+};
+ 
+static size_t
+WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
+{
+  size_t realsize = size * nmemb;
+  struct MemoryStruct *mem = (struct MemoryStruct *)userp;
+ 
+  mem->memory = realloc(mem->memory, mem->size + realsize + 1);
+  if(mem->memory == NULL) {
+    /* out of memory! */ 
+    printf("not enough memory (realloc returned NULL)\n");
+    return 0;
+  }
+ 
+  memcpy(&(mem->memory[mem->size]), contents, realsize);
+  mem->size += realsize;
+  mem->memory[mem->size] = 0;
+ 
+  return realsize;
 }
-
 
 int find_restaurants()
 {
-	char *geolocation=NULL,*encoded_address,*url,*places_data=NULL;
+	char *encoded_address,*url;
 	char *api_key="AIzaSyBtlPZdSEmwZPUKyBsz9NN5AOLkbryAmxM";
 	char address[1000];
 	CURL *curl=NULL;
 	CURLcode result;
 	int i,len;
+	int j,head_length,length; //variables for output formatting
 	char location[1000];
 	struct json_object *jobj,*obj1,*obj2,*obj3,*obj4,*lat,*lng; //Geocoding API json objects
 	struct json_object *pl1,*pl2,*idx,*name,*price,*vic,*rate,*open,*hrs; //Google Place API json Objects
-	
+	struct MemoryStruct geo,places;
+	geo.memory=malloc(4096);
+	geo.size=0;
+	places.memory=malloc(4096);
+	places.size=0;	
+
+
 	curl=curl_easy_init();
 	
 	system("say Please enter your area/locality");
@@ -74,8 +89,8 @@ int find_restaurants()
         	curl_easy_setopt(curl, CURLOPT_CAPATH, "/usr/ssl/certs/crt");
 		curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
 		
-		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, get_geolocation_callback_func);
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &geolocation);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&geo);
 		
 		
 		result=curl_easy_perform(curl);
@@ -87,7 +102,7 @@ int find_restaurants()
 		}
 
 		//---------------Parsing JSON result from geocoding API----------------------------------------------------------------
-		jobj=json_tokener_parse(geolocation);
+		jobj=json_tokener_parse(geo.memory);
 		json_object_object_get_ex(jobj,"results",&obj1);
 		obj2=json_object_array_get_idx(obj1,0);
 		json_object_object_get_ex(obj2,"geometry",&obj3);
@@ -107,9 +122,11 @@ int find_restaurants()
         	curl_easy_setopt(curl, CURLOPT_CAPATH, "/usr/ssl/certs/crt");
 		curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
 		
-		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, get_geolocation_callback_func);
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &places_data);
-		global_size=0;
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&places);
+
+		
+			
 		result=curl_easy_perform(curl);
 		
 		if(result!=CURLE_OK)
@@ -118,9 +135,9 @@ int find_restaurants()
 
 		}
 				
-		//printf("%s\n",places_data);
 		
-		pl1=json_tokener_parse(places_data);	
+		
+		pl1=json_tokener_parse(places.memory);	
 		json_object_object_get_ex(pl1,"results",&pl2);
 		len=json_object_array_length(pl2);
 		
@@ -136,30 +153,110 @@ int find_restaurants()
 			json_object_object_get_ex(idx,"opening_hours",&hrs);
 			json_object_object_get_ex(hrs,"open_now",&open);
 			json_object_object_get_ex(idx,"price_level",&price);
-
-			printf("Restaurant Name: %s\n",json_object_get_string(name));
-			printf("Address: %s\n",json_object_get_string(vic));
 			
+			//------------------- Code to display output in tables---------------------------------------
+			head_length=strlen("Restaurant Name:")+strlen(json_object_get_string(vic))+40;
+						
+			for(j=0;j<head_length;j++)
+				printf("-");
+			
+			
+			printf("\n| ");
+			printf("Restaurant Name:");
+			length=strlen("Restaurant Name:");
+			for(j=length;j<=40;j++)
+				printf(" ");
+			printf("|");
+			
+			printf(" %s",json_object_get_string(name));
+			length=length+(40-length)+strlen(json_object_get_string(name));
+			for(j=length;j<head_length-4;j++)
+				printf(" ");
+
+			printf("|\n");			
+
+			for(j=0;j<head_length;j++)
+				printf("-");				
+				
+			printf("\n| ");
+			printf("Address:");
+			length=strlen("Address:");
+			for(j=length;j<=40;j++)
+				printf(" ");
+			printf("|");
+			
+			printf(" %s",json_object_get_string(vic));
+			length=length+(40-length)+strlen(json_object_get_string(vic));
+			for(j=length;j<head_length-4;j++)
+				printf(" ");
+			printf("|\n");
+			for(j=0;j<head_length;j++)
+				printf("-");				
+				
+			printf("\n| ");
+
 			if(json_object_get_double(rate)>0.0)
-			printf("Rating: %.1f\n",json_object_get_double(rate));
+			{
+				printf("Rating:");
+				length=strlen("Rating:");
+				for(j=length;j<=40;j++)
+					printf(" ");
+				printf("|");
+				printf(" %.1f",json_object_get_double(rate));
+				length=length+(40-length)+3;
+				for(j=length;j<head_length-4;j++)
+					printf(" ");
 
+				printf("|\n");
+				for(j=0;j<head_length;j++)
+				printf("-");				
+				
+				printf("\n| ");
+			
+			}
 			if(json_object_get_double(price)>0.0)
-			printf("Price Rating: %.1f\n",json_object_get_double(price));
+			{
+				printf("Price Rating:");
+				length=strlen("Price Rating:");
+				for(j=length;j<=40;j++)
+					printf(" ");
+				printf("|");
+				printf(" %.1f",json_object_get_double(rate));
+				length=length+(40-length)+3;
+				for(j=length;j<head_length-4;j++)
+					printf(" ");
 
+				printf("|\n");
+				for(j=0;j<head_length;j++)
+					printf("-");				
+				
+				printf("\n| ");
+			}
 			if(json_object_get_boolean(open))
 			{
-				printf("open now\n");
+				printf("open now");
+				length=strlen("Open now");
+				for(j=length;j<head_length-1;j++)
+					printf(" ");
+				printf("|\n");
 			}
 			else
 			{
-				printf("closed now\n");
+				printf("closed now");
+				length=strlen("Closed now");
+				for(j=length;j<head_length-1;j++)
+					printf(" ");
+				printf("|\n");
 			}
+			for(j=0;j<head_length;j++)
+				printf("-");
 			printf("\n\n");
 
 		}
 				
 								
-		
+		free(places.memory);
+		free(geo.memory);
 		free(url);
         	free(encoded_address);
         	curl_easy_cleanup(curl);
