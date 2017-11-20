@@ -1,8 +1,6 @@
 before_install:
-
 sudo apt-get -qq update
 sudo apt-get install -y libjson0 libjson0-dev
-
 language: C
 script: gcc main.c $(pkg-config --libs --cflags libcurl) -l json -std=gnu11
 
