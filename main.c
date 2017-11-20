@@ -38,7 +38,7 @@ WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
 int find_restaurants()
 {
 	char *encoded_address,*url;
-	char *api_key="AIzaSyBtlPZdSEmwZPUKyBsz9NN5AOLkbryAmxM";
+	char *api_key="AIzaSyAjfVvnaDMYiR9i2DjeCSjZ76PR4qRCNTM";
 	char address[1000];
 	CURL *curl=NULL;
 	CURLcode result;
