@@ -13,7 +13,8 @@ It can provide a wide variety of services, These includes:
 <li>Search anything on Google</li> 
 <li>Open websites of user’s choice</li>
 <li>Search anything on Youtube</li>
-<li>Open Calendar of any year</li>  
+<li>Open Calendar of any year</li>
+<li>Find Restaurants in an area</li>  
 </ul>
 
 ![screenshot from 2017-11-04 23 13 18](https://user-images.githubusercontent.com/20038775/32407915-c80e1a72-c1b5-11e7-83f4-efafcf7d3c85.png)
@@ -28,7 +29,8 @@ The functionality is executed such as
 <li>Weather forecast is shown after the user enters the location.
 <li>Calendar is shown of the desired year.
 <li>Youtube search is performed for the desired content.
-<li>Google search is performed for whatever the user wants to. 
+<li>Google search is performed for whatever the user wants to.
+<li>Restaurants in the given area/locality are shown.  
 </ul>
 
 **If the virtual assistant have no idea about the user’s sentence, it will simply search that sentence on Google.**
@@ -66,6 +68,20 @@ Firefox is needed to perform browser tasks such as opening google and youtube.
 ```
 $ sudo apt-get install firefox
 ```
+In addition to this, following commands are needed to install the necessary packages.
+
+```
+$ sudo apt-get install libcurl4-openssl-dev
+
+$ sudo apt-get install libjson0 libjson0-dev
+
+```
+# Restaurant
+  Virtual Assistant can find restaurants in an area.
+  
+  ![restaurant](https://user-images.githubusercontent.com/22569462/32977453-8dfb20fc-cc53-11e7-91aa-ff43bed7173b.png)
+
+
 
 # Weather
 
