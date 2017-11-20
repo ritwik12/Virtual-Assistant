@@ -114,8 +114,7 @@ Virtual assistant can show calendar of any year.
 ```
 open calendar
 ```
-
-![calendar](https://user-images.githubusercontent.com/20038775/32407545-c8026a06-c1b0-11e7-81b5-31a089fd5b65.PNG)
+![calendar](https://user-images.githubusercontent.com/20038775/33027865-4b6d5f28-ce3a-11e7-8376-ac16e9da8606.png)
 
 # Help
 
@@ -125,8 +124,7 @@ Here use help command
 ```
 help
 ```
-
-![help](https://user-images.githubusercontent.com/20038775/32407549-c89d5cd2-c1b0-11e7-867a-d5032922315a.PNG)
+![help](https://user-images.githubusercontent.com/20038775/33027895-5eb1a80a-ce3a-11e7-9410-dd1c0b2d21a1.png)
 
 # Contributing Guide
 <ul>
