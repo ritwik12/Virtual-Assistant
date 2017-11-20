@@ -2,8 +2,272 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <curl/curl.h>
+#include <json/json.h>
+
 
 #define SPACE ' '
+
+//Function used by libcurl to allocate memory to data received from the HTTP response
+
+struct MemoryStruct {
+  char *memory;
+  size_t size;
+};
+ 
+static size_t
+WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
+{
+  size_t realsize = size * nmemb;
+  struct MemoryStruct *mem = (struct MemoryStruct *)userp;
+ 
+  mem->memory = realloc(mem->memory, mem->size + realsize + 1);
+  if(mem->memory == NULL) {
+    /* out of memory! */ 
+    printf("not enough memory (realloc returned NULL)\n");
+    return 0;
+  }
+ 
+  memcpy(&(mem->memory[mem->size]), contents, realsize);
+  mem->size += realsize;
+  mem->memory[mem->size] = 0;
+ 
+  return realsize;
+}
+
+int find_restaurants()
+{
+	char *encoded_address,*url;
+	char *api_key="AIzaSyBtlPZdSEmwZPUKyBsz9NN5AOLkbryAmxM";
+	char address[1000];
+	CURL *curl=NULL;
+	CURLcode result;
+	int i,len;
+	int j,head_length,length; //variables for output formatting
+	char location[1000];
+	struct json_object *jobj,*obj1,*obj2,*obj3,*obj4,*lat,*lng; //Geocoding API json objects
+	struct json_object *pl1,*pl2,*idx,*name,*price,*vic,*rate,*open,*hrs; //Google Place API json Objects
+	struct MemoryStruct geo,places;
+	geo.memory=malloc(4096);
+	geo.size=0;
+	places.memory=malloc(4096);
+	places.size=0;	
+
+
+	curl=curl_easy_init();
+	
+	system("say Please enter your area/locality");
+	printf("Please enter your area/locality\n\n");
+	fgets(address,1000,stdin);
+
+	//-----------------------Google Geocoding API to convert Area name into co-ordinates needed by Places API------------------------	
+	
+	if(curl)
+	{
+		encoded_address=curl_easy_escape(curl,address,0);
+		if(!encoded_address)
+		{
+			fprintf(stderr, "Could not encode address\n");
+            		curl_easy_cleanup(curl);
+            		return -1;
+		}
+		
+		url=malloc(strlen(encoded_address)+200);
+		if(!url)
+		{
+			 fprintf(stderr, "Could not allocate memory for url\n");
+            		 free(encoded_address);
+            		 curl_easy_cleanup(curl);
+            		 return -1;
+		}
+		
+		//url for geocoder api
+ 		sprintf(url, "https://maps.googleapis.com/maps/api/geocode/json?key=%s&address=%s", api_key, encoded_address);
+
+		curl_easy_setopt(curl, CURLOPT_URL, url);
+        	curl_easy_setopt(curl, CURLOPT_HTTPGET, 1);
+        	curl_easy_setopt(curl, CURLOPT_CAPATH, "/usr/ssl/certs/crt");
+		curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
+		
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&geo);
+		
+		
+		result=curl_easy_perform(curl);
+
+		if(result!=CURLE_OK)
+		{
+			fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
+
+		}
+
+		//---------------Parsing JSON result from geocoding API----------------------------------------------------------------
+		jobj=json_tokener_parse(geo.memory);
+		json_object_object_get_ex(jobj,"results",&obj1);
+		obj2=json_object_array_get_idx(obj1,0);
+		json_object_object_get_ex(obj2,"geometry",&obj3);
+		json_object_object_get_ex(obj3,"location",&obj4);
+		json_object_object_get_ex(obj4,"lat",&lat);
+		json_object_object_get_ex(obj4,"lng",&lng);
+		
+		//-----------------------------JSON Parsed-------------------------------------------------------------------------------
+		sprintf(location,"%s,%s",json_object_get_string(lat),json_object_get_string(lng));		
+		
+		//------------------------------Google Places API---------------------------------------------------------------------
+		
+		sprintf(url,"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s&radius=500&type=restaurant&key=%s",location,api_key);
+
+		curl_easy_setopt(curl, CURLOPT_URL, url);
+        	curl_easy_setopt(curl, CURLOPT_HTTPGET, 1);
+        	curl_easy_setopt(curl, CURLOPT_CAPATH, "/usr/ssl/certs/crt");
+		curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
+		
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&places);
+
+		
+			
+		result=curl_easy_perform(curl);
+		
+		if(result!=CURLE_OK)
+		{
+			fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
+
+		}
+				
+		
+		
+		pl1=json_tokener_parse(places.memory);	
+		json_object_object_get_ex(pl1,"results",&pl2);
+		len=json_object_array_length(pl2);
+		
+		system("say Here are some restaurants in the area");
+		printf("Here are some restaurants in the area\n\n");
+		for(i=0;i<len&&i<=7;i++)
+		{
+			idx=json_object_array_get_idx(pl2,i);
+			json_object_object_get_ex(idx,"name",&name);
+			
+			json_object_object_get_ex(idx,"rating",&rate);
+			json_object_object_get_ex(idx,"vicinity",&vic);
+			json_object_object_get_ex(idx,"opening_hours",&hrs);
+			json_object_object_get_ex(hrs,"open_now",&open);
+			json_object_object_get_ex(idx,"price_level",&price);
+			
+			//------------------- Code to display output in tables---------------------------------------
+			head_length=strlen("Restaurant Name:")+strlen(json_object_get_string(vic))+40;
+						
+			for(j=0;j<head_length;j++)
+				printf("-");
+			
+			
+			printf("\n| ");
+			printf("Restaurant Name:");
+			length=strlen("Restaurant Name:");
+			for(j=length;j<=40;j++)
+				printf(" ");
+			printf("|");
+			
+			printf(" %s",json_object_get_string(name));
+			length=length+(40-length)+strlen(json_object_get_string(name));
+			for(j=length;j<head_length-4;j++)
+				printf(" ");
+
+			printf("|\n");			
+
+			for(j=0;j<head_length;j++)
+				printf("-");				
+				
+			printf("\n| ");
+			printf("Address:");
+			length=strlen("Address:");
+			for(j=length;j<=40;j++)
+				printf(" ");
+			printf("|");
+			
+			printf(" %s",json_object_get_string(vic));
+			length=length+(40-length)+strlen(json_object_get_string(vic));
+			for(j=length;j<head_length-4;j++)
+				printf(" ");
+			printf("|\n");
+			for(j=0;j<head_length;j++)
+				printf("-");				
+				
+			printf("\n| ");
+
+			if(json_object_get_double(rate)>0.0)
+			{
+				printf("Rating:");
+				length=strlen("Rating:");
+				for(j=length;j<=40;j++)
+					printf(" ");
+				printf("|");
+				printf(" %.1f",json_object_get_double(rate));
+				length=length+(40-length)+3;
+				for(j=length;j<head_length-4;j++)
+					printf(" ");
+
+				printf("|\n");
+				for(j=0;j<head_length;j++)
+				printf("-");				
+				
+				printf("\n| ");
+			
+			}
+			if(json_object_get_double(price)>0.0)
+			{
+				printf("Price Rating:");
+				length=strlen("Price Rating:");
+				for(j=length;j<=40;j++)
+					printf(" ");
+				printf("|");
+				printf(" %.1f",json_object_get_double(rate));
+				length=length+(40-length)+3;
+				for(j=length;j<head_length-4;j++)
+					printf(" ");
+
+				printf("|\n");
+				for(j=0;j<head_length;j++)
+					printf("-");				
+				
+				printf("\n| ");
+			}
+			if(json_object_get_boolean(open))
+			{
+				printf("open now");
+				length=strlen("Open now");
+				for(j=length;j<head_length-1;j++)
+					printf(" ");
+				printf("|\n");
+			}
+			else
+			{
+				printf("closed now");
+				length=strlen("Closed now");
+				for(j=length;j<head_length-1;j++)
+					printf(" ");
+				printf("|\n");
+			}
+			for(j=0;j<head_length;j++)
+				printf("-");
+			printf("\n\n");
+
+		}
+				
+								
+		free(places.memory);
+		free(geo.memory);
+		free(url);
+        	free(encoded_address);
+        	curl_easy_cleanup(curl);
+
+	}
+ 
+  
+  return 0;
+
+}
+
 
 
 int main () 
@@ -97,9 +361,9 @@ media_player[i-1]='\0';
     strcpy(example,str);
 	  int compare[10];
     char split[10][10]={0};
-    int k=0,n,j=0,w=0,g=0,go=0,me=0,c=0,u=0,h=0,temp=0;
+    int k=0,n,j=0,w=0,g=0,go=0,me=0,res=0,c=0,u=0,h=0,temp=0;
     char result[20];
-    int weather_score,greeting_score,media_score,google_score,calendar_score,youtube_score,help_score;
+    int weather_score,greeting_score,media_score,google_score,calendar_score,youtube_score,help_score,restaurant_score;
 
     //for weather---------------
 
@@ -125,6 +389,12 @@ media_player[i-1]='\0';
           {"video","listen","play","music"},
           {"play","something","nice","song "}};
 
+    //for Restaurant
+
+    char *restaurant_class[10][10]={{"Please","find","some","restaurants"},
+          {"Find"," ","some","restaurants"},
+          {"Show"," "," ","restaurants"},
+          {"Find","places","to","eat"}};
 	  
 
     for(int i=0;i<strlen(example);i++)
@@ -212,40 +482,95 @@ media_player[i-1]='\0';
         }
         media_score=me;
 
+    //For Restaurant-----------------------------------
+    for(int v=0;v<=k;v++)
+        for(int b=0;b< 3 ;b++)
+        {
+            for(int c=0;c< 4 ;c++)
+            {
+                if(strcmp(restaurant_class[b][c],split[v])== 0)
+                {
+                   res++; 
+                }   
+            }
+        }
+        restaurant_score=res;
+
 	 
 
     if(weather_score>greeting_score)
     {
        if(weather_score>media_score)
        {
-          if(weather_score>google_score)
-             strcpy(result,"weather");
+          if(weather_score>restaurant_score)
+          {
+              if(weather_score>google_score)
+                 strcpy(result,"weather");
+              else
+                 strcpy(result,"google");
+          }
           else
-             strcpy(result,"google");
+          {
+              if(restaurant_score>google_score)
+                 strcpy(result,"restaurant");
+              else
+                 strcpy(result,"google");
+          }
         }
         else
         {
-          if(media_score>google_score)
-             strcpy(result,"media");
+          if(media_score>restaurant_score)
+          {
+              if(media_score>google_score)
+                 strcpy(result,"media");
+              else
+                 strcpy(result,"google");
+          }
           else
-             strcpy(result,"google");
+          {
+             if(restaurant_score>google_score)
+                 strcpy(result,"restaurant");
+             else
+                 strcpy(result,"google"); 
+          }
         }
     }
         else
         {
           if(greeting_score>media_score)
           {
-             if(greeting_score>google_score)
-                strcpy(result,"greeting");
+             if(greeting_score>restaurant_score)
+             {
+                 if(greeting_score>google_score)
+                    strcpy(result,"greeting");
+                 else
+                    strcpy(result,"google");
+             }
              else
-                strcpy(result,"google");
+             {
+                 if(restaurant_score>google_score)
+                     strcpy(result,"restaurant");
+                 else
+                     strcpy(result,"google");
+             }
           }
         else
         {
-          if(media_score>google_score)
-             strcpy(result,"media");
-          else            
-             strcpy(result,"google");
+          if(media_score>restaurant_score)
+          {
+
+              if(media_score>google_score)
+                 strcpy(result,"media");
+              else            
+                 strcpy(result,"google");
+          }
+          else
+          {
+              if(restaurant_score>google_score)
+                 strcpy(result,"restaurant");
+              else
+                 strcpy(result,"google");
+          }
         }
         }
 
@@ -337,6 +662,13 @@ media_player[i-1]='\0';
            	fgets (cal, 1000, stdin);
            	sprintf(calendar,"cal \%s",cal);
            	system(calendar);
+    }
+    //Restaurant
+    else if((strcmp(result,"restaurant"))==0)
+    {
+
+		find_restaurants();
+
     }
 
     //Help
