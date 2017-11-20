@@ -79,7 +79,7 @@ $ sudo apt-get install libjson0 libjson0-dev
 # Restaurant
   Virtual Assistant can find restaurants in an area.
   
-  ![restaurant](https://user-images.githubusercontent.com/22569462/32977453-8dfb20fc-cc53-11e7-91aa-ff43bed7173b.png)
+![restaurants](https://user-images.githubusercontent.com/20038775/33029445-9b05b482-ce3e-11e7-8ed4-5782fe468530.png)
 
 
 
