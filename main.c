@@ -340,8 +340,10 @@ media_player[i-1]='\0';
     printf("%s\n",x);
     fgets (str, 1000, stdin);
     if ((strlen(str)>0) && (str[strlen (str) - 1] == '\n'))
+{
         str[strlen (str) - 1] = '\0';
-
+	return 0;
+}
     //change uppercase letters in str to lowercase for convenience
     int i, s = strlen(str);
     for (i = 0; i < s; i++)
