@@ -14,7 +14,7 @@ struct MemoryStruct {
   char *memory;
   size_t size;
 };
- 
+
 static size_t
 WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
@@ -34,6 +34,38 @@ WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
  
   return realsize;
 }
+struct string {
+  char *ptr;
+  size_t len;
+};
+
+void init_string(struct string *s) {
+  s->len = 0;
+  s->ptr = malloc(s->len+1);
+  if (s->ptr == NULL) {
+    fprintf(stderr, "malloc() failed\n");
+    exit(EXIT_FAILURE);
+  }
+  s->ptr[0] = '\0';
+}
+
+static size_t WriteFunct(void *ptr, size_t size, size_t nmemb, void *userp)
+{
+	struct string *s = (struct string *)userp;
+  size_t new_len = s->len + size*nmemb;
+  s->ptr = realloc(s->ptr, new_len+1);
+  if (s->ptr == NULL) {
+    fprintf(stderr, "realloc() failed\n");
+    exit(EXIT_FAILURE);
+  }
+  memcpy(s->ptr+s->len, ptr, size*nmemb);
+  s->ptr[new_len] = '\0';
+  s->len = new_len;
+	printf("%s", s->ptr);
+	size_t realsize = size*nmemb;
+  return realsize;
+}
+
 
 int find_restaurants()
 {
@@ -268,8 +300,23 @@ int find_restaurants()
 
 }
 
-
-
+int show_weather(char* weather)
+{
+CURL *curl_weather=NULL;
+	CURLcode result_weather;
+		curl_weather=curl_easy_init();
+		struct string s;
+		init_string(&s);
+	curl_easy_setopt(curl_weather, CURLOPT_URL, weather);
+        	curl_easy_setopt(curl_weather, CURLOPT_HTTPGET, 1);
+		curl_easy_setopt(curl_weather, CURLOPT_FOLLOWLOCATION, 1);
+		curl_easy_setopt(curl_weather, CURLOPT_USERAGENT, "curl");
+		curl_easy_setopt(curl_weather, CURLOPT_WRITEFUNCTION, &WriteFunct);
+		curl_easy_setopt(curl_weather, CURLOPT_WRITEDATA, (void *)&s);
+		result_weather = curl_easy_perform(curl_weather);
+return 0;
+}
+	
 int main () 
 {
 
@@ -340,10 +387,8 @@ media_player[i-1]='\0';
     printf("%s\n",x);
     fgets (str, 1000, stdin);
     if ((strlen(str)>0) && (str[strlen (str) - 1] == '\n'))
-{
         str[strlen (str) - 1] = '\0';
-	return 0;
-}
+
     //change uppercase letters in str to lowercase for convenience
     int i, s = strlen(str);
     for (i = 0; i < s; i++)
@@ -603,8 +648,15 @@ media_player[i-1]='\0';
             printf("Please enter location to get weather forecast \n" );
             fgets (location, 1000, stdin);
             system("say showing weather");
-            sprintf(weather,"curl wttr.in/\%s",location);
-            system(weather);
+		sprintf(weather,"http://wttr.in/\%s",location);
+		int counter_weather = 0;
+		while(weather[counter_weather]!='\n')
+		{
+			counter_weather++;
+		}
+		weather[counter_weather]= '\0';
+		show_weather (weather);
+            //system(weather);
     }
     else if(strstr(str,"search youtube")!= NULL)
     {
@@ -706,13 +758,14 @@ media_player[i-1]='\0';
                 start[d] = '\0';
 
 
-
-                //--------------------------------
-                sprintf(buff,"say Do you mean \%s",str);
-                system(buff);
-                sprintf(buf, "%s https://www.google.co.in/search?q=%s&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=zkWgWc3fNeXI8AeCr5LYBw ",WebBrowser, start);
-                system(buf);
-
+				if(strcmp(str,"stop")!=0)
+				{
+                	//--------------------------------
+                	sprintf(buff,"say Do you mean \%s",str);
+                	system(buff);
+                	sprintf(buf, "%s https://www.google.co.in/search?q=%s&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=zkWgWc3fNeXI8AeCr5LYBw ",WebBrowser, start);
+                	system(buf);
+				}
             }
             else 
             {
