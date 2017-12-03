@@ -9,7 +9,7 @@ AM_CFLAGS= -std=gnu11 -Wall -I/usr/include/json-c -I/usr/include/json
 
 virtual_assistant_SOURCES = main.c
 
-virtual_assistant_LDFLAGS = -lcurl -ljson-c
+virtual_assistant_LDFLAGS = -lcurl
 
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@

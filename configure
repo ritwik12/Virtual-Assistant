@@ -11678,6 +11678,101 @@ CC=$lt_save_CC
 
 
 
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for json_tokener_parse in -ljson" >&5
+$as_echo_n "checking for json_tokener_parse in -ljson... " >&6; }
+if ${ac_cv_lib_json_json_tokener_parse+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-ljson  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char json_tokener_parse ();
+int
+main ()
+{
+return json_tokener_parse ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_json_json_tokener_parse=yes
+else
+  ac_cv_lib_json_json_tokener_parse=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_json_json_tokener_parse" >&5
+$as_echo "$ac_cv_lib_json_json_tokener_parse" >&6; }
+if test "x$ac_cv_lib_json_json_tokener_parse" = xyes; then :
+  found_json=yes
+else
+  found_json=no
+fi
+
+if test "x$found_json" = xyes; then
+  LDFLAGS=" -ljson"
+fi
+
+if test "x$found_json" = xno; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for json_tokener_parse in -ljson-c" >&5
+$as_echo_n "checking for json_tokener_parse in -ljson-c... " >&6; }
+if ${ac_cv_lib_json_c_json_tokener_parse+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-ljson-c  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char json_tokener_parse ();
+int
+main ()
+{
+return json_tokener_parse ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_json_c_json_tokener_parse=yes
+else
+  ac_cv_lib_json_c_json_tokener_parse=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_json_c_json_tokener_parse" >&5
+$as_echo "$ac_cv_lib_json_c_json_tokener_parse" >&6; }
+if test "x$ac_cv_lib_json_c_json_tokener_parse" = xyes; then :
+  found_json_c=yes
+else
+  found_json_c=no
+fi
+
+  if test "x$found_json_c" = xyes; then
+    LDFLAGS="-ljson-c"
+  else
+    as_fn_error $? "\"required json library not found. Please install libjson0-dev\"" "$LINENO" 5
+  fi
+fi
 
 ac_config_files="$ac_config_files Makefile"
 
