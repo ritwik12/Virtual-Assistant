@@ -279,6 +279,11 @@ int main ()
   //Getting home directory out of configuration file
   FILE *fp;
   fp=fopen("config","rw");
+  if(fp == NULL)
+  {
+    fprintf(stderr,"Unable to open config file\n");
+    return 1;
+  }
   int i=0;
   char cfg_line[1000];
   cfg_line[i]=fgetc(fp);
