@@ -292,7 +292,7 @@ int main ()
   char * HOME_DIR = strchr(cfg_line, '=');
   HOME_DIR = HOME_DIR+2;
 
-//Get preffered media player from config file
+//Get preferred media player from config file
  i=0;
  char media_player[1000];
  media_player[i]=fgetc(fp);
@@ -307,7 +307,7 @@ media_player[i-1]='\0';
  char * M_P = strchr(media_player, '=');
  M_P = M_P+2;
  //-----------------------
- //Get preffered Webbrowser out of config file
+ //Get preferred Webbrowser out of config file
  i=0;
  char webbrowser[1000];
  webbrowser[i]=fgetc(fp);
@@ -325,14 +325,14 @@ media_player[i-1]='\0';
  
   fclose(fp);
  
-//Inform user about preffered media player, as to config file
- char preffered_media_player[1000];
- sprintf(preffered_media_player,"say Your preffered media player is %s",M_P);
- system(preffered_media_player);
- //Inform user about preffered web browser, as to config file
- char preffered_webbrowser[1000];
- sprintf(preffered_webbrowser,"say Your preffered webbrowser is %s",WebBrowser);
- system(preffered_webbrowser);
+//Inform user about preferred media player, as to config file
+ char preferred_media_player[1000];
+ sprintf(preferred_media_player,"say Your preferred media player is %s",M_P);
+ system(preferred_media_player);
+ //Inform user about preferred web browser, as to config file
+ char preferred_webbrowser[1000];
+ sprintf(preferred_webbrowser,"say Your preferred webbrowser is %s",WebBrowser);
+ system(preferred_webbrowser);
 
   do
   {
