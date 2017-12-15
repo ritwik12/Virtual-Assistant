@@ -379,8 +379,11 @@ media_player[i-1]='\0';
     //for greeting--------------
 
     char *greeting_class[10][10]={{"hey","how","are","you"},
-          {"how"," "," ","doing"},
-          {"hello","there"," "," "}};
+          {"how"," ","going","doing"},
+          {"hello","there"," "," "},
+	  {"good","morning"," "," "},
+	  {"good"," ","evening"," "},
+	  {"good"," "," ","night"}};
 
     //for google----------------
 
@@ -399,7 +402,9 @@ media_player[i-1]='\0';
     char *restaurant_class[10][10]={{"Please","find","some","restaurants"},
           {"Find"," ","some","restaurants"},
           {"Show"," "," ","restaurants"},
-          {"Find","places","to","eat"}};
+          {"Find","places","to","eat"},
+	  {"Where","can","I","eat"},
+	  {"Where","should","go","eat"}};
 	  
 
     for(int i=0;i<strlen(example);i++)
