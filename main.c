@@ -336,7 +336,7 @@ media_player[i-1]='\0';
  system(preferred_media_player);
  //Inform user about preferred web browser, as to config file
  char preferred_webbrowser[1000];
- sprintf(preferred_webbrowser,"say Your preferred webbrowser is %s",WebBrowser);
+ sprintf(preferred_webbrowser,"say Your preferred web browser is %s",WebBrowser);
  system(preferred_webbrowser);
 
   do
@@ -380,6 +380,8 @@ media_player[i-1]='\0';
 
     char *greeting_class[10][10]={{"hey","how","are","you"},
           {"how"," "," ","doing"},
+	  {"how"," "," ","going"},
+	  {"what","is"," ","going","on"},
           {"hello","there"," "," "}};
 
     //for google----------------
@@ -392,6 +394,7 @@ media_player[i-1]='\0';
 
     char *media_class[10][10]={{"can","you","list","media"},
           {"video","listen","play","music"},
+          {"play","some"," ","music"},
           {"play","something","nice","song "}};
 
     //for Restaurant
