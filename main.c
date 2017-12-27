@@ -642,6 +642,11 @@ media_player[i-1]='\0';
             system("say opening firefox");
             system("firefox");
     }
+    else if(strcmp(str, "open gmail"== 0 || strcmp(str, "show gmail") == 0 || strcmp(str, "gmail") == 0)
+    {
+	    system("say opening gmail");
+	    system("gnome-gmail");
+    }
     else if((strcmp(str, "vlc") == 0) || (strcmp(str, "open vlc") == 0) || (strcmp(str,"run vlc") == 0) || (strcmp(str, "start vlc") == 0))
     {
             system("say opening vlc");
