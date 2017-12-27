@@ -642,7 +642,7 @@ media_player[i-1]='\0';
             system("say opening firefox");
             system("firefox");
     }
-    else if(strcmp(str, "open gmail"== 0 || strcmp(str, "show gmail") == 0 || strcmp(str, "gmail") == 0)
+    else if(strcmp(str, "open gmail")== 0 || strcmp(str, "show gmail") == 0 || strcmp(str, "gmail") == 0)
     {
 	    system("say opening gmail");
 	    system("gnome-gmail");
