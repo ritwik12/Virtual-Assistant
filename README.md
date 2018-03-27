@@ -90,8 +90,7 @@ This feature requires curl.To use this feature you need to first install curl as
 ```
 $ sudo apt-get install curl
 ```
-
-![weather](https://user-images.githubusercontent.com/20038775/32407551-c93bc9b2-c1b0-11e7-8daf-51ee917136c6.PNG)
+![weather](https://user-images.githubusercontent.com/20038775/37968392-9af5446a-31eb-11e8-8008-14b5e935571d.png)
 
 # Media
 
@@ -104,7 +103,7 @@ $ sudo apt-get install vlc
 ```
 Please configure your working directory location before using this feature in config file (value of HOME_DIR)
 ```
-![video](https://user-images.githubusercontent.com/20038775/32407550-c8dfc766-c1b0-11e7-8f29-65233b7d1861.PNG)
+![media](https://user-images.githubusercontent.com/20038775/37968146-fbd9a416-31ea-11e8-8215-9a7ca5259ec3.png)
 
 # Youtube Search
 
@@ -121,7 +120,7 @@ Artificial Intelligence is an example here, you can use anything you want to sea
 
 Virtual assistant can search anything on Google.
 
-![googlesearch](https://user-images.githubusercontent.com/20038775/32407547-c85a9352-c1b0-11e7-9a48-32bd2c94a332.PNG)
+![gsearch](https://user-images.githubusercontent.com/20038775/37968140-fa07a8d6-31ea-11e8-9ad2-97fe5527bc25.png)
 
 # Calendar
 
