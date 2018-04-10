@@ -76,6 +76,11 @@ $ sudo apt-get install libcurl4-openssl-dev
 $ sudo apt-get install libjson0 libjson0-dev
 
 ```
+Compile
+```
+gcc main.c $(pkg-config --libs --cflags libcurl) -l json -std=gnu11
+
+```
 # Restaurant
   Virtual Assistant can find restaurants in an area.
   
