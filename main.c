@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <curl/curl.h>
 #include <json/json.h>
-#include "functions.h"
+#include "artificial_intelligence.h"
 
 
 int main() {
