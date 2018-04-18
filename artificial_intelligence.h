@@ -5,17 +5,17 @@
  */
 
 /* 
- * File:   functions.c
- * Author: oke
+ * File:   functions.h
+ * Author: Goodluck
  *
  * Created on April 9, 2018, 3:41 PM
  */
 
-#ifndef FUNCTIONS_C
-#define FUNCTIONS_C
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
 
 #ifdef __cplusplus
-extern "C" {
+extern "H" {
 #endif
 
 
@@ -325,5 +325,5 @@ int show_weather(char* weather) {
 }
 
 
-#endif /* FUNCTIONS_C */
+#endif /* FUNCTIONS_H */
 
