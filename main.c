@@ -4,12 +4,12 @@
 #include <stdlib.h>
 #include <curl/curl.h>
 #include <json/json.h>
-#include "artificial_intelligence.h"
+#include "functions.c"
 
 
 int main() {
     
-#include "init_config.h"
+#include "init_config.c"
 
     //Inform user about preferred media player, as to config file
     char preferred_media_player[1000];
@@ -26,13 +26,13 @@ int main() {
         //---------------------------------------------------------------------------------------------------------------------
         
         //Artificial Intelligence 
-#include "requests.h"
+#include "requests.c"
         //Artificial Intelligence {REQUESTS}
         
-#include "analysis.h"
+#include "analysis.c"
         //Artificial Intelligence {ANALYSIS}
         
-#include "response.h"
+#include "response.c"
         //Artificial Intelligence {RESPONSE}
 
         //---------------------------------------------------------------------------------------------------------------------
