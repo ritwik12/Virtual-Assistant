@@ -5,7 +5,7 @@
  */
 
 /* 
- * File:   init_config.c
+ * File:   init_config.h
  *
  * Created on April 10, 2018, 9:18 AM
  */
