@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <curl/curl.h>
 #include <json/json.h>
-#include "artificial_intelligence.c"
+#include "artificial_intelligence.h"
 
 
 int main() {
@@ -26,13 +26,13 @@ int main() {
         //---------------------------------------------------------------------------------------------------------------------
         
         //Artificial Intelligence 
-#include "requests.c"
+#include "requests.h"
         //Artificial Intelligence {REQUESTS}
         
-#include "analysis.c"
+#include "analysis.h"
         //Artificial Intelligence {ANALYSIS}
         
-#include "response.c"
+#include "response.h"
         //Artificial Intelligence {RESPONSE}
 
         //---------------------------------------------------------------------------------------------------------------------
