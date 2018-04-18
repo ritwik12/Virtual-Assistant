@@ -76,6 +76,11 @@ $ sudo apt-get install libcurl4-openssl-dev
 $ sudo apt-get install libjson0 libjson0-dev
 
 ```
+Compile
+```
+gcc main.c $(pkg-config --libs --cflags libcurl) -l json -std=gnu11
+
+```
 # Restaurant
   Virtual Assistant can find restaurants in an area.
   
@@ -90,8 +95,7 @@ This feature requires curl.To use this feature you need to first install curl as
 ```
 $ sudo apt-get install curl
 ```
-
-![weather](https://user-images.githubusercontent.com/20038775/32407551-c93bc9b2-c1b0-11e7-8daf-51ee917136c6.PNG)
+![weather](https://user-images.githubusercontent.com/20038775/37968392-9af5446a-31eb-11e8-8008-14b5e935571d.png)
 
 # Media
 
@@ -104,7 +108,7 @@ $ sudo apt-get install vlc
 ```
 Please configure your working directory location before using this feature in config file (value of HOME_DIR)
 ```
-![video](https://user-images.githubusercontent.com/20038775/32407550-c8dfc766-c1b0-11e7-8f29-65233b7d1861.PNG)
+![media](https://user-images.githubusercontent.com/20038775/37968146-fbd9a416-31ea-11e8-8215-9a7ca5259ec3.png)
 
 # Youtube Search
 
@@ -121,7 +125,7 @@ Artificial Intelligence is an example here, you can use anything you want to sea
 
 Virtual assistant can search anything on Google.
 
-![googlesearch](https://user-images.githubusercontent.com/20038775/32407547-c85a9352-c1b0-11e7-9a48-32bd2c94a332.PNG)
+![gsearch](https://user-images.githubusercontent.com/20038775/37968140-fa07a8d6-31ea-11e8-9ad2-97fe5527bc25.png)
 
 # Calendar
 
@@ -157,6 +161,15 @@ ritwik12/Virtual-Assistant is licensed under the
 GNU General Public License v3.0
 
 Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.
+1. The origin of this software must not be misrepresented; you must not
+ claim that you wrote the original software. If you use this software
+ in a product, an acknowledgment in the product documentation would be
+ appreciated but is not required.
+ 2. Altered source versions must be plainly marked as such, and must not be
+ misrepresented as being the original software.
+
+# Credits
+This project is developed with contributions by [Riya](https://github.com/riya-17)
 
 
 
