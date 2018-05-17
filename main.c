@@ -3,7 +3,8 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <curl/curl.h>
-#include <json/json.h>
+#include <json-c/json_object.h>
+#include <json-c/json_tokener.h>
 #include "functions.c"
 
 
