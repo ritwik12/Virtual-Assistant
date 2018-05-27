@@ -73,12 +73,12 @@ In addition to this, following commands are needed to install the necessary pack
 ```
 $ sudo apt-get install libcurl4-openssl-dev
 
-$ sudo apt-get install libjson0 libjson0-dev
+$ sudo apt-get install libjson-c-dev
 
 ```
 Compile
 ```
-gcc main.c $(pkg-config --libs --cflags libcurl) -l json -std=gnu11
+gcc main.c $(pkg-config --libs --cflags libcurl) -l json-c -std=gnu11
 
 ```
 # Restaurant
