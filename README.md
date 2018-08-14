@@ -56,6 +56,7 @@ Notice that the classification for “What’s it like outside” found a term i
 
 This program uses <b>GNUstep speech engine</b> for the purpose of text to speech.
 To use this feature few commands are needed:
+### For Ubuntu (Debian based Linux)
 
 say converts text to audible speech using the GNUstep speech engine.
 
@@ -76,6 +77,19 @@ $ sudo apt-get install libcurl4-openssl-dev
 $ sudo apt-get install libjson-c-dev
 
 ```
+### For Fedora (RHEL based Linux)
+Firefox is needed to perform browser tasks such as opening google and youtube.
+
+```
+$ sudo yum install firefox
+```
+In addition to this, following commands are needed to install the necessary packages.
+
+```
+$ sudo yum install libcurl libcurl-devel
+$ sudo yum install json-c json-c-devel
+
+```
 Compile
 ```
 gcc main.c $(pkg-config --libs --cflags libcurl) -l json-c -std=gnu11
@@ -90,10 +104,14 @@ gcc main.c $(pkg-config --libs --cflags libcurl) -l json-c -std=gnu11
 
 # Weather
 
-This feature requires curl.To use this feature you need to first install curl as follows-
+This feature requires curl. To use this feature you need to first install curl as follows-
 
 ```
 $ sudo apt-get install curl
+```
+Or
+```
+$ sudo yum install curl
 ```
 ![weather](https://user-images.githubusercontent.com/20038775/37968392-9af5446a-31eb-11e8-8008-14b5e935571d.png)
 
@@ -104,6 +122,11 @@ For playing media files vlc is needed.
 Get it here 
 ```
 $ sudo apt-get install vlc
+```
+Or
+```
+$ sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+$ sudo dnf install vlc
 ```
 ```
 Please configure your working directory location before using this feature in config file (value of HOME_DIR)
