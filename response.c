@@ -1,5 +1,5 @@
 
-/* 
+/*
  * File:   response.c
  *
  * Created on April 10, 2018, 8:51 AM
@@ -70,7 +70,7 @@ else if ((strcmp(result, "weather") == 0)) {
     sprintf(song, "%s %smedia/\%s", M_P, HOME_DIR, songs);
     system(song);
 
-} else if ((strcmp(str, "calendar") == 0) || (strcmp(str, "open calendar") == 0)) {
+} else if ((strcmp(result, "calendar") == 0)) {
     system("say which year calendar you want to see");
     printf("Which year calendar you want to see? \n");
     fgets(cal, 1000, stdin);

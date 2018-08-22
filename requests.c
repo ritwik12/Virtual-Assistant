@@ -1,5 +1,5 @@
 
-/* 
+/*
  * File:   requests.c
  *
  * Created on April 10, 2018, 8:51 AM
@@ -27,7 +27,7 @@ char example[1000];
 strcpy(example, str);
 int compare[10];
 char split[10][10] = {0};
-int k = 0, n, j = 0, w = 0, g = 0, go = 0, me = 0, res = 0, c = 0, u = 0, h = 0, temp = 0;
+int k = 0, n, j = 0, w = 0, g = 0, go = 0, me = 0, res = 0, ca = 0, c = 0, u = 0, h = 0, temp = 0;
 char result[20];
 int weather_score, greeting_score, media_score, google_score, calendar_score, youtube_score, help_score, restaurant_score;
 
@@ -72,5 +72,10 @@ char *restaurant_class[10][10] = {
     {"Find", "places", "to", "eat"}
 };
 
+//for Restaurant
 
-
+char *calendar_class[10][10] = {
+    {" ", " ", "show", "calendar"},
+    {" ", " ", "open", "calendar"},
+    {" ", " ", "what", "date"}
+};
