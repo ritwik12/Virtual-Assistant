@@ -23,6 +23,8 @@ for (int i = 0; i < strlen(example); i++) {
 split[k][j] = '\0';
 
 
+int highest_score = 0;
+
 //For Weather---------------------------------------
 
 for (int v = 0; v <= k; v++)
@@ -36,6 +38,9 @@ for (int v = 0; v <= k; v++)
         }
     }
 weather_score = w;
+if (weather_score > highest_score)
+    strcpy(result, "weather");
+
 
 //For Greeting-----------------------------------
 
@@ -48,6 +53,8 @@ for (int v = 0; v <= k; v++)
         }
     }
 greeting_score = g;
+if (greeting_score > highest_score)
+    strcpy(result, "greeting");
 
 
 //For Google-------------------------------------
@@ -61,6 +68,8 @@ for (int v = 0; v <= k; v++)
         }
     }
 google_score = go;
+if (google_score > highest_score)
+    strcpy(result, "google");
 
 
 //For Media---------------------------------------
@@ -74,6 +83,8 @@ for (int v = 0; v <= k; v++)
         }
     }
 media_score = me;
+if (me > highest_score)
+    strcpy(result, "media");
 
 //For Restaurant-----------------------------------
 for (int v = 0; v <= k; v++)
@@ -85,6 +96,8 @@ for (int v = 0; v <= k; v++)
         }
     }
 restaurant_score = res;
+if (restaurant_score > highest_score)
+    strcpy(result, "restaurant");
 
 //For Calendar-----------------------------------
 for (int v = 0; v <= k; v++)
@@ -96,108 +109,5 @@ for (int v = 0; v <= k; v++)
         }
     }
 calendar_score = ca;
-
-
-
-if (weather_score > greeting_score) {
-    if (weather_score > media_score) {
-        if (weather_score > restaurant_score) {
-            if (weather_score > google_score)
-                if (weather_score > calendar_score)
-                    strcpy(result, "weather");
-                else
-                    strcpy(result, "calendar");
-            else
-                if (google_score > calendar_score)
-                    strcpy(result, "google");
-                else
-                    strcpy(result, "calendar");
-        } else {
-            if (restaurant_score > google_score)
-                if (restaurant_score > calendar_score)
-                    strcpy(result, "restaurant");
-                else
-                    strcpy(result, "calendar");
-            else
-                if (google_score > calendar_score)
-                    strcpy(result, "google");
-                else
-                    strcpy(result, "calendar");
-        }
-    } else {
-        if (media_score > restaurant_score) {
-            if (media_score > google_score)
-                if (media_score > calendar_score)
-                    strcpy(result, "media");
-                else
-                    strcpy(result, "calendar");
-            else
-                if (google_score > calendar_score)
-                    strcpy(result, "google");
-                else
-                    strcpy(result, "calendar");
-        } else {
-            if (restaurant_score > google_score)
-                if (restaurant_score > calendar_score)
-                    strcpy(result, "restaurant");
-                else
-                    strcpy(result, "calendar");
-            else
-                if (google_score > calendar_score)
-                    strcpy(result, "google");
-                else
-                    strcpy(result, "calendar");
-        }
-    }
-} else {
-    if (greeting_score > media_score) {
-        if (greeting_score > restaurant_score) {
-            if (greeting_score > google_score)
-                if (greeting_score > calendar_score)
-                    strcpy(result, "greeting");
-                else
-                    strcpy(result, "calendar");
-            else
-                if (google_score > calendar_score)
-                    strcpy(result, "google");
-                else
-                    strcpy(result, "calendar");
-        } else {
-            if (restaurant_score > google_score)
-                if (restaurant_score > calendar_score)
-                    strcpy(result, "restaurant");
-                else
-                    strcpy(result, "calendar");
-            else
-                if (google_score > calendar_score)
-                    strcpy(result, "google");
-                else
-                    strcpy(result, "calendar");
-        }
-    } else {
-        if (media_score > restaurant_score) {
-
-            if (media_score > google_score)
-                if (media_score > calendar_score)
-                    strcpy(result, "media");
-                else
-                    strcpy(result, "calendar");
-            else
-                if (google_score > calendar_score)
-                    strcpy(result, "google");
-                else
-                    strcpy(result, "calendar");
-        } else {
-            if (restaurant_score > google_score)
-                if (restaurant_score > calendar_score)
-                    strcpy(result, "restaurant");
-                else
-                    strcpy(result, "calendar");
-            else
-                if (google_score > calendar_score)
-                    strcpy(result, "google");
-                else
-                    strcpy(result, "calendar");
-        }
-    }
-}
+if (ca > highest_score)
+    strcpy(result, "calendar");
