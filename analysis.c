@@ -38,8 +38,10 @@ for (int v = 0; v <= k; v++)
         }
     }
 weather_score = w;
-if (weather_score > highest_score)
+if (weather_score > highest_score)  {
     strcpy(result, "weather");
+    highest_score = weather_score;
+}
 
 
 //For Greeting-----------------------------------
@@ -53,8 +55,10 @@ for (int v = 0; v <= k; v++)
         }
     }
 greeting_score = g;
-if (greeting_score > highest_score)
+if (greeting_score > highest_score)  {
     strcpy(result, "greeting");
+    highest_score = greeting_score;
+}
 
 
 //For Google-------------------------------------
@@ -68,8 +72,10 @@ for (int v = 0; v <= k; v++)
         }
     }
 google_score = go;
-if (google_score > highest_score)
-    strcpy(result, "google");
+if (google_score > highest_score)  {
+    strcpy(result, "google");  
+    highest_score = google_score;
+}
 
 
 //For Media---------------------------------------
@@ -83,8 +89,10 @@ for (int v = 0; v <= k; v++)
         }
     }
 media_score = me;
-if (me > highest_score)
-    strcpy(result, "media");
+if (me > highest_score)  {
+    strcpy(result, "media")
+    highest_score = me;
+}
 
 //For Restaurant-----------------------------------
 for (int v = 0; v <= k; v++)
@@ -96,8 +104,10 @@ for (int v = 0; v <= k; v++)
         }
     }
 restaurant_score = res;
-if (restaurant_score > highest_score)
+if (restaurant_score > highest_score)  {
     strcpy(result, "restaurant");
+    highest_score = restaurant_score;
+}
 
 //For Calendar-----------------------------------
 for (int v = 0; v <= k; v++)
@@ -109,5 +119,7 @@ for (int v = 0; v <= k; v++)
         }
     }
 calendar_score = ca;
-if (ca > highest_score)
+if (ca > highest_score)  {
     strcpy(result, "calendar");
+    highest_score = ca;
+}
