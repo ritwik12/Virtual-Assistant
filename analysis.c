@@ -90,7 +90,7 @@ for (int v = 0; v <= k; v++)
     }
 media_score = me;
 if (me > highest_score)  {
-    strcpy(result, "media")
+    strcpy(result, "media");
     highest_score = me;
 }
 
