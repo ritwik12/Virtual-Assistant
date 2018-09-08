@@ -1,11 +1,26 @@
 
-/* 
+/*
  * File:   analysis.c
  *
  * Created on April 10, 2018, 9:56 AM
  */
 
 //request analysis
+
+struct class_score {
+    char * name;
+    int score;
+};
+
+struct class_score * create_class_score(char * p_name, int p_score) {
+
+    struct class_score * ret = malloc(sizeof(struct class_score));
+
+    ret->name = p_name;
+    ret->score = p_score;
+
+    return ret;
+}
 
 for (int i = 0; i < strlen(example); i++) {
     if (example[i] == ' ') {
@@ -22,6 +37,7 @@ for (int i = 0; i < strlen(example); i++) {
 
 split[k][j] = '\0';
 
+struct class_score * scores[5];
 
 //For Weather---------------------------------------
 
@@ -35,7 +51,10 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-weather_score = w;
+
+struct class_score * weathr = create_class_score("weather", w);s
+
+scores[0] = weathr;
 
 //For Greeting-----------------------------------
 
@@ -47,8 +66,10 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-greeting_score = g;
 
+struct class_score * greeting = create_class_score("greeting", g);
+
+scores[1] = greeting;
 
 //For Google-------------------------------------
 
@@ -60,8 +81,10 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-google_score = go;
 
+struct class_score * google = create_class_score("google", go);
+
+scores[2] = google;
 
 //For Media---------------------------------------
 
@@ -73,7 +96,10 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-media_score = me;
+
+struct class_score * media = create_class_score("media", me);
+
+scores[3] = media;
 
 //For Restaurant-----------------------------------
 for (int v = 0; v <= k; v++)
@@ -84,61 +110,20 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-restaurant_score = res;
 
+struct class_score * restaurant = create_class_score("restaurant", res);
 
+scores[4] = restaurant;
 
-if (weather_score > greeting_score) {
-    if (weather_score > media_score) {
-        if (weather_score > restaurant_score) {
-            if (weather_score > google_score)
-                strcpy(result, "weather");
-            else
-                strcpy(result, "google");
-        } else {
-            if (restaurant_score > google_score)
-                strcpy(result, "restaurant");
-            else
-                strcpy(result, "google");
-        }
-    } else {
-        if (media_score > restaurant_score) {
-            if (media_score > google_score)
-                strcpy(result, "media");
-            else
-                strcpy(result, "google");
-        } else {
-            if (restaurant_score > google_score)
-                strcpy(result, "restaurant");
-            else
-                strcpy(result, "google");
-        }
-    }
-} else {
-    if (greeting_score > media_score) {
-        if (greeting_score > restaurant_score) {
-            if (greeting_score > google_score)
-                strcpy(result, "greeting");
-            else
-                strcpy(result, "google");
-        } else {
-            if (restaurant_score > google_score)
-                strcpy(result, "restaurant");
-            else
-                strcpy(result, "google");
-        }
-    } else {
-        if (media_score > restaurant_score) {
+int max_score = scores[0]->score;
+char * max_name = scores[0]->name;
+for(int i = 1; i < 5; i++) {
 
-            if (media_score > google_score)
-                strcpy(result, "media");
-            else
-                strcpy(result, "google");
-        } else {
-            if (restaurant_score > google_score)
-                strcpy(result, "restaurant");
-            else
-                strcpy(result, "google");
-        }
+    int temp = scores[i]->score;
+
+    if(temp > max_score) {
+        max_score = temp;
+        max_name = scores[i]->name;
     }
 }
+strcpy(result, max_name);
