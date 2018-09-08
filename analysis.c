@@ -52,7 +52,7 @@ for (int v = 0; v <= k; v++)
         }
     }
 
-struct class_score * weathr = create_class_score("weather", w);s
+struct class_score * weathr = create_class_score("weather", w);
 
 scores[0] = weathr;
 
@@ -127,3 +127,8 @@ for(int i = 1; i < 5; i++) {
     }
 }
 strcpy(result, max_name);
+
+for (int i = 0; i < 5; i++) {
+    struct class_score * temp = scores[i];
+    free(temp);
+}
