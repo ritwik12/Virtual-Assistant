@@ -1,12 +1,14 @@
 
-/* 
+/*
  * File:   requests.c
  *
  * Created on April 10, 2018, 8:51 AM
  */
 
 char * x = "Hey, How can I help you?";
+
 printf("%s\n", x);
+get_request:
 fgets(str, 1000, stdin);
 if ((strlen(str) > 0) && (str[strlen(str) - 1] == '\n'))
     str[strlen(str) - 1] = '\0';
@@ -52,7 +54,7 @@ char *greeting_class[10][10] = {
 char *google_class[10][10] = {
     {"open", "google", "for", "me"},
     {"I", "want", "search", "browse"},
-    {"can", "you", "open", "google"}
+    {"can", "you", "open", "google", "find"}
 };
 
 //for media-----------------
@@ -69,7 +71,7 @@ char *restaurant_class[10][10] = {
     {"Please", "find", "some", "restaurants"},
     {"Find", " ", "some", "restaurants"},
     {"Show", " ", " ", "restaurants"},
-    {"Find", "places", "to", "eat"}
+    {"Find", "places", "to", "eat", "what"}
 };
 
 

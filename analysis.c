@@ -117,6 +117,8 @@ scores[4] = restaurant;
 
 int max_score = scores[0]->score;
 char * max_name = scores[0]->name;
+int matching_classes = 0;
+int ambiguous_flag = 0;
 for(int i = 1; i < 5; i++) {
 
     int temp = scores[i]->score;
@@ -125,10 +127,22 @@ for(int i = 1; i < 5; i++) {
         max_score = temp;
         max_name = scores[i]->name;
     }
+    else if (temp == max_score) {
+        matching_classes++;
+    }
 }
-strcpy(result, max_name);
+
+if(matching_classes >= 2) {
+    ambiguous_flag = 1;
+}
 
 for (int i = 0; i < 5; i++) {
     struct class_score * temp = scores[i];
     free(temp);
 }
+
+if(ambiguous_flag) {
+    printf("I didn't understand your request, please rephrase.\n");
+    goto get_request;
+}
+strcpy(result, max_name);
