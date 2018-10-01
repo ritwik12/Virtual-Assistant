@@ -177,6 +177,8 @@ help
 <li>New features are always welcome.</li>
 </ul>
 
+# Want to ask something?
+Please ask on [FAQ](https://github.com/ritwik12/Virtual-Assistant/issues/41) or mail me at [ritwik.1204@gmail.com](ritwik.1204@gmail.com)
 
 # License
 
