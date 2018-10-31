@@ -33,7 +33,7 @@ The functionality is executed such as
 <li>Restaurants in the given area/locality are shown.  
 </ul>
 
-**If the virtual assistant have no idea about the user’s sentence, it will simply search that sentence on Google.**
+**If the virtual assistant does not understand the user’s sentence, it will simply search that sentence on Google.**
 
 # Artificial Intelligence
 
