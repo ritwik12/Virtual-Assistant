@@ -31,6 +31,10 @@ int k = 0, n, j = 0, w = 0, g = 0, go = 0, me = 0, res = 0, c = 0, u = 0, h = 0,
 char result[20];
 int weather_score, greeting_score, media_score, google_score, calendar_score, youtube_score, help_score, restaurant_score;
 
+//enumerator with all current categories
+
+enum categories{weather, greeting, media, google, calendar, youtube, help, restaurant};
+
 //for weather---------------
 
 char *weather_class[10][10] = {
