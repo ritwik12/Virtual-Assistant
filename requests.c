@@ -31,6 +31,8 @@ int k = 0, n, j = 0, w = 0, g = 0, go = 0, me = 0, res = 0, c = 0, u = 0, h = 0,
 char result[20];
 int weather_score, greeting_score, media_score, google_score, calendar_score, youtube_score, help_score, restaurant_score;
 
+//enumerator for categories
+
 enum categories{weather_const, greeting_const, media_const, google_const, calendar_const, youtube_const, help_const, restaurant_const};
 
 //for weather---------------
