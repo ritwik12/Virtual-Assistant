@@ -1,5 +1,5 @@
 
-/* 
+/*
  * File:   requests.c
  *
  * Created on April 10, 2018, 8:51 AM
@@ -72,5 +72,8 @@ char *restaurant_class[10][10] = {
     {"Find", "places", "to", "eat"}
 };
 
+//for Emails
 
+char *email_class[10][10] = {
 
+};
