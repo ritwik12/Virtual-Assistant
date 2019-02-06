@@ -1,14 +1,15 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
-#define SIZE_MAX 200
+//#define SIZE_MAX 200
 
-int main(int argc, char* argv[]){
+int email(){
   //init
   char from[30] ="";
   char to[30] ="";
   char title[30]="";
-  char body[SIZE_MAX]="";
+  char body[200]="";
   char smtp_adr[20]="";
   char req[1000] ="";
 
@@ -31,10 +32,9 @@ int main(int argc, char* argv[]){
 
     printf("What do you want to do ? (read/send)");
     char action[20]="";
-    scanf("%s", action);
-    if(action)
 
 
 
-  return 0;
+
+ return 0;
 }

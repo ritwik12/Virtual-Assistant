@@ -27,9 +27,9 @@ char example[1000];
 strcpy(example, str);
 int compare[10];
 char split[10][10] = {0};
-int k = 0, n, j = 0, w = 0, g = 0, go = 0, me = 0, res = 0, c = 0, u = 0, h = 0, temp = 0;
+int k = 0, n, j = 0, w = 0, g = 0, go = 0, em = 0, me = 0, res = 0, c = 0, u = 0, h = 0, temp = 0;
 char result[20];
-int weather_score, greeting_score, media_score, google_score, calendar_score, youtube_score, help_score, restaurant_score;
+int weather_score, greeting_score, media_score, google_score, email_score, calendar_score, youtube_score, help_score, restaurant_score;
 
 //for weather---------------
 
@@ -75,5 +75,7 @@ char *restaurant_class[10][10] = {
 //for Emails
 
 char *email_class[10][10] = {
-
+    {"can", "I", "send", "email"},
+    {"mail", " ", " ", "sending"},
+    {"Want", "to", "write", "email"}
 };
