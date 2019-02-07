@@ -36,13 +36,16 @@ int email(){
     }
 
 
-    printf("What do you want to do ? (read/send)");
+    printf("What do you want to do with your emails ? (read/send)\n");
     char action[20]="";
-    // TODO: choose action
-
-
-
-
+    scanf("%s", action);
+    if(strcmp(action,"send")==0){
+          printf("SENDING EMAIL : NOT IMPLEMENTED YET\n", from);
+    }else if(strcmp(action,"read")==0){
+        printf("READING EMAIL : NOT IMPLEMENTED YET\n", from);
+    } else{
+      printf("Sorry I can't do that.");
+    }
 }
 
 int send(){
