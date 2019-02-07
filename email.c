@@ -6,8 +6,9 @@
 #include <netinet/in.h>
 #include <netdb.h>
 
-
-//#define SIZE_MAX 200
+#ifndef SIZE_MAX
+#define SIZE_MAX 200
+#endif
 
 int email(){
   //init

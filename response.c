@@ -1,5 +1,5 @@
 
-/* 
+/*
  * File:   response.c
  *
  * Created on April 10, 2018, 8:51 AM
@@ -84,10 +84,9 @@ else if ((strcmp(result, "restaurant")) == 0) {
     find_restaurants();
 
 }else if((strcmp(result, "email") == 0)){
-    system("say Connected to your email account. Do you want to read or send an email ?");
-    printf("say Connected to your email account. Do you want to read or send an email ?\n");
-
+  
     email();
+
 }    //Help
 else if ((strcmp(str, "help") == 0)) {
     char * help1 = "less ";
