@@ -1,0 +1,8 @@
+To compile email2.c :
+gcc -Wall -o email2  email2.c  -lssl -lcrypto
+
+To execute :
+./email2
+
+To connect to mangabountynaia@gmail.com
+password : mangabountynaia
