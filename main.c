@@ -5,8 +5,9 @@
 #include <curl/curl.h>
 #include <json-c/json_object.h>
 #include <json-c/json_tokener.h>
-#include "functions.c"
 #include <stdbool.h>
+#include "functions.c"
+
 
 
 int main() {

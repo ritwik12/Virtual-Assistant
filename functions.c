@@ -321,6 +321,90 @@ int show_weather(char* weather) {
     return 0;
 }
 
+bool check_date_validity (int yy, int mm, int dd)
+{
+		bool data_valid = false;
+		//check year
+		if(yy>=1900 && yy<=9999)
+		{
+		    //check month
+		    if(mm>=1 && mm<=12)
+		    {
+		        //check days
+		        if((dd>=1 && dd<=31) && (mm==1 || mm==3 || mm==5 || mm==7 || mm==8 || mm==10 || mm==12)){}
+		        else if((dd>=1 && dd<=30) && (mm==4 || mm==6 || mm==9 || mm==11)){}
+		        else if((dd>=1 && dd<=28) && (mm==2)){}
+		        else if(dd==29 && mm==2 && (yy%400==0 ||(yy%4==0 && yy%100!=0))){}
+		        else
+		            return false;
+		    }
+		    else
+		    {
+		        return false;
+		    }
+		}
+		else
+		{
+		    return false;
+		}
+		return true;
+}
 
+bool check_time_validity (int hours, int minutes)
+{
+	if (!(hours >=0 && hours<= 24))
+		return false;
+		
+	if (!(minutes >=0 && minutes<= 60))
+		return false;
+	
+	return true;
+}
+
+int set_reminder()
+{
+    FILE *fp;
+    unsigned int year =0;
+    unsigned int month =0;
+    unsigned int day=0;
+    unsigned int hours=0;
+    unsigned int minutes=0;
+    char msg[100];
+
+    fp = fopen ("sample.rem","w+");
+
+    printf ("Enter the year\n");
+    scanf ("%d", &year);
+    printf ("Enter the month\n");
+    scanf ("%d", &month);
+    printf ("Enter the day\n");
+    scanf ("%d", &day);
+  
+  	if (!check_date_validity(year, month, day))
+  	{
+		printf ("Invalid date!!\n");
+		return 1;
+  	}
+	
+    printf ("Enter the time: hours\n");
+    scanf ("%d", &hours);
+    printf ("Enter the time : minutes\n");
+    scanf ("%d", &minutes);
+
+  	if (!check_time_validity(hours, minutes))
+  	{
+		printf ("Invalid time!!\n");
+		return 1;
+  	}
+
+    printf ("Enter the message\n");
+    scanf ("%s",msg);
+    fprintf (fp, "%s %d%s%d%s%d%s%d%s%d %s %s", "REM", year,"-", month,"-", day,"@", hours,":", minutes, "MSG", msg);
+    fclose(fp);
+    getchar();
+    system ("remind sample.rem"); 
+
+    return 0;
+}
 #endif /* FUNCTIONS_C */
 

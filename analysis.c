@@ -87,59 +87,171 @@ for (int v = 0; v <= k; v++)
     }
 restaurant_score = res;
 
-
-
-if (weather_score > greeting_score) {
-    if (weather_score > media_score) {
-        if (weather_score > restaurant_score) {
-            if (weather_score > google_score)
-                strcpy(result, "weather");
-            else
-                strcpy(result, "google");
-        } else {
-            if (restaurant_score > google_score)
-                strcpy(result, "restaurant");
-            else
-                strcpy(result, "google");
-        }
-    } else {
-        if (media_score > restaurant_score) {
-            if (media_score > google_score)
-                strcpy(result, "media");
-            else
-                strcpy(result, "google");
-        } else {
-            if (restaurant_score > google_score)
-                strcpy(result, "restaurant");
-            else
-                strcpy(result, "google");
+//For Reminder-----------------------------------
+for (int v = 0; v <= k; v++)
+    for (int b = 0; b < 2; b++) {
+        for (int c = 0; c < 4; c++) {
+            if (strcmp(reminder_class[b][c], split[v]) == 0) {
+                rem++;
+            }
         }
     }
-} else {
-    if (greeting_score > media_score) {
-        if (greeting_score > restaurant_score) {
-            if (greeting_score > google_score)
-                strcpy(result, "greeting");
-            else
-                strcpy(result, "google");
-        } else {
-            if (restaurant_score > google_score)
-                strcpy(result, "restaurant");
-            else
-                strcpy(result, "google");
-        }
-    } else {
-        if (media_score > restaurant_score) {
+reminder_score = rem;
 
-            if (media_score > google_score)
-                strcpy(result, "media");
-            else
-                strcpy(result, "google");
-        } else {
-            if (restaurant_score > google_score)
-                strcpy(result, "restaurant");
-            else
-                strcpy(result, "google");
-        }
-    }
+if (weather_score == 0 && greeting_score == 0 && media_score == 0 && restaurant_score == 0 && google_score == 0 && reminder_score == 0)
+	strcpy(result, "google");
+else
+if (weather_score > greeting_score)
+{
+	if (weather_score > media_score)
+	{
+		if (weather_score > restaurant_score)
+		{
+			if (weather_score > google_score)
+			{
+				if (weather_score > reminder_score)
+					strcpy(result, "weather");
+				else
+					strcpy(result, "reminder");
+			}
+			else
+			{
+				if (google_score > reminder_score)
+					strcpy(result, "google");
+				else
+					strcpy(result, "reminder");
+			}
+		}
+		else
+		{
+			if (restaurant_score > google_score)
+			{
+				if (restaurant_score > reminder_score)
+					strcpy(result, "restaurant");
+				else
+					strcpy(result, "reminder");
+			}
+			else
+			{
+				if (google_score > reminder_score)
+					strcpy(result, "google");
+				else
+					strcpy(result, "reminder");
+			}
+		}
+	}
+	else
+	{
+		if (media_score > restaurant_score)
+		{
+			if (media_score > google_score)
+			{
+				if (media_score > reminder_score)
+					strcpy(result, "media");
+				else
+					strcpy(result, "reminder");
+			}
+			else
+			{
+				if (google_score > reminder_score)
+					strcpy(result, "google");
+				else
+					strcpy(result, "reminder");
+			}
+		}
+		else
+		{
+			if (restaurant_score > google_score)
+			{
+				if (restaurant_score > reminder_score)
+					strcpy(result, "restaurant");
+				else
+					strcpy(result, "reminder");
+			}
+			else
+			{
+				if (google_score > reminder_score)
+					strcpy(result, "google");
+				else
+					strcpy(result, "reminder");
+			}
+		}
+	}
+}
+else
+{
+	if (greeting_score > media_score)
+	{
+		if (greeting_score > restaurant_score)
+		{
+			if (greeting_score > google_score)
+			{
+				if (greeting_score > reminder_score)
+					strcpy(result, "greeting");
+				else
+					strcpy(result, "reminder");
+			}
+			else
+			{
+				if (google_score > reminder_score)
+					strcpy(result, "google");
+				else
+					strcpy(result, "reminder");
+			}
+		}
+		else
+		{   
+			if (restaurant_score > google_score)
+			{
+				if (restaurant_score > reminder_score)
+					strcpy(result, "restaurant");
+				else
+					strcpy(result, "reminder");
+			}
+			else
+			{
+				if (google_score > reminder_score)
+					strcpy(result, "google");
+				else
+					strcpy(result, "reminder");
+			}
+		}
+	}
+	else
+	{
+		if (media_score > restaurant_score)
+		{
+			if (media_score > google_score)
+			{
+				if (media_score > reminder_score)
+					strcpy(result, "media");
+				else
+					strcpy(result, "reminder");
+			}
+			else
+			{
+				if (google_score > reminder_score)
+					strcpy(result, "google");
+				else
+					strcpy(result, "reminder");
+			}
+		}
+		else
+		{
+			if (restaurant_score > google_score)
+			{
+				if (restaurant_score > reminder_score)
+					strcpy(result, "restaurant");
+				else
+					strcpy(result, "google");
+			}
+			else
+			{
+				if (google_score > reminder_score)
+					strcpy(result, "google");
+				else
+					strcpy(result, "reminder");
+			}
+		}
+	}
 }
