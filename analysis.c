@@ -7,6 +7,7 @@
 
 //request analysis
 
+
 for (int i = 0; i < strlen(example); i++) {
     if (example[i] == ' ') {
         if (example[i + 1] != ' ') {
