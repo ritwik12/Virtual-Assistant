@@ -8,8 +8,6 @@
 #include <stdbool.h>
 #include "functions.c"
 
-
-
 int main() {
     
 #include "init_config.c"

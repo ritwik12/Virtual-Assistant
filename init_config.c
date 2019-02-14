@@ -6,6 +6,31 @@
  */
 //Getting home directory out of configuration file
 
+//Assigning a number to different classes. Add here to add new class.
+#define SIZE                        8
+#define WEATHER_SCORE  				0
+#define GREETING_SCORE 				1
+#define MEDIA_SCORE    				2
+#define GOOGLE_SCORE   				3
+#define CALENDAR_SCORE              4
+#define YOUTUBE_SCORE				5
+#define HELP_SCORE					6
+#define RESTAURANT_SCORE			7
+
+//Array to store the scores
+int score_array[SIZE];
+
+//Array containing names of different classes
+char* score_names[SIZE] = { "weather",
+							"greeting",
+							"media",
+							"google",
+							"calendar",
+							"youtube",
+							"help",
+							"restaurant"
+							};
+
 char str[1000], *start, pv, location[1000], youtube[1000], songs[1000], cal[100], search[100];
 int c, d, len = 0;
 

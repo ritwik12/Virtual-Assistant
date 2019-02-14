@@ -36,7 +36,8 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-weather_score = w;
+//weather_score = w;
+score_array[WEATHER_SCORE] = w;
 
 //For Greeting-----------------------------------
 
@@ -48,7 +49,8 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-greeting_score = g;
+//greeting_score = g;
+score_array[GREETING_SCORE] = g;
 
 
 //For Google-------------------------------------
@@ -61,7 +63,8 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-google_score = go;
+//google_score = go;
+score_array[GOOGLE_SCORE] = go;
 
 
 //For Media---------------------------------------
@@ -74,7 +77,8 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-media_score = me;
+//media_score = me;
+score_array[MEDIA_SCORE] = me;
 
 //For Restaurant-----------------------------------
 for (int v = 0; v <= k; v++)
@@ -85,173 +89,24 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-restaurant_score = res;
+//restaurant_score = res;
+score_array[RESTAURANT_SCORE] = res;
 
-//For Reminder-----------------------------------
-for (int v = 0; v <= k; v++)
-    for (int b = 0; b < 2; b++) {
-        for (int c = 0; c < 4; c++) {
-            if (strcmp(reminder_class[b][c], split[v]) == 0) {
-                rem++;
-            }
-        }
-    }
-reminder_score = rem;
+int max_index = 10, max_score = 0;
+char max_score_name[10];
 
-if (weather_score == 0 && greeting_score == 0 && media_score == 0 && restaurant_score == 0 && google_score == 0 && reminder_score == 0)
+for (int i=0 ; i< SIZE; i++){
+	if (score_array[i] > max_score){
+		max_index = i;
+		max_score = score_array[i];
+		strcpy (max_score_name, score_names[i]);
+	}
+}
+
+if (max_score == 0)
 	strcpy(result, "google");
 else
-if (weather_score > greeting_score)
 {
-	if (weather_score > media_score)
-	{
-		if (weather_score > restaurant_score)
-		{
-			if (weather_score > google_score)
-			{
-				if (weather_score > reminder_score)
-					strcpy(result, "weather");
-				else
-					strcpy(result, "reminder");
-			}
-			else
-			{
-				if (google_score > reminder_score)
-					strcpy(result, "google");
-				else
-					strcpy(result, "reminder");
-			}
-		}
-		else
-		{
-			if (restaurant_score > google_score)
-			{
-				if (restaurant_score > reminder_score)
-					strcpy(result, "restaurant");
-				else
-					strcpy(result, "reminder");
-			}
-			else
-			{
-				if (google_score > reminder_score)
-					strcpy(result, "google");
-				else
-					strcpy(result, "reminder");
-			}
-		}
-	}
-	else
-	{
-		if (media_score > restaurant_score)
-		{
-			if (media_score > google_score)
-			{
-				if (media_score > reminder_score)
-					strcpy(result, "media");
-				else
-					strcpy(result, "reminder");
-			}
-			else
-			{
-				if (google_score > reminder_score)
-					strcpy(result, "google");
-				else
-					strcpy(result, "reminder");
-			}
-		}
-		else
-		{
-			if (restaurant_score > google_score)
-			{
-				if (restaurant_score > reminder_score)
-					strcpy(result, "restaurant");
-				else
-					strcpy(result, "reminder");
-			}
-			else
-			{
-				if (google_score > reminder_score)
-					strcpy(result, "google");
-				else
-					strcpy(result, "reminder");
-			}
-		}
-	}
+	strcpy(result, max_score_name);
 }
-else
-{
-	if (greeting_score > media_score)
-	{
-		if (greeting_score > restaurant_score)
-		{
-			if (greeting_score > google_score)
-			{
-				if (greeting_score > reminder_score)
-					strcpy(result, "greeting");
-				else
-					strcpy(result, "reminder");
-			}
-			else
-			{
-				if (google_score > reminder_score)
-					strcpy(result, "google");
-				else
-					strcpy(result, "reminder");
-			}
-		}
-		else
-		{   
-			if (restaurant_score > google_score)
-			{
-				if (restaurant_score > reminder_score)
-					strcpy(result, "restaurant");
-				else
-					strcpy(result, "reminder");
-			}
-			else
-			{
-				if (google_score > reminder_score)
-					strcpy(result, "google");
-				else
-					strcpy(result, "reminder");
-			}
-		}
-	}
-	else
-	{
-		if (media_score > restaurant_score)
-		{
-			if (media_score > google_score)
-			{
-				if (media_score > reminder_score)
-					strcpy(result, "media");
-				else
-					strcpy(result, "reminder");
-			}
-			else
-			{
-				if (google_score > reminder_score)
-					strcpy(result, "google");
-				else
-					strcpy(result, "reminder");
-			}
-		}
-		else
-		{
-			if (restaurant_score > google_score)
-			{
-				if (restaurant_score > reminder_score)
-					strcpy(result, "restaurant");
-				else
-					strcpy(result, "google");
-			}
-			else
-			{
-				if (google_score > reminder_score)
-					strcpy(result, "google");
-				else
-					strcpy(result, "reminder");
-			}
-		}
-	}
-}
+
