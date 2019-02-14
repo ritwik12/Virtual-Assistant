@@ -33,8 +33,8 @@ int send_email(){
   //calling email2 on another processus
   const pid_t pid = fork();
   if(pid == 0) {
-    char *arg[] = { "./email2", (char *) 0 };
-    execvp( "./email2", arg);
+    char *arg[] = { "./smtp", (char *) 0 };
+    execvp( "./smtp", arg);
    }else{
     waitpid(pid, NULL, 0);
    }
