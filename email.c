@@ -6,9 +6,10 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
-#ifndef SIZE_MAX
-#define SIZE_MAX 200
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 4096
 #endif
 
 int config_email_function(){
@@ -24,54 +25,32 @@ int config_email_function(){
 }
 
 int send_email(){
-  //TODO
-  // n stores the return value for 'read()' and 'write()' calls
-  int n;
-  //portno is the number port for SMTP
-  int portno=465;
-  //sockfd file descriptor used to store the value returned by the 'socket' sytem call and the 'accept' system call
-  int sockfd = socket(AF_INET, SOCK_STREAM, 0);
-  if (sockfd < 0)
-      perror("ERROR opening socket");
+  char from[50] ="";
+  char to[50] ="";
+  char title[100]="";
+  char body[BUFFER_SIZE]="";
 
-  //serv_addr contains the address of the server
-  //server defines the host
-  struct sockaddr_in serv_addr;
-  struct hostent *server;
-  char hostbuffer[256]="smtp.gmail.com";
+  //calling email2 on another processus
+  const pid_t pid = fork();
+  if(pid == 0) {
+    char *arg[] = { "./email2", (char *) 0 };
+    execvp( "./email2", arg);
+   }else{
+    waitpid(pid, NULL, 0);
+   }
 
-  server = gethostbyname(hostbuffer);
+   printf("OK \n");
 
-  bzero((char *) &serv_addr, sizeof(serv_addr));
-  serv_addr.sin_family = AF_INET;
-  bcopy((char *)server->h_addr,
-     (char *)&serv_addr.sin_addr.s_addr,
-     server->h_length);
-  serv_addr.sin_port = htons(portno);
-  printf("Trying to connect using host %s... \n",hostbuffer);
-  int co = connect(sockfd,(struct sockaddr *)&serv_addr,sizeof(serv_addr));
-  if (co < 0)
-    perror("\n\n");
-  else
-    printf("ok \n\n");
+  return 0;
 
 }
 
 int email(){
-  //init
-  char from[30] ="";
-  char to[30] ="";
-  char title[30]="";
-  char body[200]="";
-  char smtp_adr[20]="";
-  char req[1000] ="";
 
-  //searching for config_email
+  //searching for config_email, create it if it does not exist
   FILE* config_email = NULL;
     config_email = fopen("config_email", "r+");
-
     if(config_email==NULL){
-      //Creating config_email
       config_email_function();
     }
 
@@ -80,10 +59,10 @@ int email(){
     char action[20]="";
     scanf("%s", action);
     if(strcmp(action,"send")==0 || strcmp(action,"sned")==0 ){
-        //  printf("SENDING EMAIL : NOT IMPLEMENTED YET\n", from);
+        //  printf("SENDING EMAIL : NOT IMPLEMENTED YET\n");
         send_email();
     }else if(strcmp(action,"read")==0 || strcmp(action,"raed")==0){
-        printf("READING EMAIL : NOT IMPLEMENTED YET\n", from);
+        printf("READING EMAIL : NOT IMPLEMENTED YET\n");
     } else{
       printf("Sorry I can't do that.\n\n");
     }
