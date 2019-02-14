@@ -18,7 +18,7 @@
 #include <openssl/err.h>
 
 
-void SMTPrequest(int ssl){
+void SMTPrequest(SSL *ssl){
   char resp_buff[4096]="";
   char buff[4096]="";
 
