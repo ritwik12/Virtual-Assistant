@@ -8,10 +8,6 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-#ifndef BUFFER_SIZE
-#define BUFFER_SIZE 4096
-#endif
-
 int config_email_function(){
   char from[30] ="";
   FILE* new_config_email =NULL;
@@ -25,13 +21,7 @@ int config_email_function(){
 }
 
 int send_email(){
-  char from[50] ="";
-  char to[50] ="";
-  char title[100]="";
-  char body[BUFFER_SIZE]="";
 
-  //Asking infos to user (to, title,body)
-  //TODO
 
   //calling email2 on another processus
   const pid_t pid = fork();
