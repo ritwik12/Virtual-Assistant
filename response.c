@@ -82,10 +82,7 @@ else if ((strcmp(result, "restaurant")) == 0) {
     find_restaurants();
 
 } 
-else if ((strcmp(result, "reminder")) == 0) {
-
-    set_reminder();
-}   //Help
+//Help
 else if ((strcmp(str, "help") == 0)) {
     char * help1 = "less ";
     char help[1000];

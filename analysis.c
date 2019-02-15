@@ -36,7 +36,6 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-//weather_score = w;
 score_array[WEATHER_SCORE] = w;
 
 //For Greeting-----------------------------------
@@ -49,7 +48,6 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-//greeting_score = g;
 score_array[GREETING_SCORE] = g;
 
 
@@ -63,7 +61,6 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-//google_score = go;
 score_array[GOOGLE_SCORE] = go;
 
 
@@ -77,7 +74,6 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-//media_score = me;
 score_array[MEDIA_SCORE] = me;
 
 //For Restaurant-----------------------------------
@@ -89,7 +85,6 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-//restaurant_score = res;
 score_array[RESTAURANT_SCORE] = res;
 
 int max_index = 10, max_score = 0;
