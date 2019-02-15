@@ -25,7 +25,6 @@ split[k][j] = '\0';
 
 
 //For Weather---------------------------------------
-
 for (int v = 0; v <= k; v++)
     for (int b = 0; b < 3; b++) {
 
@@ -39,7 +38,6 @@ for (int v = 0; v <= k; v++)
 score_array[WEATHER_SCORE] = w;
 
 //For Greeting-----------------------------------
-
 for (int v = 0; v <= k; v++)
     for (int b = 0; b < 3; b++) {
         for (int c = 0; c < 4; c++) {
@@ -52,7 +50,6 @@ score_array[GREETING_SCORE] = g;
 
 
 //For Google-------------------------------------
-
 for (int v = 0; v <= k; v++)
     for (int b = 0; b < 3; b++) {
         for (int c = 0; c < 4; c++) {
@@ -65,7 +62,6 @@ score_array[GOOGLE_SCORE] = go;
 
 
 //For Media---------------------------------------
-
 for (int v = 0; v <= k; v++)
     for (int b = 0; b < 3; b++) {
         for (int c = 0; c < 4; c++) {
