@@ -54,9 +54,9 @@ Notice that the classification for “What’s it like outside” found a term i
 
 # Setup
 
+### For Ubuntu (Debian based Linux)
 This program uses <b>GNUstep speech engine</b> for the purpose of text to speech.
 To use this feature few commands are needed:
-### For Ubuntu (Debian based Linux)
 
 say converts text to audible speech using the GNUstep speech engine.
 
@@ -78,6 +78,14 @@ $ sudo apt-get install libjson-c-dev
 
 ```
 ### For Fedora (RHEL based Linux)
+
+This program uses <b>Espeak</b> for the purpose of text to speech.
+
+espeak converts text to audible speech.
+
+```
+$ espeak "hello"
+```
 Firefox is needed to perform browser tasks such as opening google and youtube.
 
 ```
