@@ -12,7 +12,7 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 #include <string.h>
-#include <libspopc.h>
+//#include <libspopc.h>
 
 #include <openssl/bio.h>
 #include <openssl/ssl.h>
@@ -118,9 +118,9 @@ int connect_to_server(const char* server_address) {
 }
 
 int smtp_read() {
-  popsession* mysession;
-  libspopc_init();
-  error = popbegin(char* servername, char* user, char* pass, popsession** &mysession);
+  //popsession* mysession;
+  //libspopc_init();
+  //error = popbegin(char* servername, char* user, char* pass, popsession** &mysession);
 }
 
 int smtp_send() {
