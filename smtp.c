@@ -15,9 +15,21 @@
 #define BUFFER_SIZE 4096
 #endif
 
-void SMTP_request(SSL *ssl, char* from, char* to, char* title, char* body){
-  char resp_buff[4096]="";
-  char buff[4096]="";
+void SMTP_request(SSL *ssl, char* to, char* title, char* body){
+  char resp_buff[BUFFER_SIZE]="";
+  char buff[BUFFER_SIZE]="";
+  char from[BUFFER_SIZE]="";
+  char authlog[BUFFER_SIZE]="";
+  char authpass[BUFFER_SIZE]="";
+
+  FILE* config_email = NULL;
+  config_email = fopen("config_email", "r+");
+  fgets(from,BUFFER_SIZE,config_email);
+  fgets(authlog,BUFFER_SIZE,config_email);
+  fgets(authpass,BUFFER_SIZE,config_email);
+  from[strlen(from) - 1] = '\0';
+  authlog[strlen(authlog) - 1] = '\0';
+  authpass[strlen(authpass) - 1] = '\0';
 
   SSL_read(ssl,resp_buff, sizeof (resp_buff));
   //DEBUG printf("[RECEIVED] %s",resp_buff);
@@ -29,20 +41,33 @@ void SMTP_request(SSL *ssl, char* from, char* to, char* title, char* body){
   //DEBUG printf("[RECEIVED] %s",resp_buff);
   bzero(resp_buff,sizeof(resp_buff));
 
-  strcpy(buff, "AUTH PLAIN AG1hbmdhYm91bnR5bmFpYUBnbWFpbC5jb20ATUFOR0FCT1VOVFlOQUlB\r\n");
+  strcpy(buff, "AUTH LOGIN \r\n");
   SSL_write(ssl, buff, strlen(buff));
   //DEBUG printf("\n[Send] %s\n", buff);
   SSL_read(ssl,resp_buff, sizeof (resp_buff));
   //DEBUG printf("[RECEIVED] %s",resp_buff);
-  bzero(resp_buff,sizeof(resp_buff));
+  strcpy(buff,"");
+  strcat(buff,authlog);
+  strcat(buff,"\r\n");
+  SSL_write(ssl, buff, strlen(buff));
+  //DEBUG printf("\n[Send] %s\n", buff);
+  SSL_read(ssl,resp_buff, sizeof (resp_buff));
+  //DEBUG printf("[RECEIVED] %s",resp_buff);
+  strcpy(buff,"");
+  strcat(buff,authpass);
+  strcat(buff,"\r\n");
+  SSL_write(ssl, buff, strlen(buff));
+  //DEBUG printf("\n[Send] %s\n", buff);
+  SSL_read(ssl,resp_buff, sizeof (resp_buff));
+  //DEBUG printf("[RECEIVED] %s",resp_buff);
 
   strcpy(buff, "MAIL FROM: <");
   strcat(buff,from);
   strcat(buff,">\r\n");
   SSL_write(ssl, buff, strlen(buff));
-  //DEBUG printf("\n[Send] %s\n", buff);
+  //DEBUG  printf("\n[Send] %s\n", buff);
   SSL_read(ssl,resp_buff, sizeof (resp_buff));
-  //DEBUG printf("[RECEIVED] %s",resp_buff);
+  //DEBUG  printf("[RECEIVED] %s",resp_buff);
   bzero(resp_buff,sizeof(resp_buff));
 
   strcpy(buff, "RCPT TO: <");
@@ -133,11 +158,10 @@ int main() {
         } else {
 
           //Initialize
-          char from[50] ="mangabountynaia@gmail.com";
-          char to[50] ="";
-          char title[100]="";
+          char to[BUFFER_SIZE] ="";
+          char title[BUFFER_SIZE]="";
           char body[BUFFER_SIZE]="";
-          char line[1000]="";
+          char line[BUFFER_SIZE]="";
 
           //Asking infos to user (to, title,body)
           printf("To :");
@@ -145,13 +169,13 @@ int main() {
           printf("Subject :");
           scanf("%s", title);
           printf("Write your email and type 'finish' on one line to end your email: \n");
-          fgets(line,1000,stdin);
+          fgets(line,BUFFER_SIZE,stdin);
           while(strcmp(line,"finish\n")!=0){
             strcat(body,line);
-            fgets(line,1000,stdin);
+            fgets(line,BUFFER_SIZE,stdin);
           }
           printf("Email sent \xE2\x9C\x93\n");
-          SMTP_request(ssl,from,to,title,body);
+          SMTP_request(ssl,to,title,body);
         }
       }
     }

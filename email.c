@@ -21,19 +21,11 @@ int config_email_function(){
   printf("This is the first time you are using Virtual-Assistant to send emails.\nPlease enter your email adress : ");
   scanf("%s", from);
   fprintf(new_config_email,"%s\n",from);
+  fprintf(new_config_email,"%s\n",b64_encode(from,strlen(from)));
   printf("Please enter your password: ");
   scanf("%s", pass);
-  char auth[BUFFER_SIZE] ="";
-  strcpy(auth, from);
-  strcat(auth,pass);
-  printf("email : %s\n", auth);
-  //fprintf(new_config_email,"%s\n",from);
-  char result[BUFFER_SIZE]= "";
-  //printf("Encodé : %s\n", b64_encode(auth, strlen(auth)));
-  strcpy(result, b64_encode(auth, strlen(auth)));
-  printf("%s\n", result);
+  fprintf(new_config_email,"%s\n",b64_encode(pass,strlen(pass)));
 
-  fprintf(new_config_email, "%s",result);
   printf("%s : adress saved. \n", from);
   fclose(new_config_email);
   return 0;
