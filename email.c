@@ -20,7 +20,7 @@ int config_email_function(){
   new_config_email = fopen("config_email","w+");
   printf("This is the first time you are using Virtual-Assistant to send emails.\nPlease enter your email adress : ");
   scanf("%s", from);
-  fprintf(new_config_email,"%s",from);
+  fprintf(new_config_email,"%s\n",from);
   printf("Please enter your password: ");
   scanf("%s", pass);
   char auth[BUFFER_SIZE] ="";
