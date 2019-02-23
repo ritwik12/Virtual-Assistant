@@ -12,6 +12,7 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 #include <string.h>
+#include <libspopc.h>
 
 #include <openssl/bio.h>
 #include <openssl/ssl.h>
@@ -24,6 +25,12 @@
 void SMTP_request(SSL *ssl, char* from, char* to, char* title, char* body){
   char resp_buff[4096]="";
   char buff[4096]="";
+  FILE* email = fopen("config_email", "r+");
+  char* auth;
+
+  fgets(auth, 100, email);
+  //resp contains the response from SMTP protocol
+  char resp[100]="";
 
   SSL_read(ssl,resp_buff, sizeof (resp_buff));
   //DEBUG printf("[RECEIVED] %s",resp_buff);
@@ -35,7 +42,9 @@ void SMTP_request(SSL *ssl, char* from, char* to, char* title, char* body){
   //DEBUG printf("[RECEIVED] %s",resp_buff);
   bzero(resp_buff,sizeof(resp_buff));
 
-  strcpy(buff, "AUTH PLAIN AG1hbmdhYm91bnR5bmFpYUBnbWFpbC5jb20ATUFOR0FCT1VOVFlOQUlB\r\n");
+  strcpy(buff, "AUTH PLAIN ");
+  strcat(buff, auth);
+  strcat(buff,"\r\n");
   SSL_write(ssl, buff, strlen(buff));
   //DEBUG printf("\n[Send] %s\n", buff);
   SSL_read(ssl,resp_buff, sizeof (resp_buff));
@@ -108,7 +117,13 @@ int connect_to_server(const char* server_address) {
   return socket_fd;
 }
 
-int main() {
+int smtp_read() {
+  popsession* mysession;
+  libspopc_init();
+  error = popbegin(char* servername, char* user, char* pass, popsession** &mysession);
+}
+
+int smtp_send() {
   BIO *obj_out = NULL;
   const SSL_METHOD *method;
   SSL_CTX *ctx;
@@ -139,7 +154,7 @@ int main() {
         } else {
 
           //Initialize
-          char from[50] ="mangabountynaia@gmail.com";
+          char from[50] ="lime93150@gmail.com";
           char to[50] ="";
           char title[100]="";
           char body[BUFFER_SIZE]="";

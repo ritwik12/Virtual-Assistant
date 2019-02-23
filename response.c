@@ -4,7 +4,6 @@
  *
  * Created on April 10, 2018, 8:51 AM
  */
-#include "email.c"
 
 
 if ((strcmp(result, "greeting") == 0)) {
