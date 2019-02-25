@@ -83,7 +83,7 @@ else if ((strcmp(result, "restaurant")) == 0) {
     find_restaurants();
 
 }else if((strcmp(result, "email") == 0)){
-  
+    system("say I am going to access to your email account. Do you want to send or read an email ?");
     email();
 
 }    //Help

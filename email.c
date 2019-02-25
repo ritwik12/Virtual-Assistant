@@ -18,14 +18,16 @@ int config_email_function(){
   char pass[BUFFER_SIZE] = "";
   FILE* new_config_email =NULL;
   new_config_email = fopen("config_email","w+");
+  system("say This is the first time you are using Virtual-Assistant to send emails. Please enter your email adress.");
   printf("This is the first time you are using Virtual-Assistant to send emails.\nPlease enter your email adress : ");
   scanf("%s", from);
   fprintf(new_config_email,"%s\n",from);
   fprintf(new_config_email,"%s\n",b64_encode(from,strlen(from)));
+  system("say please enter your password.");
   printf("Please enter your password: ");
   scanf("%s", pass);
   fprintf(new_config_email,"%s\n",b64_encode(pass,strlen(pass)));
-
+  system("say Your email account is now saved.");
   printf("%s : adress saved. \n", from);
   fclose(new_config_email);
   return 0;
@@ -52,12 +54,15 @@ int email(){
   }
 
   //Asking action to user
+  system("saay what do you want to do with your emails ?");
   printf("What do you want to do with your emails ? (read/send)\n");
   char action[20]="";
   scanf("%s", action);
   if(strcmp(action,"send")==0 || strcmp(action,"sned")==0 ){
+    system("say You can write your email.");
     send_email();
   }else if(strcmp(action,"read")==0 || strcmp(action,"raed")==0){
+    system("say you can consult your emails.");
     printf("READING EMAIL : NOT IMPLEMENTED YET\n");
     //TODO
   } else{
