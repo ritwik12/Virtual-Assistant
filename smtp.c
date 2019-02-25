@@ -127,7 +127,7 @@ int connect_to_server(const char* server_address) {
   return socket_fd;
 }
 
-int main() {
+int sending() {
   BIO *obj_out = NULL;
   const SSL_METHOD *method;
   SSL_CTX *ctx;

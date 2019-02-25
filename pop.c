@@ -54,7 +54,7 @@ void POP_request(SSL *ssl, char* req){
   //DEBUG 
   printf("[RECEIVED] %s",resp_buff);
 
-  if(strcmp(req,"list")==0){
+  if(strcmp(reQUIq,"list")==0){
     strcpy(buff, "LIST\r\n");
     SSL_write(ssl, buff, strlen(buff));
     //DEBUG  

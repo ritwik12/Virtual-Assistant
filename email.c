@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include "encode.c"
+#include "smtp.c"
 
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 4096
@@ -35,13 +36,14 @@ int config_email_function(){
 
 int send_email(){
   //calling smtp on another processus
-  const pid_t pid = fork();
-  if(pid == 0) {
-    char *arg[] = { "./smtp", (char *) 0 };
-    execvp( "./smtp", arg);
-  }else{
-    waitpid(pid, NULL, 0);
-  }
+  // const pid_t pid = fork();
+  // if(pid == 0) {
+  //   char *arg[] = { "./smtp", (char *) 0 };
+  //   execvp( "./smtp", arg);
+  // }else{
+  //   waitpid(pid, NULL, 0);
+  // }
+  sending();
   return 0;
 }
 

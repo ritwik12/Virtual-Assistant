@@ -1,5 +1,6 @@
 To compile smtp.c :
 gcc -Wall -o smtp  smtp.c  -lssl -lcrypto
+gcc main.c $(pkg-config --libs --cflags libcurl) -lssl -lcrypto -l json-c -std=gnu11
 
 
 To connect to mangabountynaia@gmail.com
