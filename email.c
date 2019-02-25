@@ -52,7 +52,7 @@ int email(){
     ssl_connect("send");
   }else if(strcmp(action,"read")==0 || strcmp(action,"raed")==0){
     system("say you can consult your emails.");
-    printf("READING EMAIL : NOT IMPLEMENTED YET\n");
+    //printf("READING EMAIL : NOT IMPLEMENTED YET\n");
     ssl_connect("read");
   } else{
     printf("Sorry I can't do that.\n\n");

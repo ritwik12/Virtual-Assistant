@@ -6,6 +6,7 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 #include <string.h>
+#include "decode.c"
 
 #include <openssl/bio.h>
 #include <openssl/ssl.h>
@@ -15,8 +16,154 @@
 #define BUFFER_SIZE 4096
 #endif
 
-void POP_request(){
-  //TODO
+int display_list(SSL *ssl){
+    char resp_buff[BUFFER_SIZE]="";
+    char buff[BUFFER_SIZE]="";
+    char* messages;
+
+
+    strcpy(buff, "STAT\r\n");
+    SSL_write(ssl, buff, strlen(buff));
+    //DEBUG  printf("\n[Send] %s\n", buff);
+    SSL_read(ssl,resp_buff, sizeof (resp_buff));
+    //DEBUG  
+    printf("[RECEIVED] %s",resp_buff);
+    //strcpy(messages, resp_buff);
+    messages = strtok(resp_buff, " ");
+    messages = strtok(NULL, " ");
+    int nb_messages = atoi(messages);
+    bzero(resp_buff,sizeof(resp_buff));
+
+    for(int i = 1; i <= nb_messages; i++)
+    {   
+        char num[10] ="";
+        sprintf(num, "%d", i);
+        printf("Message n°%s\n", num);
+        strcpy(buff, "TOP ");
+        strcat(buff, num);
+        strcat(buff, " 3\r\n");
+        SSL_write(ssl, buff, strlen(buff));
+        //DEBUG printf("\n[Send] %s\n", buff);
+        SSL_read(ssl,resp_buff, sizeof (resp_buff));
+        //DEBUG  printf("[RECEIVED] %s",resp_buff);
+        printf("%s\n",messages);
+        printf("_______________________________________________________________________________________________________________\n");
+        bzero(resp_buff,sizeof(resp_buff));
+    }
+    return nb_messages;
+}
+
+void display_email(SSL *ssl, int n){
+    char resp_buff[BUFFER_SIZE]="";
+    char buff[BUFFER_SIZE]="";
+    char num[10]="";
+    printf("\n\n\n");
+    sprintf(num,"%d",n);
+    printf("Message n°%s:\n", num);
+    strcpy(buff, "TOP ");
+    strcat(buff, num);
+    strcat(buff, " 200\r\n");
+    SSL_write(ssl, buff, strlen(buff));
+    //DEBUG  printf("\n[Send] %s\n", buff);
+    SSL_read(ssl,resp_buff, sizeof (resp_buff));
+    //DEBUG  
+    printf("[RECEIVED] %s",resp_buff);
+    printf("_______________________________________________________________________________________________________________\n");
+    bzero(resp_buff,sizeof(resp_buff));
+}
+
+void POP_request(SSL *ssl){
+  char resp_buff[BUFFER_SIZE]="";
+  char buff[BUFFER_SIZE]="";
+  char from[BUFFER_SIZE]="";
+  char authlog[BUFFER_SIZE]="";
+  char authpass[BUFFER_SIZE]="";
+  char decodepass[BUFFER_SIZE]="";
+  int nb_messages = 0;
+
+
+  FILE* config_email = NULL;
+  config_email = fopen("config_email", "r+");
+  fgets(from,BUFFER_SIZE,config_email);
+  fgets(authlog,BUFFER_SIZE,config_email);
+  fgets(authpass,BUFFER_SIZE,config_email);
+  from[strlen(from) - 1] = '\0';
+  authlog[strlen(authlog) - 1] = '\0';
+  authpass[strlen(authpass) - 1] = '\0';
+
+  SSL_read(ssl,resp_buff, sizeof (resp_buff));
+  //DEBUG printf("[RECEIVED] %s",resp_buff);
+
+  strcpy(buff,"USER ");
+  strcat(buff,from);
+  strcat(buff,"\r\n");
+  SSL_write(ssl, buff, strlen(buff));
+  //DEBUG printf("\n[Send] %s\n", buff);
+  SSL_read(ssl,resp_buff, sizeof (resp_buff));
+  //DEBUG printf("[RECEIVED] %s",resp_buff);
+  strcpy(buff,"PASS ");
+  strcat(decodepass, (char*)b64_decode(authpass, strlen(authpass)));
+  strcat(buff,decodepass);
+  strcat(buff,"\r\n");
+  SSL_write(ssl, buff, strlen(buff));
+  //DEBUG printf("\n[Send] %s\n", buff);
+  SSL_read(ssl,resp_buff, sizeof (resp_buff));
+  //DEBUG printf("[RECEIVED] %s",resp_buff);
+  bzero(resp_buff,sizeof(resp_buff));
+
+  char line[BUFFER_SIZE] = "";
+  nb_messages = display_list(ssl);
+  printf("Please enter a command.\nEnter 'help' to display command list.(Enter 'quit' to close your connection)\n");
+  fgets(line,BUFFER_SIZE,stdin);
+  while(strcmp(line,"quit\n")!=0){
+    if(strcmp(line,"list\n")==0){
+      for(int i = 1; i <= nb_messages; i++)
+      {   
+        char num[10] ="";
+        sprintf(num, "%d", i);
+        printf("Message n°%s\n", num);
+        strcpy(buff, "TOP ");
+        strcat(buff, num);
+        strcat(buff, " 3\r\n");
+        SSL_write(ssl, buff, strlen(buff));
+        //DEBUG printf("\n[Send] %s\n", buff);
+        SSL_read(ssl,resp_buff, sizeof (resp_buff));
+        //DEBUG  
+        printf("[RECEIVED] %s",resp_buff);
+        printf("_______________________________________________________________________________________________________________\n");
+        bzero(resp_buff,sizeof(resp_buff));
+      }
+    } 
+    if(strcmp(line, "show\n")==0){
+      printf("Please enter the corresponding number of the email you want to read : ");
+      fgets(line,BUFFER_SIZE,stdin);
+      int n = atoi(line);
+      while(n<1 || n>nb_messages){
+        fgets(line,BUFFER_SIZE,stdin);
+        n = atoi(line);
+      }
+      display_email(ssl, n);
+    }
+    if(strcmp(line, "help\n")==0){
+      printf("___________________________________________________\n");
+      printf("User commands :                                    |\n");
+      printf("list            display list of emails             |\n");
+      printf("show            display a specific email           |\n");
+      printf("delete          delete a specific email            |\n");
+      printf("quit            close the connection               |\n");
+      printf("help            diplay commands list               |\n");
+      printf("___________________________________________________|\n");
+
+    }
+    printf("Please enter a command.\nEnter 'help' to display command list.(Enter 'quit' to close your connection)\n");
+    fgets(line,BUFFER_SIZE,stdin);
+  }
+
+  strcpy(buff, "QUIT\r\n");
+  SSL_write(ssl, buff, strlen(buff));
+  //DEBUG printf("\n[Send] %s\n", buff);
+  SSL_read(ssl,resp_buff, sizeof (resp_buff));
+  //DEBUG printf("[RECEIVED] %s",resp_buff);
 }
 
 void SMTP_request(SSL *ssl, char* to, char* title, char* body){
@@ -120,12 +267,13 @@ const char* get_ip_adress(const char* target_domain){
 }
 
 int connect_to_server(const char* server_address, int portno) {
+  printf("%s\n", server_address);
   printf("%d\n", portno);
   int socket_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
   struct sockaddr_in addr;
   memset(&addr, 0, sizeof (addr));
   addr.sin_family = AF_INET;
-  addr.sin_port = htons(465);
+  addr.sin_port = htons(portno);
   if (inet_pton(AF_INET, get_ip_adress(server_address), &addr.sin_addr) == 1) {
     connect(socket_fd, (struct sockaddr*)&addr, sizeof (addr));
   }
@@ -188,7 +336,7 @@ int ssl_connect(char *arg) {
             SMTP_request(ssl,to,title,body);
 
           }else if (strcmp(arg,"read")==0){
-            POP_request();
+            POP_request(ssl);
           }
 
         }
