@@ -15,6 +15,10 @@
 #define BUFFER_SIZE 4096
 #endif
 
+void POP_request(){
+  //TODO
+}
+
 void SMTP_request(SSL *ssl, char* to, char* title, char* body){
   char resp_buff[BUFFER_SIZE]="";
   char buff[BUFFER_SIZE]="";
@@ -115,7 +119,8 @@ const char* get_ip_adress(const char* target_domain){
   return target_ip;
 }
 
-int connect_to_server(const char* server_address) {
+int connect_to_server(const char* server_address, int portno) {
+  printf("%d\n", portno);
   int socket_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
   struct sockaddr_in addr;
   memset(&addr, 0, sizeof (addr));
@@ -127,7 +132,7 @@ int connect_to_server(const char* server_address) {
   return socket_fd;
 }
 
-int sending() {
+int ssl_connect(char *arg) {
   BIO *obj_out = NULL;
   const SSL_METHOD *method;
   SSL_CTX *ctx;
@@ -150,32 +155,42 @@ int sending() {
     } else {
       SSL_CTX_set_options(ctx, SSL_OP_NO_SSLv2);
       ssl = SSL_new(ctx);
-      connceted_fd = connect_to_server("smtp.gmail.com");
+      if(strcmp(arg,"send")==0){
+        connceted_fd = connect_to_server("smtp.gmail.com",465);
+      }else if (strcmp(arg,"read")==0){
+        connceted_fd = connect_to_server("pop.gmail.com",995);
+      }
       if (connceted_fd != 0) {
         SSL_set_fd(ssl, connceted_fd);
         if (SSL_connect(ssl) != 1) {
           BIO_printf(obj_out, "SLL session not created");
         } else {
 
-          //Initialize
-          char to[BUFFER_SIZE] ="";
-          char title[BUFFER_SIZE]="";
-          char body[BUFFER_SIZE]="";
-          char line[BUFFER_SIZE]="";
+          if(strcmp(arg,"send")==0){
+            //Initialize
+            char to[BUFFER_SIZE] ="";
+            char title[BUFFER_SIZE]="";
+            char body[BUFFER_SIZE]="";
+            char line[BUFFER_SIZE]="";
 
-          //Asking infos to user (to, title,body)
-          printf("To :");
-          scanf("%s", to);
-          printf("Subject :");
-          scanf("%s", title);
-          printf("Write your email and type 'finish' on one line to end your email: \n");
-          fgets(line,BUFFER_SIZE,stdin);
-          while(strcmp(line,"finish\n")!=0){
-            strcat(body,line);
+            //Asking infos to user (to, title,body)
+            printf("To :");
+            scanf("%s", to);
+            printf("Subject :");
+            scanf("%s", title);
+            printf("Write your email and type 'finish' on one line to end your email: \n");
             fgets(line,BUFFER_SIZE,stdin);
+            while(strcmp(line,"finish\n")!=0){
+              strcat(body,line);
+              fgets(line,BUFFER_SIZE,stdin);
+            }
+            printf("Email sent \xE2\x9C\x93\n");
+            SMTP_request(ssl,to,title,body);
+
+          }else if (strcmp(arg,"read")==0){
+            POP_request();
           }
-          printf("Email sent \xE2\x9C\x93\n");
-          SMTP_request(ssl,to,title,body);
+
         }
       }
     }

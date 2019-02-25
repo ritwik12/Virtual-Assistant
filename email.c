@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include "encode.c"
-#include "smtp.c"
+#include "ssl.c"
 
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 4096
@@ -34,19 +34,6 @@ int config_email_function(){
   return 0;
 }
 
-int send_email(){
-  //calling smtp on another processus
-  // const pid_t pid = fork();
-  // if(pid == 0) {
-  //   char *arg[] = { "./smtp", (char *) 0 };
-  //   execvp( "./smtp", arg);
-  // }else{
-  //   waitpid(pid, NULL, 0);
-  // }
-  sending();
-  return 0;
-}
-
 int email(){
   //searching for config_email, create it if it does not exist
   FILE* config_email = NULL;
@@ -56,53 +43,18 @@ int email(){
   }
 
   //Asking action to user
-  system("saay what do you want to do with your emails ?");
+  system("say what do you want to do with your emails ?");
   printf("What do you want to do with your emails ? (read/send)\n");
   char action[20]="";
   scanf("%s", action);
   if(strcmp(action,"send")==0 || strcmp(action,"sned")==0 ){
     system("say You can write your email.");
-    send_email();
+    ssl_connect("send");
   }else if(strcmp(action,"read")==0 || strcmp(action,"raed")==0){
     system("say you can consult your emails.");
     printf("READING EMAIL : NOT IMPLEMENTED YET\n");
-    //TODO
+    ssl_connect("read");
   } else{
     printf("Sorry I can't do that.\n\n");
   }
-}
-
-
-
-int read_email(){
-  // n stores the return value for 'read()' and 'write()' calls
- int n;
- //portno is the number port for SMTP
- int portno=995;
- //sockfd file descriptor used to store the value returned by the 'socket' sytem call and the 'accept' system call
- int sockfd = socket(AF_INET, SOCK_STREAM, 0);
- if (sockfd < 0)
-     perror("ERROR opening socket");
-
- //serv_addr contains the address of the server
- //server defines the host
- struct sockaddr_in serv_addr;
- struct hostent *server;
- char hostbuffer[256]="pop.gmail.com";
-
- //calling email2 on another processus
- server = gethostbyname(hostbuffer);
-
- bzero((char *) &serv_addr, sizeof(serv_addr));
- serv_addr.sin_family = AF_INET;
- bcopy((char *)server->h_addr,
-    (char *)&serv_addr.sin_addr.s_addr,
-    server->h_length);
- serv_addr.sin_port = htons(portno);
- printf("Trying to connect using host %s... \n",hostbuffer);
- int co = connect(sockfd,(struct sockaddr *)&serv_addr,sizeof(serv_addr));
- if (co < 0)
-   perror("\n\n");
- else
-   printf("ok \n\n");
 }
