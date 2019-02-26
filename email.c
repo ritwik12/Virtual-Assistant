@@ -19,8 +19,8 @@ int config_email_function(){
   char pass[BUFFER_SIZE] = "";
   FILE* new_config_email =NULL;
   new_config_email = fopen("config_email","w+");
-  system("say This is the first time you are using Virtual-Assistant to send emails. Please enter your email adress.");
-  printf("This is the first time you are using Virtual-Assistant to send emails.\nPlease enter your email adress : ");
+  system("say Please enter your email adress.");
+  printf("\nPlease enter your email adress : ");
   scanf("%s", from);
   fprintf(new_config_email,"%s\n",from);
   fprintf(new_config_email,"%s\n",b64_encode(from,strlen(from)));
@@ -42,19 +42,26 @@ int email(){
     config_email_function();
   }
 
-  //Asking action to user
-  system("say what do you want to do with your emails ?");
-  printf("What do you want to do with your emails ? (read/send)\n");
+  //Asking action to user in a loop
+
   char action[20]="";
-  scanf("%s", action);
-  if(strcmp(action,"send")==0 || strcmp(action,"sned")==0 ){
-    system("say You can write your email.");
-    ssl_connect("send");
-  }else if(strcmp(action,"read")==0 || strcmp(action,"raed")==0){
-    system("say you can consult your emails.");
-    //printf("READING EMAIL : NOT IMPLEMENTED YET\n");
-    ssl_connect("read");
-  } else{
-    printf("Sorry I can't do that.\n\n");
+
+  while(strcmp(action,"exit")!=0 || strcmp(action,"quit")!=0 || strcmp(action,"cancel")!=0 ){
+    system("say what do you want to do with your emails ?");
+    printf("\n\nWhat do you want to do with your emails ? (read/send/configure)\n> ");
+    scanf("%s", action);
+
+    if(strcmp(action,"send")==0 || strcmp(action,"sned")==0 || strcmp(action,"1")==0 ){
+      system("say You can write your email.");
+      ssl_connect("send");
+    }else if(strcmp(action,"read")==0 || strcmp(action,"raed")==0 || strcmp(action,"2")==0){
+      system("say you can consult your emails.");
+      ssl_connect("read");
+    } else if (strcmp(action,"configure")==0 || strcmp(action,"3")==0){
+      config_email_function();
+    } else{
+      printf("Sorry I can't do that.\n\n");
+    }
   }
+
 }

@@ -26,7 +26,7 @@ int display_list(SSL *ssl){
     SSL_write(ssl, buff, strlen(buff));
     //DEBUG  printf("\n[Send] %s\n", buff);
     SSL_read(ssl,resp_buff, sizeof (resp_buff));
-    //DEBUG  
+    //DEBUG
     printf("[RECEIVED] %s",resp_buff);
     //strcpy(messages, resp_buff);
     messages = strtok(resp_buff, " ");
@@ -35,7 +35,7 @@ int display_list(SSL *ssl){
     bzero(resp_buff,sizeof(resp_buff));
 
     for(int i = 1; i <= nb_messages; i++)
-    {   
+    {
         char num[10] ="";
         sprintf(num, "%d", i);
         printf("Message n°%s\n", num);
@@ -66,7 +66,7 @@ void display_email(SSL *ssl, int n){
     SSL_write(ssl, buff, strlen(buff));
     //DEBUG  printf("\n[Send] %s\n", buff);
     SSL_read(ssl,resp_buff, sizeof (resp_buff));
-    //DEBUG  
+    //DEBUG
     printf("[RECEIVED] %s",resp_buff);
     printf("_______________________________________________________________________________________________________________\n");
     bzero(resp_buff,sizeof(resp_buff));
@@ -118,7 +118,7 @@ void POP_request(SSL *ssl){
   while(strcmp(line,"quit\n")!=0){
     if(strcmp(line,"list\n")==0){
       for(int i = 1; i <= nb_messages; i++)
-      {   
+      {
         char num[10] ="";
         sprintf(num, "%d", i);
         printf("Message n°%s\n", num);
@@ -128,12 +128,12 @@ void POP_request(SSL *ssl){
         SSL_write(ssl, buff, strlen(buff));
         //DEBUG printf("\n[Send] %s\n", buff);
         SSL_read(ssl,resp_buff, sizeof (resp_buff));
-        //DEBUG  
+        //DEBUG
         printf("[RECEIVED] %s",resp_buff);
         printf("_______________________________________________________________________________________________________________\n");
         bzero(resp_buff,sizeof(resp_buff));
       }
-    } 
+    }
     if(strcmp(line, "show\n")==0){
       printf("Please enter the corresponding number of the email you want to read : ");
       fgets(line,BUFFER_SIZE,stdin);
@@ -166,7 +166,7 @@ void POP_request(SSL *ssl){
   //DEBUG printf("[RECEIVED] %s",resp_buff);
 }
 
-void SMTP_request(SSL *ssl, char* to, char* title, char* body){
+int SMTP_request(SSL *ssl, char* to, char* title, char* body){
   char resp_buff[BUFFER_SIZE]="";
   char buff[BUFFER_SIZE]="";
   char from[BUFFER_SIZE]="";
@@ -218,6 +218,8 @@ void SMTP_request(SSL *ssl, char* to, char* title, char* body){
   SSL_write(ssl, buff, strlen(buff));
   //DEBUG  printf("\n[Send] %s\n", buff);
   SSL_read(ssl,resp_buff, sizeof (resp_buff));
+  if (strstr(resp_buff, "OK")== NULL)
+    return 1;
   //DEBUG  printf("[RECEIVED] %s",resp_buff);
   bzero(resp_buff,sizeof(resp_buff));
 
@@ -252,6 +254,8 @@ void SMTP_request(SSL *ssl, char* to, char* title, char* body){
   //DEBUG printf("\n[Send] %s\n", buff);
   SSL_read(ssl,resp_buff, sizeof (resp_buff));
   //DEBUG printf("[RECEIVED] %s",resp_buff);
+
+  return 0;
 }
 
 const char* get_ip_adress(const char* target_domain){
@@ -267,8 +271,6 @@ const char* get_ip_adress(const char* target_domain){
 }
 
 int connect_to_server(const char* server_address, int portno) {
-  printf("%s\n", server_address);
-  printf("%d\n", portno);
   int socket_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
   struct sockaddr_in addr;
   memset(&addr, 0, sizeof (addr));
@@ -326,19 +328,23 @@ int ssl_connect(char *arg) {
             scanf("%s", to);
             printf("Subject :");
             scanf("%s", title);
-            printf("Write your email and type 'finish' on one line to end your email: \n");
+            printf("Write your email and type 'finish' on one line to end your email: \n\n");
             fgets(line,BUFFER_SIZE,stdin);
             while(strcmp(line,"finish\n")!=0){
               strcat(body,line);
               fgets(line,BUFFER_SIZE,stdin);
             }
-            printf("Email sent \xE2\x9C\x93\n");
-            SMTP_request(ssl,to,title,body);
-
+            printf("\nSending email ... ");
+            if(SMTP_request(ssl,to,title,body)==0){
+              system("say email sent");
+              printf("Email sent \xE2\x9C\x93\n");
+            }else{
+              system("say Error. Please verify your email adress and password.");
+              printf("Error \xe2\x9C\x97\nPlease verify your email adress and password.\n");
+            }
           }else if (strcmp(arg,"read")==0){
             POP_request(ssl);
           }
-
         }
       }
     }
