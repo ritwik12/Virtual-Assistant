@@ -14,7 +14,7 @@ fgets(str, 1000, stdin);
 for (int i = 0; str[i]!='\n'; i++)
 {
     if (str[i] != ' ')
-        only_spaces = false;       
+        only_spaces = false;
 }
 
 if (only_spaces)
@@ -91,6 +91,6 @@ char *restaurant_class[10][10] = {
 
 char *email_class[10][10] = {
     {"can", "I", "send", "email"},
-    {"mail", " ", " ", "sending"},
-    {"Want", "to", "write", "email"}
+    {"mail", " ", " ", "write"},
+    {"Want", "to", "read", "emails"}
 };

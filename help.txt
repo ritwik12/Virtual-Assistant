@@ -24,7 +24,7 @@
 ~ "open vlc"
 ~ "run vlc"
 ~ "start vlc"
-   
+
 **Weather**
 
 >>> Commands that can be used to show weather are: <<<
@@ -45,6 +45,11 @@
 
 ~ "play song"
 
+**Read or send emails**
+
+>>> Command that can be used to read or send emails is: <<<
+
+~ "email"
+
 
 Press q to quit
-
