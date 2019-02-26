@@ -46,7 +46,8 @@ int email(){
 
   char action[20]="";
 
-  while(strcmp(action,"exit")!=0 || strcmp(action,"quit")!=0 || strcmp(action,"cancel")!=0 ){
+  int exit =0;
+  while(exit==0){
     system("say what do you want to do with your emails ?");
     printf("\n\nWhat do you want to do with your emails ? (read/send/configure)\n> ");
     scanf("%s", action);
@@ -59,7 +60,10 @@ int email(){
       ssl_connect("read");
     } else if (strcmp(action,"configure")==0 || strcmp(action,"3")==0){
       config_email_function();
-    } else{
+    } else if (strcmp(action,"exit")==0 || strcmp(action,"quit")==0 || strcmp(action,"cancel")==0 || strcmp(action,"close")==0){
+      printf("\n\n");
+      exit=1;
+    } else {
       printf("Sorry I can't do that.\n\n");
     }
   }
