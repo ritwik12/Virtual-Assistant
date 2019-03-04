@@ -21,7 +21,7 @@ It can provide a wide variety of services, These includes:
 
 # How it all works?
 
-We are reading user’s sentence and passing it through our Natural Language Processing code i.e “ Simplified Multinomial Naive Bayes Algorithm “. NLP code processes the sentence and redirects it to the action that should be performed based on the meaning of the sentence.
+The user's sentence is read and passed through our Natural Language Processing (NLP) code for processing. After the sentence is processed, it's redirected to the action to be performed based on the meaning of the sentence. Our NLP code uses a simplified version of the Multinomial Naive Bayes Algorithm.
 
 The functionality is executed such as 
 <ul>
