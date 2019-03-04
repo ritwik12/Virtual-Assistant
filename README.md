@@ -21,19 +21,19 @@ It can provide a wide variety of services, These includes:
 
 # How it all works?
 
-We are reading user’s sentence and passing it through our Natural Language Processing code i.e “ Simplified Multinomial Naive Bayes Algorithm “. NLP code processes the sentence and redirects it to the action that should be performed based on the meaning of the sentence.
+The user's sentence is read and passed through our Natural Language Processing (NLP) code for processing. After the sentence is processed, it's redirected to the action to be performed based on the meaning of the sentence. Our NLP code uses a simplified version of the Multinomial Naive Bayes Algorithm.
 
-The functionality is executed such as 
+The following actions can be performed:
 <ul>
-<li>A media file (such as audio and media files) is played.
-<li>Weather forecast is shown after the user enters the location.
-<li>Calendar is shown of the desired year.
-<li>Youtube search is performed for the desired content.
-<li>Google search is performed for whatever the user wants to.
-<li>Restaurants in the given area/locality are shown.  
+<li>Play audio and media files
+<li>Display weather forecasts based on specified location
+<li>Display the calendar of a specified year
+<li>Perform YouTube video searches
+<li>Perform Google searches
+<li>Display restaurant recommendations 
 </ul>
 
-**If the virtual assistant does not understand the user’s sentence, it will simply search that sentence on Google.**
+**If the virtual assistant does not understand the user’s sentence, a Google search performed.**
 
 # Artificial Intelligence
 
