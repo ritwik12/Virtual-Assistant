@@ -26,7 +26,7 @@ The user's sentence is read and passed through our Natural Language Processing (
 The following actions can be performed:
 <ul>
 <li>Play audio and media files
-<li>Display weather forecasts based on location entered by the user
+<li>Display weather forecasts based on specified location
 <li>Display the calendar of a specified year
 <li>Perform YouTube video searches
 <li>Perform Google searches
