@@ -167,6 +167,9 @@ Virtual assistant can show calendar of any year.
 open calendar
 ```
 ![calendar](https://user-images.githubusercontent.com/20038775/33027865-4b6d5f28-ce3a-11e7-8376-ac16e9da8606.png)
+# Emails
+
+In order to send emails via gmail using Virtual-Assistant, yoo need to allow acces from less secure apps on you gmail account.
 
 # Help
 

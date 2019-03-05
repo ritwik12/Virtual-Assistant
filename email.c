@@ -49,7 +49,7 @@ int email(){
   int exit =0;
   while(exit==0){
     system("say what do you want to do with your emails ?");
-    printf("\n\nWhat do you want to do with your emails ? (read/send/configure)\n> ");
+    printf("\n\nWhat do you want to do with your emails ? (send/configure)\n> ");
     scanf("%s", action);
     if(strcmp(action,"send")==0 || strcmp(action,"sned")==0 || strcmp(action,"1")==0 ){
       system("say You can write your email.");
