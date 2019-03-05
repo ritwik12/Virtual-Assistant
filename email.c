@@ -51,13 +51,11 @@ int email(){
     system("say what do you want to do with your emails ?");
     printf("\n\nWhat do you want to do with your emails ? (read/send/configure)\n> ");
     scanf("%s", action);
-
     if(strcmp(action,"send")==0 || strcmp(action,"sned")==0 || strcmp(action,"1")==0 ){
       system("say You can write your email.");
       ssl_connect("send");
     }else if(strcmp(action,"read")==0 || strcmp(action,"raed")==0 || strcmp(action,"2")==0){
-      system("say you can consult your emails.");
-      ssl_connect("read");
+      printf("NOT IMPLEMENTED YET.");
     } else if (strcmp(action,"configure")==0 || strcmp(action,"3")==0){
       config_email_function();
     } else if (strcmp(action,"exit")==0 || strcmp(action,"quit")==0 || strcmp(action,"cancel")==0 || strcmp(action,"close")==0){
