@@ -73,8 +73,8 @@ In addition to this, following commands are needed to install the necessary pack
 
 ```
 $ sudo apt-get install libcurl4-openssl-dev
-
 $ sudo apt-get install libjson-c-dev
+$ sudo apt-get install libssl0.9.8
 
 ```
 ### For Fedora (RHEL based Linux)
@@ -96,11 +96,12 @@ In addition to this, following commands are needed to install the necessary pack
 ```
 $ sudo yum install libcurl libcurl-devel
 $ sudo yum install json-c json-c-devel
+$ sudo dnf install openssl
 
 ```
 Compile
 ```
-gcc main.c $(pkg-config --libs --cflags libcurl) -l json-c -std=gnu11
+gcc main.c $(pkg-config --libs --cflags libcurl) -lssl -lcrypto -l json-c -std=gnu11
 
 ```
 # Restaurant
