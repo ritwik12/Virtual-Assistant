@@ -97,6 +97,7 @@ In addition to this, following commands are needed to install the necessary pack
 $ sudo yum install libcurl libcurl-devel
 $ sudo yum install json-c json-c-devel
 $ sudo dnf install openssl
+$ sudo dnf install openssl-devel 
 
 ```
 Compile
@@ -169,7 +170,8 @@ open calendar
 ![calendar](https://user-images.githubusercontent.com/20038775/33027865-4b6d5f28-ce3a-11e7-8376-ac16e9da8606.png)
 # Emails
 
-In order to send emails via gmail using Virtual-Assistant, yoo need to allow acces from less secure apps on you gmail account.
+In order to send emails using Virtual-Assistant, you need to allow access from less secure apps on your gmail account.
+Open your gmail account on any browser, click on profile pick and then `Google account`. In the tab `Security` you have to activate the parameter `Allow access from less secure apps`.
 
 # Help
 
