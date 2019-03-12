@@ -39,7 +39,7 @@ The following actions can be performed:
 
 **Simplified Multinomial Naive Bayes Algorithm**
 
-Given a set of sentences, each belonging to a class, and a new input sentence, we can count the occurrence of each word in each class, account for its commonality and assign each class a score. Factoring for commonality is important: matching the word “it” is considerably less meaningful than a match for the word “cheese”. The class with the highest score is the one most likely to belong to the input sentence. This is a slight oversimplification as words need to be reduced to their stems, but you get the basic idea.
+Each classification contains a set of sentences that inputs are matched to. Scores are assigned based on the occurrence of words of an input sentence for each of the classifications. Scores measure the commonality of an input sentence to a classification. The commonality between words and the classifications are important. For example, matching the word “it” is considerably less meaningful than a match for the word “cheese”. The input sentence is assigned the classification of the highest score. This is a simplification as words need to be reduced to their stems. 
 
 A sample training set:
 
