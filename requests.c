@@ -1,5 +1,5 @@
 
-/* 
+/*
  * File:   requests.c
  *
  * Created on April 10, 2018, 8:51 AM
@@ -14,7 +14,7 @@ fgets(str, 1000, stdin);
 for (int i = 0; str[i]!='\n'; i++)
 {
     if (str[i] != ' ')
-        only_spaces = false;       
+        only_spaces = false;
 }
 
 if (only_spaces)
@@ -42,9 +42,9 @@ char example[1000];
 strcpy(example, str);
 int compare[10];
 char split[10][10] = {0};
-int k = 0, n, j = 0, w = 0, g = 0, go = 0, me = 0, res = 0, c = 0, u = 0, h = 0, temp = 0;
+int k = 0, n, j = 0, w = 0, g = 0, go = 0, em = 0, me = 0, res = 0, c = 0, u = 0, h = 0, temp = 0;
 char result[20];
-int weather_score, greeting_score, media_score, google_score, calendar_score, youtube_score, help_score, restaurant_score;
+int weather_score=0,greeting_score=0,media_score=0,google_score=0,email_score=0,calendar_score=0, youtube_score=0, help_score=0, restaurant_score=0;
 
 //for weather---------------
 
@@ -87,5 +87,10 @@ char *restaurant_class[10][10] = {
     {"Find", "places", "to", "eat"}
 };
 
+//for Emails
 
-
+char *email_class[10][10] = {
+    {"can", "I", "send", "email"},
+    {"mail", " ", " ", "write"},
+    {"Want", "to", "read", "emails"}
+};

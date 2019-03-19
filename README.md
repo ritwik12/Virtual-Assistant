@@ -6,11 +6,11 @@ Virtual assistants use Artificial Intelligence to match user text input to execu
 It can provide a wide variety of services, These includes:
 
 <ul>
-<li>Weather forecast of any place</li> 
-<li>Play multimedia files such as audio songs and video songs</li> 
+<li>Weather forecast of any place</li>
+<li>Play multimedia files such as audio songs and video songs</li>
 <li>Open Applications such as Web browsers, Media players(like vlc), text editors, etc</li>
-<li>Open directories in linux, Date and time</li> 
-<li>Search anything on Google</li> 
+<li>Open directories in linux, Date and time</li>
+<li>Search anything on Google</li>
 <li>Open websites of user’s choice</li>
 <li>Search anything on Youtube</li>
 <li>Open Calendar of any year</li>
@@ -30,7 +30,7 @@ The following actions can be performed:
 <li>Display the calendar of a specified year
 <li>Perform YouTube video searches
 <li>Perform Google searches
-<li>Display restaurant recommendations 
+<li>Display restaurant recommendations
 </ul>
 
 **If the virtual assistant does not understand the user’s sentence, a Google search performed.**
@@ -73,8 +73,8 @@ In addition to this, following commands are needed to install the necessary pack
 
 ```
 $ sudo apt-get install libcurl4-openssl-dev
-
 $ sudo apt-get install libjson-c-dev
+$ sudo apt-get install libssl0.9.8
 
 ```
 ### For Fedora (RHEL based Linux)
@@ -96,16 +96,18 @@ In addition to this, following commands are needed to install the necessary pack
 ```
 $ sudo yum install libcurl libcurl-devel
 $ sudo yum install json-c json-c-devel
+$ sudo dnf install openssl
+$ sudo dnf install openssl-devel 
 
 ```
 Compile
 ```
-gcc main.c $(pkg-config --libs --cflags libcurl) -l json-c -std=gnu11
+gcc main.c $(pkg-config --libs --cflags libcurl) -lssl -lcrypto -l json-c -std=gnu11
 
 ```
 # Restaurant
   Virtual Assistant can find restaurants in an area.
-  
+
 ![restaurants](https://user-images.githubusercontent.com/20038775/33029445-9b05b482-ce3e-11e7-8ed4-5782fe468530.png)
 
 
@@ -127,7 +129,7 @@ $ sudo yum install curl
 
 Virtual assistant can play any audio or video files of your choice.
 For playing media files vlc is needed.
-Get it here 
+Get it here
 ```
 $ sudo apt-get install vlc
 ```
@@ -166,6 +168,10 @@ Virtual assistant can show calendar of any year.
 open calendar
 ```
 ![calendar](https://user-images.githubusercontent.com/20038775/33027865-4b6d5f28-ce3a-11e7-8376-ac16e9da8606.png)
+# Emails
+
+In order to send emails using Virtual-Assistant, you need to allow access from less secure apps on your gmail account.
+Open your gmail account on any browser, click on profile pick and then `Google account`. In the tab `Security` you have to activate the parameter `Allow access from less secure apps`.
 
 # Help
 
@@ -203,6 +209,3 @@ Permissions of this strong copyleft license are conditioned on making available 
 
 # Credits
 This project is developed with contributions by [Riya](https://github.com/riya-17)
-
-
-

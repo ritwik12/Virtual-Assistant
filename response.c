@@ -1,9 +1,10 @@
 
-/* 
+/*
  * File:   response.c
  *
  * Created on April 10, 2018, 8:51 AM
  */
+
 
 if ((strcmp(result, "greeting") == 0)) {
     system("say I am good");
@@ -81,6 +82,9 @@ else if ((strcmp(result, "restaurant")) == 0) {
 
     find_restaurants();
 
+}else if((strcmp(result, "email") == 0)){
+    email();
+
 }    //Help
 else if ((strcmp(str, "help") == 0)) {
     char * help1 = "less ";
@@ -88,7 +92,8 @@ else if ((strcmp(str, "help") == 0)) {
     sprintf(help, "%s%s%s", help1, HOME_DIR, "help.txt");
     system(help);
 } else if ((strcmp(result, "google") == 0)) {
-    if ((google_score == 0) && (greeting_score == 0) && (weather_score == 0) && (media_score == 0)) {
+    printf("google command\n");
+    if ((google_score == 0) && (greeting_score == 0) && (email_score == 0) && (weather_score == 0) && (media_score == 0)) {
 
         // fgets (search, 1000, stdin);
         //-------------------------------------------------

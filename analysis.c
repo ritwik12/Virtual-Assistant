@@ -75,6 +75,19 @@ for (int v = 0; v <= k; v++)
     }
 media_score = me;
 
+//For Email---------------------------------------
+
+for (int v = 0; v <= k; v++)
+    for (int b = 0; b < 3; b++) {
+        for (int c = 0; c < 4; c++) {
+            if (strcmp(email_class[b][c], split[v]) == 0) {
+                em++;
+            }
+        }
+    }
+email_score = em;
+
+
 //For Restaurant-----------------------------------
 for (int v = 0; v <= k; v++)
     for (int b = 0; b < 3; b++) {
@@ -86,59 +99,17 @@ for (int v = 0; v <= k; v++)
     }
 restaurant_score = res;
 
+int score = 0;
+score = max_five_values(weather_score, greeting_score, media_score, google_score, email_score);
+score = max_five_values(score, calendar_score, youtube_score, help_score, restaurant_score);
 
-
-if (weather_score > greeting_score) {
-    if (weather_score > media_score) {
-        if (weather_score > restaurant_score) {
-            if (weather_score > google_score)
-                strcpy(result, "weather");
-            else
-                strcpy(result, "google");
-        } else {
-            if (restaurant_score > google_score)
-                strcpy(result, "restaurant");
-            else
-                strcpy(result, "google");
-        }
-    } else {
-        if (media_score > restaurant_score) {
-            if (media_score > google_score)
-                strcpy(result, "media");
-            else
-                strcpy(result, "google");
-        } else {
-            if (restaurant_score > google_score)
-                strcpy(result, "restaurant");
-            else
-                strcpy(result, "google");
-        }
-    }
-} else {
-    if (greeting_score > media_score) {
-        if (greeting_score > restaurant_score) {
-            if (greeting_score > google_score)
-                strcpy(result, "greeting");
-            else
-                strcpy(result, "google");
-        } else {
-            if (restaurant_score > google_score)
-                strcpy(result, "restaurant");
-            else
-                strcpy(result, "google");
-        }
-    } else {
-        if (media_score > restaurant_score) {
-
-            if (media_score > google_score)
-                strcpy(result, "media");
-            else
-                strcpy(result, "google");
-        } else {
-            if (restaurant_score > google_score)
-                strcpy(result, "restaurant");
-            else
-                strcpy(result, "google");
-        }
-    }
-}
+if(score == 0) strcpy(result,"");
+else if(score == greeting_score) strcpy(result,"greeting");
+else if(score == weather_score) strcpy(result,"weather");
+else if(score == media_score) strcpy(result,"media");
+else if(score == restaurant_score) strcpy(result,"restaurant");
+else if(score == calendar_score) strcpy(result,"calendar");
+else if(score == email_score) strcpy(result,"email");
+else if(score == youtube_score) strcpy(result,"youtube");
+else if(score == help_score) strcpy(result,"help");
+else if(score == google_score) strcpy(result,"google");
