@@ -15,6 +15,7 @@ It can provide a wide variety of services, These includes:
 <li>Search anything on Youtube</li>
 <li>Open Calendar of any year</li>
 <li>Find Restaurants in an area</li>  
+<li>Send emails using your Gmail account</li>  
 </ul>
 
 ![screenshot from 2017-11-04 23 13 18](https://user-images.githubusercontent.com/20038775/32407915-c80e1a72-c1b5-11e7-83f4-efafcf7d3c85.png)
@@ -31,6 +32,7 @@ The following actions can be performed:
 <li>Perform YouTube video searches
 <li>Perform Google searches
 <li>Display restaurant recommendations
+<li>Send emails
 </ul>
 
 **If the virtual assistant does not understand the user’s sentence, a Google search performed.**
@@ -39,7 +41,7 @@ The following actions can be performed:
 
 **Simplified Multinomial Naive Bayes Algorithm**
 
-Each classification contains a set of sentences that inputs are matched to. Scores are assigned based on the occurrence of words of an input sentence for each of the classifications. Scores measure the commonality of an input sentence to a classification. The commonality between words and the classifications are important. For example, matching the word “it” is considerably less meaningful than a match for the word “cheese”. The input sentence is assigned the classification of the highest score. This is a simplification as words need to be reduced to their stems. 
+Each classification contains a set of sentences that inputs are matched to. Scores are assigned based on the occurrence of words of an input sentence for each of the classifications. Scores measure the commonality of an input sentence to a classification. The commonality between words and the classifications are important. For example, matching the word “it” is considerably less meaningful than a match for the word “cheese”. The input sentence is assigned the classification of the highest score. This is a simplification as words need to be reduced to their stems.
 
 A sample training set:
 
@@ -97,7 +99,7 @@ In addition to this, following commands are needed to install the necessary pack
 $ sudo yum install libcurl libcurl-devel
 $ sudo yum install json-c json-c-devel
 $ sudo dnf install openssl
-$ sudo dnf install openssl-devel 
+$ sudo dnf install openssl-devel
 
 ```
 Compile
@@ -172,7 +174,12 @@ open calendar
 
 In order to send emails using Virtual-Assistant, you need to allow access from less secure apps on your gmail account.
 Open your gmail account on any browser, click on profile pick and then `Google account`. In the tab `Security` you have to activate the parameter `Allow access from less secure apps`.
-
+<p>
+Access the gmail service using
+```
+emails
+```
+![screenshot_email_send](https://user-images.githubusercontent.com/14167172/56217042-d4841c00-6062-11e9-9d98-71f7bda8a1d4.png)
 # Help
 
 Don't know how to use?
