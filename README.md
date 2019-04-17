@@ -176,6 +176,7 @@ In order to send emails using Virtual-Assistant, you need to allow access from l
 Open your gmail account on any browser, click on profile pick and then `Google account`. In the tab `Security` you have to activate the parameter `Allow access from less secure apps`.
 <p>
 Access the gmail service using
+
 ```
 emails
 ```
