@@ -58,8 +58,8 @@ char *weather_class[10][10] = {
 
 char *greeting_class[10][10] = {
     {"hey", "how", "are", "you"},
-    {"how", " ", " ", "doing"},
-    {"hello", "there", " ", " "}
+    {"how", "welcome", "morning", "doing"},
+    {"hello", "there", "good", "afternoon"}
 };
 
 //for google----------------
@@ -91,6 +91,6 @@ char *restaurant_class[10][10] = {
 
 char *email_class[10][10] = {
     {"can", "I", "send", "email"},
-    {"mail", " ", " ", "write"},
+    {"mail", "new", "mails", "write"},
     {"Want", "to", "read", "emails"}
 };
