@@ -93,7 +93,7 @@ else if ((strcmp(str, "help") == 0)) {
     system(help);
 } else if ((strcmp(result, "google") == 0)) {
     printf("google command\n");
-    if ((google_score == 0) && (greeting_score == 0) && (email_score == 0) && (weather_score == 0) && (media_score == 0)) {
+    if ((scores.google_score == 0) && (scores.greeting_score == 0) && (scores.email_score == 0) && (scores.weather_score == 0) && (scores.media_score == 0)) {
 
         // fgets (search, 1000, stdin);
         //-------------------------------------------------
