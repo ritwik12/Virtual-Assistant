@@ -35,7 +35,7 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-scores.weather_score = w;
+scores[WEATHER] = w;
 
 //For Greeting-----------------------------------
 
@@ -47,7 +47,7 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-scores.greeting_score = g;
+scores[GREETING] = g;
 
 
 //For Google-------------------------------------
@@ -60,7 +60,7 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-scores.google_score = go;
+scores[GOOGLE] = go;
 
 
 //For Media---------------------------------------
@@ -73,7 +73,7 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-scores.media_score = me;
+scores[MEDIA] = me;
 
 //For Email---------------------------------------
 
@@ -85,7 +85,7 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-scores.email_score = em;
+scores[EMAIL] = em;
 
 
 //For Restaurant-----------------------------------
@@ -97,19 +97,19 @@ for (int v = 0; v <= k; v++)
             }
         }
     }
-scores.restaurant_score = res;
+scores[RESTAURANT] = res;
 
 int score = 0;
-score = max_five_values(scores.weather_score, scores.greeting_score, scores.media_score, scores.google_score, scores.email_score);
-score = max_five_values(score, scores.calendar_score, scores.youtube_score, scores.help_score, scores.restaurant_score);
+score = max_five_values(scores[WEATHER], scores[GREETING], scores[MEDIA], scores[GOOGLE], scores[EMAIL]);
+score = max_five_values(score, scores[CALENDAR], scores[YOUTUBE], scores[HELP], scores[RESTAURANT]);
 
 if(score == 0) strcpy(result,"");
-else if(score == scores.greeting_score) strcpy(result,"greeting");
-else if(score == scores.weather_score) strcpy(result,"weather");
-else if(score == scores.media_score) strcpy(result,"media");
-else if(score == scores.restaurant_score) strcpy(result,"restaurant");
-else if(score == scores.calendar_score) strcpy(result,"calendar");
-else if(score == scores.email_score) strcpy(result,"email");
-else if(score == scores.youtube_score) strcpy(result,"youtube");
-else if(score == scores.help_score) strcpy(result,"help");
-else if(score == scores.google_score) strcpy(result,"google");
+else if(score == scores[GREETING]) strcpy(result,"greeting");
+else if(score == scores[WEATHER]) strcpy(result,"weather");
+else if(score == scores[MEDIA]) strcpy(result,"media");
+else if(score == scores[RESTAURANT]) strcpy(result,"restaurant");
+else if(score == scores[CALENDAR]) strcpy(result,"calendar");
+else if(score == scores[EMAIL]) strcpy(result,"email");
+else if(score == scores[YOUTUBE]) strcpy(result,"youtube");
+else if(score == scores[HELP]) strcpy(result,"help");
+else if(score == scores[GOOGLE]) strcpy(result,"google");

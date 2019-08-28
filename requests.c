@@ -47,7 +47,22 @@ int compare[10];
 char split[NUM_WORDS][WORD_LEN] = {0};
 int k = 0, n, j = 0, w = 0, g = 0, go = 0, em = 0, me = 0, res = 0, c = 0, u = 0, h = 0, temp = 0;
 char result[20];
-struct scores_t {
+enum fields {
+	WEATHER,
+	GREETING,
+	MEDIA,
+	GOOGLE,
+	EMAIL,
+	CALENDAR,
+	YOUTUBE,
+	HELP,
+	RESTAURANT,
+	LAST_FIELD
+};
+
+int scores[LAST_FIELD] = {0};
+
+/*struct scores_t {
    	int weather_score;
 	int greeting_score;
 	int media_score;
@@ -59,7 +74,7 @@ struct scores_t {
 	int restaurant_score;
 };
 struct scores_t scores = {0};
-
+*/
 //for weather---------------
 
 char *weather_class[NUM_WORDS][WORD_LEN] = {
