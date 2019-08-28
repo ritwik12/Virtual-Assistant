@@ -100,8 +100,11 @@ for (int v = 0; v <= k; v++)
 scores[RESTAURANT] = res;
 
 int score = 0;
-score = max_five_values(scores[WEATHER], scores[GREETING], scores[MEDIA], scores[GOOGLE], scores[EMAIL]);
-score = max_five_values(score, scores[CALENDAR], scores[YOUTUBE], scores[HELP], scores[RESTAURANT]);
+for (int i; i < LAST_FIELD; i++) {
+	if (scores[i] > score) {
+		score = scores[i];
+	}
+}
 
 if(score == 0) strcpy(result,"");
 else if(score == scores[GREETING]) strcpy(result,"greeting");
