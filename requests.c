@@ -61,51 +61,54 @@ enum catagories {
 };
 int scores[LAST_FIELD] = {0};
 
-//for weather---------------
+char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
 
-char *weather_class[NUM_WORDS][WORD_LEN] = {
+//for weather---------------
+[WEATHER] =
+{
     {"please", "show", "outside", "condition"},
     {"how", " ", "weather", "today"},
     {"weather", " ", "desired", "place"}
-};
+},
 
 //for greeting--------------
 
-char *greeting_class[NUM_WORDS][WORD_LEN] = {
+[GREETING] = {
     {"hey", "how", "are", "you"},
     {"how", "welcome", "morning", "doing"},
     {"hello", "there", "good", "afternoon"}
-};
+},
 
 //for google----------------
 
-char *google_class[NUM_WORDS][WORD_LEN] = {
+[GOOGLE] = {
     {"open", "google", "for", "me"},
     {"I", "want", "search", "browse"},
     {"can", "you", "open", "google"}
-};
+},
 
 //for media-----------------
 
-char *media_class[NUM_WORDS][WORD_LEN] = {
+[MEDIA] = {
     {"can", "you", "list", "media"},
     {"video", "listen", "play", "music"},
     {"play", "something", "nice", "song "}
-};
+},
 
 //for Restaurant
 
-char *restaurant_class[NUM_WORDS][WORD_LEN] = {
+[RESTAURANT] = {
     {"Please", "find", "some", "restaurants"},
     {"Find", " ", "some", "restaurants"},
     {"Show", " ", " ", "restaurants"},
     {"Find", "places", "to", "eat"}
-};
+},
 
 //for Emails
 
-char *email_class[NUM_WORDS][WORD_LEN] = {
+[EMAIL] = {
     {"can", "I", "send", "email"},
     {"mail", "new", "mails", "write"},
     {"Want", "to", "read", "emails"}
+}
 };
