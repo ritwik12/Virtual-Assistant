@@ -60,6 +60,18 @@ enum catagories {
 	LAST_FIELD
 };
 int scores[LAST_FIELD] = {0};
+const char *catagories_str[LAST_FIELD] =
+{
+	"weather",
+	"greeting",
+	"media",
+	"google",
+	"email",
+	"calendar",
+	"youtube",
+	"help",
+	"restaurant"
+};
 
 char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
 
@@ -110,5 +122,8 @@ char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
     {"can", "I", "send", "email"},
     {"mail", "new", "mails", "write"},
     {"Want", "to", "read", "emails"}
-}
+},
+[CALENDAR] = {0},
+[YOUTUBE] = {0},
+[HELP] = {0}
 };
