@@ -5,8 +5,6 @@
  * Created on April 10, 2018, 8:51 AM
  */
 
-#define WORD_LEN 10
-#define NUM_WORDS 10
 
 bool only_spaces = true;
 char * x = "Hey, How can I help you?";
@@ -29,95 +27,5 @@ if ((strlen(str) > 1) && (str[strlen(str) - 1] == '\n'))
 else
     continue;
 
-char buf[9999];
-char buffer[9999];
-char buff[9999];
-char weather[9999];
-char song[9999];
-char calendar[100];
 
-char example[1000];
 strcpy(example, str);
-int compare[10];
-char split[NUM_WORDS][WORD_LEN] = {};
-char result[20];
-enum catagories {
-	WEATHER,
-	GREETING,
-	MEDIA,
-	GOOGLE,
-	EMAIL,
-	CALENDAR,
-	YOUTUBE,
-	HELP,
-	RESTAURANT,
-	LAST_FIELD
-};
-int scores[LAST_FIELD] = {0};
-const char *catagories_str[LAST_FIELD] =
-{
-	"weather",
-	"greeting",
-	"media",
-	"google",
-	"email",
-	"calendar",
-	"youtube",
-	"help",
-	"restaurant"
-};
-
-char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
-
-//for weather---------------
-[WEATHER] =
-{
-    {"please", "show", "outside", "condition"},
-    {"how", " ", "weather", "today"},
-    {"weather", " ", "desired", "place"}
-},
-
-//for greeting--------------
-
-[GREETING] = {
-    {"hey", "how", "are", "you"},
-    {"how", "welcome", "morning", "doing"},
-    {"hello", "there", "good", "afternoon"}
-},
-
-//for google----------------
-
-[GOOGLE] = {
-    {"open", "google", "for", "me"},
-    {"I", "want", "search", "browse"},
-    {"can", "you", "open", "google"}
-},
-
-//for media-----------------
-
-[MEDIA] = {
-    {"can", "you", "list", "media"},
-    {"video", "listen", "play", "music"},
-    {"play", "something", "nice", "song "}
-},
-
-//for Restaurant
-
-[RESTAURANT] = {
-    {"Please", "find", "some", "restaurants"},
-    {"Find", " ", "some", "restaurants"},
-    {"Show", " ", " ", "restaurants"},
-    {"Find", "places", "to", "eat"}
-},
-
-//for Emails
-
-[EMAIL] = {
-    {"can", "I", "send", "email"},
-    {"mail", "new", "mails", "write"},
-    {"Want", "to", "read", "emails"}
-},
-[CALENDAR] = {},
-[YOUTUBE] = {},
-[HELP] = {}
-};
