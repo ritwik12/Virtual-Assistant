@@ -7,9 +7,13 @@
 
 /*
  * split incoming strings to indevidual words array
+ * change uppercase letters in string to lowercase for convenience
  */
 
+
+int k = 0, j = 0;
 for (int i = 0; i < strlen(example); i++) {
+    example[i] = tolower(example[i]);
     if (example[i] == ' ') {
         if (example[i + 1] != ' ') {
             split[k][j] = '\0';
@@ -23,6 +27,7 @@ for (int i = 0; i < strlen(example); i++) {
 }
 
 split[k][j] = '\0';
+
 
 /*
  * classify string - compare input with all classifiers

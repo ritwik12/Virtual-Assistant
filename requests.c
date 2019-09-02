@@ -29,11 +29,6 @@ if ((strlen(str) > 1) && (str[strlen(str) - 1] == '\n'))
 else
     continue;
 
-//change uppercase letters in str to lowercase for convenience
-int i, s = strlen(str);
-for (i = 0; i < s; i++)
-    str[i] = tolower(str[i]);
-
 char buf[9999];
 char buffer[9999];
 char buff[9999];
@@ -44,8 +39,7 @@ char calendar[100];
 char example[1000];
 strcpy(example, str);
 int compare[10];
-char split[NUM_WORDS][WORD_LEN] = {0};
-int k = 0, n, j = 0, w = 0, g = 0, go = 0, em = 0, me = 0, res = 0, c = 0, u = 0, h = 0, temp = 0;
+char split[NUM_WORDS][WORD_LEN] = {};
 char result[20];
 enum catagories {
 	WEATHER,
@@ -123,7 +117,7 @@ char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
     {"mail", "new", "mails", "write"},
     {"Want", "to", "read", "emails"}
 },
-[CALENDAR] = {0},
-[YOUTUBE] = {0},
-[HELP] = {0}
+[CALENDAR] = {},
+[YOUTUBE] = {},
+[HELP] = {}
 };
