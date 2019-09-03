@@ -28,16 +28,15 @@ for (int i = 0; i < strlen(example); i++) {
 
 split[k][j] = '\0';
 
-
 /*
  * classify string - compare input with all classifiers
  */
 int classification_score = 0;
 for (int class = 0 ; class < LAST_FIELD ; class++) {
 	for (int v = 0; v <= k; v++) {
-		for (int b = 0; b < 3; b++) {
+		for (int b = 0; b < NUM_WORDS; b++) {
 
-			for (int c = 0; c < 4; c++) {
+			for (int c = 0; c < WORD_LEN; c++) {
 				if ((classifier[class][b][c]) && (strcmp(classifier[class][b][c], split[v]) == 0)) {
 					classification_score++;
 				}
