@@ -1,12 +1,19 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <curl/curl.h>
+#include <json-c/json_object.h>
+#include <json-c/json_tokener.h>
+#include "functions.c"
+#include "email.c"
 #include "defines.h"
-//#include "functions.c"
-//#include "email.c"
+#include <stdbool.h>
 
 
 int main() {
 
-//#include "init_config.c"
-	init();
+#include "init_config.c"
 
     //Inform user about preferred media player, as to config file
     char preferred_media_player[1000];
@@ -23,15 +30,13 @@ int main() {
         //---------------------------------------------------------------------------------------------------------------------
 
         //Artificial Intelligence
-//#include "requests.c"
-		get_user_input(example);
+#include "requests.c"
         //Artificial Intelligence {REQUESTS}
-		analyze(example, result);
-//#include "analysis.c"
+
+#include "analysis.c"
         //Artificial Intelligence {ANALYSIS}
 
-		response(result);
-//#include "response.c"
+#include "response.c"
         //Artificial Intelligence {RESPONSE}
 
         //---------------------------------------------------------------------------------------------------------------------

@@ -1,4 +1,5 @@
-#include "defines.h"
+
+
 /* 
  * File:   functions.c
  * Author: Goodluck
@@ -22,6 +23,7 @@ extern "H" {
 #endif
 
 
+#define SPACE ' '
 
 //Function used by libcurl to allocate memory to data received from the HTTP response
 
@@ -319,11 +321,10 @@ int show_weather(char* weather) {
     return 0;
 }
 
-/*
 int max(int v1, int v2){
     if(v1 > v2) return v1;
     else return v2; 
 }
-*/
+
 #endif /* FUNCTIONS_C */
 
