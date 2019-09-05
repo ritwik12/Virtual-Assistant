@@ -4,13 +4,13 @@
  * Created on Septemver 3, 2019, 10:00 AM
  */
 
-#define WORD_LEN 10
-#define NUM_WORDS 10
+#define WORD_LEN 10 /* the maximal length of each word in a classifier */
+#define NUM_WORDS 10 /* the number of words per catagory classifier */
 
 /* catagories enum - DO NOT evaluate elements
  * LAST_FIELD must remain last
  */
-enum catagories {
+enum categories {
 	WEATHER,
 	GREETING,
 	MEDIA,

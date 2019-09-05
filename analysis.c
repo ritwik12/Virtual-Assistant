@@ -6,34 +6,34 @@
  */
 
 /*
- * split incoming strings to indevidual words array
+ * split incoming strings to individual words array
  * change uppercase letters in string to lowercase for convenience
  */
 
 
-int k = 0, j = 0;
+int word = 0, character = 0;
 for (int i = 0; i < strlen(example); i++) {
     example[i] = tolower(example[i]);
     if (example[i] == ' ') {
         if (example[i + 1] != ' ') {
-            split[k][j] = '\0';
-            j = 0;
-            k++;
+            split[word][character] = '\0';
+            character = 0;
+            word++;
         }
         continue;
     } else {
-        split[k][j++] = example[i];
+        split[word][character++] = example[i];
     }
 }
 
-split[k][j] = '\0';
+split[word][character] = '\0';
 
 /*
  * classify string - compare input with all classifiers
  */
 int classification_score = 0;
 for (int class = 0 ; class < LAST_FIELD ; class++) {
-	for (int v = 0; v <= k; v++) {
+	for (int v = 0; v <= word; v++) {
 		for (int b = 0; b < NUM_WORDS; b++) {
 
 			for (int c = 0; c < WORD_LEN; c++) {
