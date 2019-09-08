@@ -30,14 +30,18 @@ split[word][character] = '\0';
 
 /*
  * classify string - compare input with all classifiers
+ * class - iterator for classes, i.e. google, weather etc.
+ * iter_input - iterates over words in the input string
+ * iter_classifier - iterates over the classifier arrays in each class
+ * iter_classifier_w - iterates over all words in a single classifier array
  */
 int classification_score = 0;
 for (int class = 0 ; class < LAST_FIELD ; class++) {
-	for (int v = 0; v <= word; v++) {
-		for (int b = 0; b < NUM_WORDS; b++) {
-
-			for (int c = 0; c < WORD_LEN; c++) {
-				if ((classifier[class][b][c]) && (strcmp(classifier[class][b][c], split[v]) == 0)) {
+	for (int iter_input = 0; iter_input <= word; iter_input++) {
+		for (int iter_classifier = 0; iter_classifier < NUM_WORDS; iter_classifier++) {
+			for (int iter_classifier_w = 0; iter_classifier_w < WORD_LEN; iter_classifier_w++) {
+				if ((classifier[class][iter_classifier][iter_classifier_w]) &&
+						(strcmp(classifier[class][iter_classifier][iter_classifier_w], split[iter_input]) == 0)) {
 					classification_score++;
 				}
 			}
