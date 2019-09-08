@@ -12,17 +12,17 @@
 
 
 int word = 0, character = 0;
-for (int i = 0; i < strlen(example); i++) {
-    example[i] = tolower(example[i]);
-    if (example[i] == ' ') {
-        if (example[i + 1] != ' ') {
+for (int iter_char = 0; iter_char < strlen(example); iter_char++) {
+    example[iter_char] = tolower(example[iter_char]);
+    if (example[iter_char] == ' ') {
+        if (example[iter_char + 1] != ' ') {
             split[word][character] = '\0';
             character = 0;
             word++;
         }
         continue;
     } else {
-        split[word][character++] = example[i];
+        split[word][character++] = example[iter_char];
     }
 }
 
