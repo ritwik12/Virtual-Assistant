@@ -140,6 +140,11 @@ Or
 $ sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 $ sudo dnf install vlc
 ```
+Or
+```
+sudo rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm
+sudo yum install vlc
+```
 ```
 Please configure your working directory location before using this feature in config file (value of HOME_DIR)
 ```
