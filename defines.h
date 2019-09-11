@@ -40,7 +40,7 @@ const char *catagories_str[LAST_FIELD] =
 	"restaurant"
 };
 
-/* 3D array of al catagory classifiers*/
+/* 3D array of all catagory classifiers*/
 const char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
 	[WEATHER] =
 	{
