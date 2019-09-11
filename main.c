@@ -7,6 +7,7 @@
 #include <json-c/json_tokener.h>
 #include "functions.c"
 #include "email.c"
+#include "defines.h"
 #include <stdbool.h>
 
 

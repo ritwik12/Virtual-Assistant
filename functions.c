@@ -326,10 +326,5 @@ int max(int v1, int v2){
     else return v2; 
 }
 
-int max_five_values(int v1, int v2, int v3, int v4, int v5){
-    max( max(v1, max(v2,v3)) , max(v4,v5));
-}
-
-
 #endif /* FUNCTIONS_C */
 
