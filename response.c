@@ -92,7 +92,7 @@ else if ((strcmp(str, "help") == 0)) {
     sprintf(help, "%s%s%s", help1, HOME_DIR, "help.txt");
     system(help);
 } else if ((strcmp(result, "google") == 0)) {
-    printf("google command\n");
+
     if ((scores[GOOGLE] == 0) && (scores[GREETING] == 0) && (scores[EMAIL] == 0) && (scores[WEATHER] == 0) && (scores[MEDIA] == 0)) {
 
         // fgets (search, 1000, stdin);
