@@ -1,7 +1,9 @@
 /*
  * File:  defines.h 
- *
- * Created on Septemver 3, 2019, 10:00 AM
+ * Author: Omer Dagan
+ * Author: Riya
+ * Author: Ritwik
+ * Created on September 3, 2019, 10:00 AM
  */
 
 #define WORD_LEN 10 /* the maximal length of each word in a classifier */
