@@ -56,7 +56,7 @@ Notice that the classification for “What’s it like outside” found a term i
 
 # Setup
 
-### For Ubuntu (Debian based Linux)
+### For Ubuntu (Debian-based Linux)
 This program uses <b>GNUstep speech engine</b> for the purpose of text to speech.
 To use this feature few commands are needed:
 
@@ -79,7 +79,7 @@ $ sudo apt-get install libjson-c-dev
 $ sudo apt-get install libssl0.9.8
 
 ```
-### For Fedora (RHEL based Linux)
+### For Fedora (RHEL-based Linux)
 
 This program uses <b>Espeak</b> for the purpose of text to speech.
 
@@ -102,6 +102,17 @@ $ sudo dnf install openssl
 $ sudo dnf install openssl-devel
 
 ```
+
+### For macOS
+
+GNUstep can be cross-compiled from Linux to run on Apple's macOS, (See: http://wiki.gnustep.org/index.php/Cross_Compiling).
+
+```
+brew install curl
+brew install json-c
+brew install openssl
+```
+
 Compile
 ```
 gcc main.c $(pkg-config --libs --cflags libcurl) -lssl -lcrypto -l json-c -std=gnu11
