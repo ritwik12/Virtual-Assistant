@@ -4,7 +4,7 @@ CFLAGS = -I$(IDIR) -std=gnu11 `pkg-config --cflags libcurl`
 
 ODIR = obj
 LDIR = ../lib
-LIBS = -lssl -lcrypto -ljson-c  `pkg-confi --libs libcurl`
+LIBS = -lssl -lcrypto -ljson-c  `pkg-config --libs libcurl`
 
 _DEPS = defines.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
