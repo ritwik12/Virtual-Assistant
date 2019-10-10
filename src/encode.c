@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "b64.h"
+#include "../utils/b64.h"
 
 #ifdef b64_USE_CUSTOM_MALLOC
 extern void* b64_malloc(size_t);

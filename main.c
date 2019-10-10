@@ -5,15 +5,15 @@
 #include <curl/curl.h>
 #include <json-c/json_object.h>
 #include <json-c/json_tokener.h>
-#include "functions.c"
-#include "email.c"
-#include "defines.h"
+#include "src/functions.c"
+#include "src/email.c"
+#include "utils/defines.h"
 #include <stdbool.h>
 
 
 int main() {
 
-#include "init_config.c"
+#include "src/init_config.c"
 
     //Inform user about preferred media player, as to config file
     char preferred_media_player[1000];
@@ -30,13 +30,13 @@ int main() {
         //---------------------------------------------------------------------------------------------------------------------
 
         //Artificial Intelligence
-#include "requests.c"
+#include "src/requests.c"
         //Artificial Intelligence {REQUESTS}
 
-#include "analysis.c"
+#include "src/analysis.c"
         //Artificial Intelligence {ANALYSIS}
 
-#include "response.c"
+#include "src/response.c"
         //Artificial Intelligence {RESPONSE}
 
         //---------------------------------------------------------------------------------------------------------------------
