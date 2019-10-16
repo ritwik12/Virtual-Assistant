@@ -35,7 +35,7 @@ int main()
                 sprintf(preferred_webbrowser, "say Your preferred webbrowser is %s", WebBrowser);
                 system(preferred_webbrowser); //TODO replace unsafe system call with environment controlled fork/popen style call 
         }
- /*   do
+      do
         {
 
              //---------------------------------------------------------------------------------------------------------------------
@@ -52,7 +52,7 @@ int main()
 
                 //---------------------------------------------------------------------------------------------------------------------
 
-        } while ((strcmp(str, "stop") != 0)); */
+        } while ((strcmp(str, "stop") != 0)); 
 
         return 0;
 }
