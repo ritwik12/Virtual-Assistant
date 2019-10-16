@@ -5,7 +5,7 @@
  * Created on April 10, 2018, 9:18 AM
  */
 #include "init_config.h"
-#define DEBUG
+
 char str[1000], *start, pv, location[1000], youtube[1000], songs[1000], cal[100], search[100];
 int c, d, len = 0;
 FILE *get_Config_File()
