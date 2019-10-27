@@ -82,7 +82,7 @@ else if ((strcmp(result, "restaurant") == 0)|| (strcmp(result, "restaurant near 
 
     find_restaurants();
 
-}else if((strcmp(result, "email") == 0)|| (strcmp(result, "open email") == 0)){
+}else if((strcmp(result, "email") == 0)|| (strcmp(result, "open email") == 0)|| (strcmp(result, "check email") == 0)){
     email();
 
 }    //Help
