@@ -12,11 +12,11 @@ if ((strcmp(result, "greeting") == 0)) {
 } else if (strcmp(str, "firefox") == 0 || strcmp(str, "open firefox") == 0 || strcmp(str, "run firefox") == 0 || strcmp(str, "start firefox") == 0) {
     system("say opening firefox");
     system("firefox");
-} else if ((strcmp(str, "vlc") == 0) || (strcmp(str, "open vlc") == 0) || (strcmp(str, "run vlc") == 0) || (strcmp(str, "start vlc") == 0)) {
+} else if ((strcmp(str, "vlc") == 0) || (strcmp(str, "open vlc") == 0) || (strcmp(str, "run vlc") == 0) || (strcmp(str, "start vlc") == 0) || (strcmp(str, "play vlc") == 0)) {
     system("say opening vlc");
     system("vlc");
 }// Weather
-else if ((strcmp(result, "weather") == 0)) {
+else if ((strcmp(result, "weather") == 0) || (strcmp(str, "what is the weather") == 0)) {
     printf("Please enter location to get weather forecast \n");
     fgets(location, 1000, stdin);
     system("say showing weather");
@@ -78,11 +78,11 @@ else if ((strcmp(result, "weather") == 0)) {
     sprintf(calendar, "cal \%s", cal);
     system(calendar);
 }//Restaurant
-else if ((strcmp(result, "restaurant")) == 0) {
+else if ((strcmp(result, "restaurant") == 0)|| (strcmp(result, "restaurant near me") == 0)) {
 
     find_restaurants();
 
-}else if((strcmp(result, "email") == 0)){
+}else if((strcmp(result, "email") == 0)|| (strcmp(result, "open email") == 0)){
     email();
 
 }    //Help
