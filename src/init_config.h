@@ -4,6 +4,9 @@
 
 #include "stdio.h"
 #include "string.h"
+
+char str[1000], *start, pv, location[1000], youtube[1000], songs[1000], cal[100], search[100];
+int c, d, len = 0;
 /***"Init funtions"***/
 FILE *get_Config_File();
 char *set_HomeDir_Var(FILE *conf);

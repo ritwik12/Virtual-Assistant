@@ -5,7 +5,6 @@
  * Created on April 10, 2018, 8:51 AM
  */
 
-
 bool only_spaces = true;
 char * x = "Hey, How can I help you?";
 printf("%s\n", x);

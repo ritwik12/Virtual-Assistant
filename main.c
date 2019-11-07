@@ -32,7 +32,7 @@ int main()
 
                 //Inform user about preferred web browser, as to config file
                 char preferred_webbrowser[1000];
-                sprintf(preferred_webbrowser, "say Your preferred webbrowser is %s", WebBrowser);
+                sprintf(preferred_webbrowser, "say Your preferred webbrowser is %s", browser);
                 system(preferred_webbrowser); //TODO replace unsafe system call with environment controlled fork/popen style call 
         }
       do
