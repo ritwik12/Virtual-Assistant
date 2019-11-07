@@ -119,7 +119,7 @@ brew install openssl
 
 Compile
 ```
-gcc main.c $(pkg-config --libs --cflags libcurl) -lssl -lcrypto -l json-c -std=gnu11
+gcc main.c src/init_config.c $(pkg-config --libs --cflags libcurl) -lssl -lcrypto -ljson-c -std=gnu11
 
 ```
 # Restaurant
