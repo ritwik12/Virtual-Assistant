@@ -10,7 +10,7 @@ FILE *get_Config_File()
 {
     FILE *fp;
     fp = fopen("config", "rw");
-    //TODO:Search path for virtual_assistant.conf or similar.
+    
     if (fp == NULL)
     {
         fprintf(stderr, "Unable to open config file\n");
@@ -88,7 +88,7 @@ char *set_WebBrowser_Var(FILE *conf)
     return WebBrowser;
 }
 //Clean up file pointer
-//TODO: Proper error status codes & signals
+
 int config_Cleanup_Status(FILE *conf)
 {
     int status = 0;

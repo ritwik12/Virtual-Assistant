@@ -13,6 +13,7 @@
 FILE *conffile;
 char *HomeDir, *Mediaplay, *browser;
 int retval = 0;
+int len = 0;
 
 int main()
 {
@@ -28,12 +29,12 @@ int main()
                 //Inform user about preferred media player, as to config file
                 char preferred_media_player[1000];
                 sprintf(preferred_media_player, "say Your preferred media player is %s", Mediaplay);
-                system(preferred_media_player); //TODO replace unsafe system call with environment controlled fork/popen style call 
+                system(preferred_media_player); 
 
                 //Inform user about preferred web browser, as to config file
                 char preferred_webbrowser[1000];
                 sprintf(preferred_webbrowser, "say Your preferred webbrowser is %s", browser);
-                system(preferred_webbrowser); //TODO replace unsafe system call with environment controlled fork/popen style call 
+                system(preferred_webbrowser);  
         }
       do
         {
