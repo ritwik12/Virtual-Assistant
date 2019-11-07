@@ -63,12 +63,12 @@ else if ((strcmp(result, "weather") == 0)) {
     char * sys_cmd1;
     char sys_cmd[1000];
     sys_cmd1 = "ls ";
-    sprintf(sys_cmd, "%s%s%s", sys_cmd1, HOME_DIR, "media/");
+    sprintf(sys_cmd, "%s%s%s", sys_cmd1, HOMEDIR, "media/");
     system(sys_cmd);
     system("say which media do you want me to play");
     printf("Which media do you want me to play? \n");
     fgets(songs, 1000, stdin);
-    sprintf(song, "%s %smedia/\%s", M_P, HOME_DIR, songs);
+    sprintf(song, "%s %smedia/\%s", MediaPlayer, HOMEDIR, songs);
     system(song);
 
 } else if ((strcmp(str, "calendar") == 0) || (strcmp(str, "open calendar") == 0)) {
@@ -89,7 +89,7 @@ else if ((strcmp(result, "restaurant")) == 0) {
 else if ((strcmp(str, "help") == 0)) {
     char * help1 = "less ";
     char help[1000];
-    sprintf(help, "%s%s%s", help1, HOME_DIR, "help.txt");
+    sprintf(help, "%s%s%s", help1, HOMEDIR, "help.txt");
     system(help);
 } else if ((strcmp(result, "google") == 0)) {
 
