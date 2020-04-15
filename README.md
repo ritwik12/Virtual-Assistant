@@ -20,6 +20,7 @@ It can provide a wide variety of services, These includes:
 <li>Open Calendar of any year</li>
 <li>Find Restaurants in an area</li>  
 <li>Send emails using your Gmail account</li>  
+<li>Math Calculations</li>  
 </ul>
 
 ![screenshot from 2017-11-04 23 13 18](https://user-images.githubusercontent.com/20038775/32407915-c80e1a72-c1b5-11e7-83f4-efafcf7d3c85.png)
@@ -201,6 +202,14 @@ Access the gmail service using
 emails
 ```
 ![56217042-d4841c00-6062-11e9-9d98-71f7bda8a1d4](https://user-images.githubusercontent.com/20038775/56322188-fde99880-6185-11e9-932b-d2f4a7115cd8.png)
+# Math
+Virtual assistant can perform calculations for you, use `math` to calculate expressions in the command line, when you're done use `quit`.
+
+For long arithmetic expressions, the assistant can bring up the calculator for you by using `calculator`.
+![math_demo](https://user-images.githubusercontent.com/57401083/79321003-5d05f880-7f13-11ea-99db-8ec7e8c2343a.png)
+
+
+
   
 # Help
 
