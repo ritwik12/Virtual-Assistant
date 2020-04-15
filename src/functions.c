@@ -24,7 +24,6 @@ extern "H" {
 
 
 #define SPACE ' '
-
 //Function used by libcurl to allocate memory to data received from the HTTP response
 
 struct MemoryStruct {
