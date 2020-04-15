@@ -203,7 +203,7 @@ emails
 ```
 ![56217042-d4841c00-6062-11e9-9d98-71f7bda8a1d4](https://user-images.githubusercontent.com/20038775/56322188-fde99880-6185-11e9-932b-d2f4a7115cd8.png)
 # Math
-Virtual assistant can perform calculations for you, use `math` to calculate expressions in the command line using GNUs command line calculator, when you're done use `quit`. use `man bc` to learn about the command line calculator capabilities.
+Virtual assistant can perform calculations for you, use `math` to calculate expressions in the command line using GNUs command line calculator, when you're done use `quit`. open new terminal and use `man bc` to learn about the command line calculator capabilities.
 
 For long arithmetic expressions, the assistant can bring up the calculator for you by using `calculator`.
 ![math_demo](https://user-images.githubusercontent.com/57401083/79321003-5d05f880-7f13-11ea-99db-8ec7e8c2343a.png)
