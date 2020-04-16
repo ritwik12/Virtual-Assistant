@@ -76,10 +76,17 @@ const char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
 		{"mail", "new", "mails", "write"},
 		{"Want", "to", "read", "emails"}
 	},
+	[MATH] = {
+		{"arithmetic","calculations"},
+		{"solve","equation"},
+		{"mathematical", "calculations"}
+	
+	
+	},
 	[CALENDAR] = {},
 	[YOUTUBE] = {},
-	[HELP] = {},
-	[MATH] = {}
+	[HELP] = {}
+	
 };
 
 /* globally defined variables */
