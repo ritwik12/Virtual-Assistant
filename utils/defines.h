@@ -22,6 +22,7 @@ enum categories {
 	YOUTUBE,
 	HELP,
 	RESTAURANT,
+	MATH,
 	LAST_FIELD
 };
 
@@ -37,7 +38,8 @@ const char *catagories_str[LAST_FIELD] =
 	"calendar",
 	"youtube",
 	"help",
-	"restaurant"
+	"restaurant",
+	"math"
 };
 
 /* 3D array of all catagory classifiers*/
@@ -74,9 +76,11 @@ const char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
 		{"mail", "new", "mails", "write"},
 		{"Want", "to", "read", "emails"}
 	},
+	[MATH] = {},
 	[CALENDAR] = {},
 	[YOUTUBE] = {},
 	[HELP] = {}
+	
 };
 
 /* globally defined variables */

@@ -77,8 +77,20 @@ else if ((strcmp(result, "weather") == 0)) {
     fgets(cal, 1000, stdin);
     sprintf(calendar, "cal \%s", cal);
     system(calendar);
-}//Restaurant
-else if ((strcmp(result, "restaurant")) == 0) {
+    
+}else if(strcmp(str,"math") == 0) {
+	system("say what can i calculate for you");
+	printf("Please enter the calculation you wish to perform: \n");
+	system("bc -q");
+
+}else if(strcmp(str,"calculator") == 0 || strcmp(str,"open calculator")==0){
+	printf("openning calculator\n");
+	system("say openning calculator");	
+	system("gnome-calculator");
+
+
+//Restaurant
+}else if ((strcmp(result, "restaurant")) == 0) {
 
     find_restaurants();
 
