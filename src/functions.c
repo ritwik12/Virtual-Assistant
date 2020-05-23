@@ -90,7 +90,7 @@ int find_restaurants() {
     CURL *curl = NULL;
     CURLcode result;
     int i, len;
-    int j, head_length, length; //variables for output formatting
+    size_t j, head_length, length; //variables for output formatting
     char location[1000];
     struct json_object *jobj, *obj1, *obj2, *obj3, *obj4, *lat, *lng; //Geocoding API json objects
     struct json_object *pl1, *pl2, *idx, *name, *price, *vic, *rate, *open, *hrs; //Google Place API json Objects

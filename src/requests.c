@@ -12,7 +12,7 @@ printf("%s\n", x);
 fgets(str, 1000, stdin);
 
 //Check for spaces as input
-for (int i = 0; str[i]!='\n'; i++)
+for (size_t i = 0; str[i]!='\n'; i++)
 {
     if (str[i] != ' ')
         only_spaces = false;
