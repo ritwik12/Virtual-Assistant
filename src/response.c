@@ -99,9 +99,7 @@ else if ((strcmp(result, "weather") == 0)) {
 
 }    //Help
 else if ((strcmp(str, "help") == 0)) {
-    char * help1 = "less ";
-    char help[1000];
-    sprintf(help, "%s%s%s", help1, HOMEDIR, "help.txt");
+    char * help = "less utils/help.txt";
     system(help);
 } else if ((strcmp(result, "google") == 0)) {
 
