@@ -60,10 +60,7 @@ else if ((strcmp(result, "weather") == 0)) {
 } else if ((strcmp(result, "media") == 0)) {
     system("say here are the list of available media");
     printf("Here are the list of available media\n");
-    char * sys_cmd1;
-    char sys_cmd[1000];
-    sys_cmd1 = "ls ";
-    sprintf(sys_cmd, "%s%s%s", sys_cmd1, HOMEDIR, "media/");
+    char * sys_cmd = "ls media";
     system(sys_cmd);
     system("say which media do you want me to play");
     printf("Which media do you want me to play? \n");
