@@ -24,7 +24,7 @@ FILE *get_Config_File()
 char *set_HomeDir_Var(FILE *conf)
 {
     //Getting home directory out of configuration file
-    int i = 0;
+    size_t i = 0;
     char cfg_line[1000];
     cfg_line[i] = fgetc(conf);
     char *pos;
@@ -47,7 +47,7 @@ char *set_HomeDir_Var(FILE *conf)
 char *set_MediaPlayer_Var(FILE *conf)
 {
     //Get preferred media player from config file
-    int i = 0;
+    size_t i = 0;
     MediaPlayer[i] = fgetc(conf);
     i++;
     while (MediaPlayer[i - 1] != '\n' && MediaPlayer[i - 1] != EOF)
@@ -68,7 +68,7 @@ char *set_MediaPlayer_Var(FILE *conf)
 char *set_WebBrowser_Var(FILE *conf)
 {
     //Get preferred Webbrowser out of config file
-    int i = 0;
+    size_t i = 0;
     char *pos;
     WebBrowser[i] = fgetc(conf);
     i++;

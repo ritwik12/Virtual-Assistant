@@ -11,8 +11,8 @@
  */
 
 
-int word = 0, character = 0;
-for (int iter_char = 0; iter_char < strlen(example); iter_char++) {
+size_t word = 0, character = 0;
+for (size_t iter_char = 0; iter_char < strlen(example); iter_char++) {
     example[iter_char] = tolower(example[iter_char]);
     if (example[iter_char] == ' ') {
         if (example[iter_char + 1] != ' ') {
@@ -36,10 +36,10 @@ split[word][character] = '\0';
  * iter_classifier_w - iterates over all words in a single classifier array
  */
 int classification_score = 0;
-for (int class = 0 ; class < LAST_FIELD ; class++) {
-	for (int iter_input = 0; iter_input <= word; iter_input++) {
-		for (int iter_classifier = 0; iter_classifier < NUM_WORDS; iter_classifier++) {
-			for (int iter_classifier_w = 0; iter_classifier_w < WORD_LEN; iter_classifier_w++) {
+for (size_t class = 0 ; class < LAST_FIELD ; class++) {
+	for (size_t iter_input = 0; iter_input <= word; iter_input++) {
+		for (size_t iter_classifier = 0; iter_classifier < NUM_WORDS; iter_classifier++) {
+			for (size_t iter_classifier_w = 0; iter_classifier_w < WORD_LEN; iter_classifier_w++) {
 				if ((classifier[class][iter_classifier][iter_classifier_w]) &&
 						(strcmp(classifier[class][iter_classifier][iter_classifier_w], split[iter_input]) == 0)) {
 					classification_score++;
@@ -57,7 +57,7 @@ for (int class = 0 ; class < LAST_FIELD ; class++) {
 
 int score = 0;
 strcpy(result,"");
-for (int class = 0; class < LAST_FIELD; class++) {
+for (size_t class = 0; class < LAST_FIELD; class++) {
 	if (scores[class] > score) {
 		score = scores[class];
 		strcpy(result, catagories_str[class]);
