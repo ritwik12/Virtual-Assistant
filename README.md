@@ -196,11 +196,10 @@ open calendar
 In order to send emails using Virtual-Assistant, you need to allow access from less secure apps on your gmail account.
 Open your gmail account on any browser, click on profile pick and then `Google account`. In the tab `Security` you have to activate the parameter `Allow access from less secure apps`.
 <p>
-Access the gmail service using
+Access the gmail service using `emails`. You will be prompted for your email address and email password. Once you have input those, your email will be saved and you can choose what actions you would like to use. Currently you can only choose to write and send emails. Once you are done writing your message use `finish` and the email will save and send.
 
-```
-emails
-```
+
+
 ![56217042-d4841c00-6062-11e9-9d98-71f7bda8a1d4](https://user-images.githubusercontent.com/20038775/56322188-fde99880-6185-11e9-932b-d2f4a7115cd8.png)
 # Arithmetic Calculations
 Virtual assistant can perform calculations for you, use `math` to calculate expressions in the command line using GNUs command line calculator. When you're done, just use `quit`. 
