@@ -195,7 +195,7 @@ open calendar
 
 In order to send emails using Virtual-Assistant, you need to allow access from less secure apps on your gmail account.
 Open your gmail account on any browser, click on profile pick and then `Google account`. In the tab `Security` you have to activate the parameter `Allow access from less secure apps`.
-<p>
+
 Access the gmail service using `emails`. You will be prompted for your email address and email password. Once you have input those, your email will be saved and you can choose what actions you would like to use. Currently you can only choose to write and send emails. Once you are done writing your message use `finish` and the email will save and send.
 
 
