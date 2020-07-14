@@ -94,3 +94,5 @@ char example[1000];
 char split[NUM_WORDS][WORD_LEN] = {};
 int compare[10];
 char result[20];
+char tmp_string[1000];
+char TTS[20];

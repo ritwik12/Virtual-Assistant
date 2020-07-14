@@ -103,7 +103,8 @@ int find_restaurants() {
 
     curl = curl_easy_init();
 
-    system("say Please enter your area/locality");
+    sprintf(tmp_string, "%s \"Please enter your area/locality\" 2>/dev/null", TTS);
+    system(tmp_string);
     printf("Please enter your area/locality\n\n");
     fgets(address, 1000, stdin);
 
@@ -183,7 +184,8 @@ int find_restaurants() {
         json_object_object_get_ex(pl1, "results", &pl2);
         len = json_object_array_length(pl2);
 
-        system("say Here are some restaurants in the area");
+        sprintf(tmp_string, "%s \"Here are some restaurants in the area\" 2>/dev/null", TTS);
+        system(tmp_string);
         printf("Here are some restaurants in the area\n\n");
         for (i = 0; i < len && i <= 7; i++) {
             idx = json_object_array_get_idx(pl2, i);
