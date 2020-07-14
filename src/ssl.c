@@ -186,10 +186,12 @@ int ssl_connect(char *arg) {
             }
             printf("\nSending email ... ");
             if(SMTP_request(ssl,to,title,body)==0){
-              system("say email sent");
+              sprintf(tmp_string, "%s \"email sent\" 2>/dev/null", TTS);
+              system(tmp_string);
               printf("Email sent \xE2\x9C\x93\n");
             }else{
-              system("say Error. Please verify your email adress and password.");
+              sprintf(tmp_string, "%s \"Error. Please verify your email adress and password.\" 2>/dev/null", TTS);
+              system(tmp_string);
               printf("Error \xe2\x9C\x97\nPlease verify your email adress and password.\n");
             }
           }else if (strcmp(arg,"read")==0){
