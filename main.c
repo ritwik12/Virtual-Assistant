@@ -7,16 +7,15 @@
 #include <json-c/json_tokener.h>
 #include "utils/defines.h"
 #include <stdbool.h>
+#include "src/init_config.h"
+#include "src/functions.c"
+#include "src/email.c"
+
 FILE *conffile;
 char *HomeDir, *Mediaplay, *browser;
 int retval = 0;
 int len = 0;
-char TTS[20];
-char tmp_string[1000];
 
-#include "src/init_config.h"
-#include "src/functions.c"
-#include "src/email.c"
 
 int main()
 {
