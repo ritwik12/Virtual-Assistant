@@ -7,19 +7,23 @@
 
 
 if ((strcmp(result, "greeting") == 0)) {
-    system("say I am good");
+    sprintf(tmp_string, "%s \"I am good\" 2>/dev/null", TTS);
+    system(tmp_string);
     printf("I am good \n");
 } else if (strcmp(str, "firefox") == 0 || strcmp(str, "open firefox") == 0 || strcmp(str, "run firefox") == 0 || strcmp(str, "start firefox") == 0) {
-    system("say opening firefox");
+    sprintf(tmp_string, "%s \"opening firefox\" 2>/dev/null", TTS);
+    system(tmp_string);
     system("firefox");
 } else if ((strcmp(str, "vlc") == 0) || (strcmp(str, "open vlc") == 0) || (strcmp(str, "run vlc") == 0) || (strcmp(str, "start vlc") == 0)) {
-    system("say opening vlc");
+    sprintf(tmp_string, "%s \"opening vlc\" 2>/dev/null", TTS);
+    system(tmp_string);
     system("vlc");
 }// Weather
 else if ((strcmp(result, "weather") == 0)) {
     printf("Please enter location to get weather forecast \n");
     fgets(location, 1000, stdin);
-    system("say showing weather");
+    sprintf(tmp_string, "%s \"showing weather\" 2>/dev/null", TTS);
+    system(tmp_string);
     sprintf(weather, "http://wttr.in/\%s", location);
     int counter_weather = 0;
     while (weather[counter_weather] != '\n') {
@@ -52,37 +56,42 @@ else if ((strcmp(result, "weather") == 0)) {
 
 
     //--------------------------------
-    sprintf(buff, "say searching youtube for \%s", youtube);
+    sprintf(buff, "%s \"searching youtube for \%s\" 2>/dev/null",TTS, youtube);
     system(buff);
     sprintf(buf, "%s https://www.youtube.com/results?search_query=\%s", WebBrowser, start);
     system(buf);
 
 } else if ((strcmp(result, "media") == 0)) {
-    system("say here are the list of available media");
+    sprintf(tmp_string, "%s \"here are the list of available media\" 2>/dev/null", TTS);
+    system(tmp_string);
     printf("Here are the list of available media\n");
     char * sys_cmd = "ls media";
     system(sys_cmd);
-    system("say which media do you want me to play");
+    sprintf(tmp_string, "%s \"which media do you want me to play\" 2>/dev/null", TTS);
+    system(tmp_string);
     printf("Which media do you want me to play? \n");
     fgets(songs, 1000, stdin);
     sprintf(song, "%s %smedia/\%s", MediaPlayer, HOMEDIR, songs);
     system(song);
 
 } else if ((strcmp(str, "calendar") == 0) || (strcmp(str, "open calendar") == 0)) {
-    system("say which year calendar you want to see");
+    sprintf(tmp_string, "%s \"which year calendar you want to see\" 2>/dev/null", TTS);
+    system(tmp_string);
     printf("Which year calendar you want to see? \n");
     fgets(cal, 1000, stdin);
     sprintf(calendar, "cal \%s", cal);
     system(calendar);
     
 }else if(strcmp(str,"math") == 0) {
-	system("say what can i calculate for you");
+    sprintf(tmp_string, "%s \"what can i calculate for you\" 2>/dev/null", TTS);
+    system(tmp_string);
 	printf("Please enter the calculation you wish to perform: \n");
 	system("bc -q");
 
 }else if(strcmp(str,"calculator") == 0 || strcmp(str,"open calculator")==0){
 	printf("openning calculator\n");
-	system("say openning calculator");	
+    sprintf(tmp_string, "%s \"openning calculator\" 2>/dev/null", TTS);
+    system(tmp_string);	
 	system("gnome-calculator");
 
 
@@ -120,7 +129,8 @@ else if ((strcmp(str, "help") == 0)) {
 
         if (strcmp(str, "stop") != 0) {
             //--------------------------------
-            sprintf(buff, "say Do you mean \%s", str);
+            
+            sprintf(buff, "%s \"Do you mean \%s\" 2>/dev/null",TTS, str);
             system(buff);
             sprintf(buf, "%s https://www.google.co.in/search?q=%s&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=zkWgWc3fNeXI8AeCr5LYBw ", WebBrowser, start);
             system(buf);

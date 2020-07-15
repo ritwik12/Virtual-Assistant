@@ -100,6 +100,7 @@ int compare[10];
 char result[20];
 
 
+
 /* data structures for word lookup */
 #define TOTAL_WORDS 1000
 
@@ -125,5 +126,10 @@ WordCategory word_list[TOTAL_WORDS];
 unsigned int word_list_length;
 
 int _compareFunction(const void *a, const void *b);
+
+
+
+char tmp_string[1000];
+char TTS[20];
 
 #endif
