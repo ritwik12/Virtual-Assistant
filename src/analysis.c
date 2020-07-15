@@ -11,6 +11,9 @@
  */
 
 
+#include <stdlib.h>
+#include "../utils/defines.h"
+
 size_t word = 0, character = 0;
 for (size_t iter_char = 0; iter_char < strlen(example); iter_char++) {
     example[iter_char] = tolower(example[iter_char]);
@@ -28,27 +31,18 @@ for (size_t iter_char = 0; iter_char < strlen(example); iter_char++) {
 
 split[word][character] = '\0';
 
-/*
- * classify string - compare input with all classifiers
- * class - iterator for classes, i.e. google, weather etc.
- * iter_input - iterates over words in the input string
- * iter_classifier - iterates over the classifier arrays in each class
- * iter_classifier_w - iterates over all words in a single classifier array
- */
+
 int classification_score = 0;
-for (size_t class = 0 ; class < LAST_FIELD ; class++) {
-	for (size_t iter_input = 0; iter_input <= word; iter_input++) {
-		for (size_t iter_classifier = 0; iter_classifier < NUM_WORDS; iter_classifier++) {
-			for (size_t iter_classifier_w = 0; iter_classifier_w < WORD_LEN; iter_classifier_w++) {
-				if ((classifier[class][iter_classifier][iter_classifier_w]) &&
-						(strcmp(classifier[class][iter_classifier][iter_classifier_w], split[iter_input]) == 0)) {
-					classification_score++;
-				}
-			}
-		}
-	}
-	scores[class] = classification_score;
-	classification_score = 0;
+WordCategory *search_result;
+for (int i = 0; i < LAST_FIELD; i++)
+	scores[i] = 0;
+
+for (size_t iter_input = 0; iter_input <= word; iter_input++) {
+  	search_result = (WordCategory *)bsearch(split[iter_input], word_list,word_list_length,sizeof(WordCategory),_compareFunction);
+  	if (search_result != NULL) {
+	  	for (int class = 0; class < LAST_FIELD; class++)
+	  		scores[class] += (search_result->category & (1 << class)) != 0;
+  	}
 }
 
 /*

@@ -8,6 +8,7 @@
 #include "src/init_config.h"
 #include "src/functions.c"
 #include "src/email.c"
+#include "src/word_list.c"
 #include "utils/defines.h"
 #include <stdbool.h>
 FILE *conffile;
@@ -17,7 +18,6 @@ int len = 0;
 
 int main()
 {
-
         conffile = get_Config_File();
         HomeDir = set_HomeDir_Var(conffile);
         Mediaplay = set_MediaPlayer_Var(conffile);
@@ -36,6 +36,8 @@ int main()
                 sprintf(preferred_webbrowser, "say Your preferred webbrowser is %s", browser);
                 system(preferred_webbrowser);  
         }
+
+        fillWordList();
       do
         {
 

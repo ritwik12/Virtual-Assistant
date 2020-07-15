@@ -4,9 +4,13 @@
  * Author: Riya
  * Author: Ritwik
  * Created on September 3, 2019, 10:00 AM
+ * 
+ * Contribution: mcavazotti
  */
 
-#define WORD_LEN 10 /* the maximal length of each word in a classifier */
+#ifndef V_A_DEFINES
+#define V_A_DEFINES
+#define WORD_LEN 15 /* the maximal length of each word in a classifier */
 #define NUM_WORDS 10 /* the number of words per catagory classifier */
 
 /* catagories enum - DO NOT evaluate elements
@@ -55,31 +59,31 @@ const char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
 		{"how", "welcome", "morning", "doing"},
 		{"hello", "there", "good", "afternoon"}
 	},
+	[MEDIA] = {
+		{"can", "you", "list", "media"},
+		{"video", "listen", "play", "music"},
+		{"play", "something", "nice", "song"}
+	},
 	[GOOGLE] = {
 		{"open", "google", "for", "me"},
 		{"I", "want", "search", "browse"},
 		{"can", "you", "open", "google"}
-	},
-	[MEDIA] = {
-		{"can", "you", "list", "media"},
-		{"video", "listen", "play", "music"},
-		{"play", "something", "nice", "song "}
-	},
-	[RESTAURANT] = {
-		{"Please", "find", "some", "restaurants"},
-		{"Find", " ", "some", "restaurants"},
-		{"Show", " ", " ", "restaurants"},
-		{"Find", "places", "to", "eat"}
 	},
 	[EMAIL] = {
 		{"can", "I", "send", "email"},
 		{"mail", "new", "mails", "write"},
 		{"Want", "to", "read", "emails"}
 	},
-	[MATH] = {},
 	[CALENDAR] = {},
 	[YOUTUBE] = {},
-	[HELP] = {}
+	[HELP] = {},
+	[RESTAURANT] = {
+		{"Please", "find", "some", "restaurants"},
+		{"Find", " ", "some", "restaurants"},
+		{"Show", " ", " ", "restaurants"},
+		{"Find", "places", "to", "eat"}
+	},
+	[MATH] = {}
 	
 };
 
@@ -94,3 +98,32 @@ char example[1000];
 char split[NUM_WORDS][WORD_LEN] = {};
 int compare[10];
 char result[20];
+
+
+/* data structures for word lookup */
+#define TOTAL_WORDS 1000
+
+// binary code for each category
+#define WEATHER_CAT (1 << WEATHER)
+#define GREETING_CAT (1 << GREETING)
+#define MEDIA_CAT (1 << MEDIA)
+#define GOOGLE_CAT (1 << GOOGLE)
+#define EMAIL_CAT (1 << EMAIL)
+#define CALENDAR_CAT (1 << CALENDAR)
+#define YOUTUBE_CAT (1 << YOUTUBE)
+#define HELP_CAT (1 << HELP)
+#define RESTAURANT_CAT (1 << RESTAURANT)
+#define MATH_CAT (1 << MATH)
+
+
+typedef struct {
+	char word[WORD_LEN];
+	int category;
+} WordCategory;
+
+WordCategory word_list[TOTAL_WORDS];
+unsigned int word_list_length;
+
+int _compareFunction(const void *a, const void *b);
+
+#endif
