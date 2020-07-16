@@ -101,10 +101,9 @@ char result[20];
 
 
 
-/* data structures for word lookup */
 #define TOTAL_WORDS 1000
 
-// binary code for each category
+/* binary code for each category */
 #define WEATHER_CAT (1 << WEATHER)
 #define GREETING_CAT (1 << GREETING)
 #define MEDIA_CAT (1 << MEDIA)
@@ -116,15 +115,16 @@ char result[20];
 #define RESTAURANT_CAT (1 << RESTAURANT)
 #define MATH_CAT (1 << MATH)
 
-
+/* data structure relating words to categories */
 typedef struct {
 	char word[WORD_LEN];
-	int category;
+	int category; // coded as binary
 } WordCategory;
 
 WordCategory word_list[TOTAL_WORDS];
 unsigned int word_list_length;
 
+/* comparison function for sorting and searching*/
 int _compareFunction(const void *a, const void *b);
 
 

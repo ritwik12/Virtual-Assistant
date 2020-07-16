@@ -52,6 +52,7 @@ int main()
                 system(preferred_webbrowser);  
         }
 
+        // pre-process words
         fillWordList();
       do
         {

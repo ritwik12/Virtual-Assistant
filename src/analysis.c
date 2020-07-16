@@ -37,11 +37,14 @@ WordCategory *search_result;
 for (int i = 0; i < LAST_FIELD; i++)
 	scores[i] = 0;
 
+/* performs a binary search for each word in the input array,
+* if the word is found, the score of each class to which this word belongs to is incremented
+*/
 for (size_t iter_input = 0; iter_input <= word; iter_input++) {
   	search_result = (WordCategory *)bsearch(split[iter_input], word_list,word_list_length,sizeof(WordCategory),_compareFunction);
   	if (search_result != NULL) {
 	  	for (int class = 0; class < LAST_FIELD; class++)
-	  		scores[class] += (search_result->category & (1 << class)) != 0;
+	  		scores[class] += (search_result->category & (1 << class)) != 0; // comparing category
   	}
 }
 
