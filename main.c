@@ -11,6 +11,10 @@
 #include "src/functions.c"
 #include "src/email.c"
 
+#include "src/word_list.c"
+#include "utils/defines.h"
+#include <stdbool.h>
+
 FILE *conffile;
 char *HomeDir, *Mediaplay, *browser;
 int retval = 0;
@@ -19,6 +23,7 @@ int len = 0;
 
 int main()
 {
+
         if (!system("say --version 2>/dev/null")) {
                 strcpy(TTS,"say");
         } else if (!system("espeak --version 2>/dev/null")) {
@@ -46,6 +51,9 @@ int main()
                 sprintf(preferred_webbrowser, "%s \"Your preferred webbrowser is %s\" 2>/dev/null",TTS, browser);
                 system(preferred_webbrowser);  
         }
+
+        // pre-process words
+        fillWordList();
       do
         {
 
