@@ -1,1 +1,3 @@
 *.gch
+*.DS_Store
+.vscode/
