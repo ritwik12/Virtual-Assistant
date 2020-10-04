@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -std=gnu11 -Isrc -Iutils
+CFLAGS = -std=gnu11 -Isrc -Iutils `pkg-config --cflags libcurl`
 LIBS = -lssl -lcrypto -ljson-c `pkg-config --libs libcurl`
 
 BUILD_DIR = ./build
