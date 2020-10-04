@@ -118,11 +118,23 @@ brew install json-c
 brew install openssl
 ```
 
-Compile
+### Compile
+
+To compile with make:
+```
+make
+```
+
+To remove all build files
+```
+make clean
+```
+
+To compile with gcc:
 ```
 gcc main.c src/init_config.c $(pkg-config --libs --cflags libcurl) -lssl -lcrypto -ljson-c -std=gnu11
-
 ```
+
 # Restaurant
   Virtual Assistant can find restaurants in an area.
 
