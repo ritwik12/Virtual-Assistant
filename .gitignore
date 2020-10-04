@@ -1,1 +1,4 @@
 *.gch
+
+# build directory for projects
+build
