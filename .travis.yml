@@ -3,4 +3,4 @@ before_install:
 - sudo apt-get install -y libjson0 libjson0-dev
 
 language: C
-script: gcc main.c src/init_config.c $(pkg-config --libs --cflags libcurl) -lssl -lcrypto -ljson-c -std=gnu11
+script: make

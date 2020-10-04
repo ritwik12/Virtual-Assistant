@@ -1,3 +1,6 @@
 *.gch
 *.DS_Store
 .vscode/
+
+# build directory for projects
+build
