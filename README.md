@@ -125,6 +125,8 @@ To compile with make:
 make
 ```
 
+then execute using `./build/virtual_assistant`
+
 To remove all build files
 ```
 make clean
@@ -259,4 +261,5 @@ Permissions of this strong copyleft license are conditioned on making available 
 
 # Credits
 This project intitiated with contributions by [Riya](https://github.com/riya-17) and [Ritwik](https://github.com/ritwik12).
-The project is much better and improving with the help of some awesome contributors such as [Rushikesh](https://github.com/Rushikesh22), [ATID-tandem](https://github.com/ATID-tandem), [GaelleMarais](https://github.com/GaelleMarais), [LilyaMel](https://github.com/LilyaMel), [speedy-software-ch](https://github.com/speedy-software-ch), [igo4Jesus](https://github.com/igo4Jesus), [Matheus](https://github.com/mcavazotti) and [many more](https://github.com/ritwik12/Virtual-Assistant/graphs/contributors)
+The project is much better and improving with the help of some awesome contributors such as [Rushikesh](https://github.com/Rushikesh22), [ATID-tandem](https://github.com/ATID-tandem), [GaelleMarais](https://github.com/GaelleMarais), [LilyaMel](https://github.com/LilyaMel), [speedy-software-ch](https://github.com/speedy-software-ch), [igo4Jesus](https://github.com/igo4Jesus), [Matheus](https://github.com/mcavazotti), [
+hardikpnsp](https://github.com/hardikpnsp) and [many more](https://github.com/ritwik12/Virtual-Assistant/graphs/contributors)
