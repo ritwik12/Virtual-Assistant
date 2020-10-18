@@ -26,6 +26,8 @@ enum categories {
 	YOUTUBE,
 	HELP,
 	RESTAURANT,
+	REMINDER,
+	SCHEDULE,
 	MATH,
 	LAST_FIELD
 };
@@ -43,6 +45,8 @@ const char *catagories_str[LAST_FIELD] =
 	"youtube",
 	"help",
 	"restaurant",
+	"reminder",
+	"schedule",
 	"math"
 };
 
@@ -83,6 +87,19 @@ const char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
 		{"Show", " ", " ", "restaurants"},
 		{"Find", "places", "to", "eat"}
 	},
+	[REMINDER] = {
+		{"Add"},
+		{"Make"},
+		{"Add","reminder"},
+		{"Make","schedule"},
+		{"make","an","appointment"}
+	},
+	[SCHEDULE] = {
+		{"my","schedule"},
+		{"schedule","today's"},
+		{"What's","my","schedule"},
+		{"Do","I","have","appointments"},
+	},
 	[MATH] = {}
 	
 };
@@ -99,8 +116,12 @@ char split[NUM_WORDS][WORD_LEN] = {};
 int compare[10];
 char result[20];
 
-
-
+/* event struct for reminder and schedule feature */
+typedef struct event{
+char desc[50];
+char date[10];
+char time[6];
+}event;
 #define TOTAL_WORDS 1000
 
 /* binary code for each category */
@@ -113,6 +134,8 @@ char result[20];
 #define YOUTUBE_CAT (1 << YOUTUBE)
 #define HELP_CAT (1 << HELP)
 #define RESTAURANT_CAT (1 << RESTAURANT)
+#define REMINDER_CAT (1 << REMINDER)
+#define SCHEDULE_CAT (1 << SCHEDULE)
 #define MATH_CAT (1 << MATH)
 
 /* data structure relating words to categories */

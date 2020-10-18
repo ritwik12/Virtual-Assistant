@@ -102,8 +102,14 @@ else if ((strcmp(result, "weather") == 0)) {
 
 }else if((strcmp(result, "email") == 0)){
     email();
-
-}    //Help
+}
+else if((strcmp(result, "schedule") == 0)){
+	schedule();
+}
+else if((strcmp(result, "reminder") == 0)){
+	add_reminder();
+}
+    //Help
 else if ((strcmp(str, "help") == 0)) {
     char * help = "less utils/help.txt";
     system(help);
