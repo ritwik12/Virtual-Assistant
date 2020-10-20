@@ -212,9 +212,15 @@ Open your gmail account on any browser, click on profile pick and then `Google a
 
 Access the gmail service using `emails`. You will be prompted for your email address and email password. Once you have input those, your email will be saved and you can choose what actions you would like to use. Currently you can only choose to write and send emails. Once you are done writing your message use `finish` and the email will save and send.
 
-
-
 ![56217042-d4841c00-6062-11e9-9d98-71f7bda8a1d4](https://user-images.githubusercontent.com/20038775/56322188-fde99880-6185-11e9-932b-d2f4a7115cd8.png)
+
+# Reminder and Schedule
+
+You can also schedule your appointments and work and the Virtual-Assistant will remind you of the appointments you have on a particular day.You can also access your schedule for any other day.
+In order to add a reminder simply give commands like "Add a reminder" or "Add an appointment" or "Make a schedule".Enter in the the required details like date,time and event description.
+Every time you run the Virtual-Assistant you will recieve notifications of your schedule for that day.If you wish to access schedule for any other day you can give commands like "whats my schedule" or "what's my appointments"
+
+
 # Arithmetic Calculations
 Virtual assistant can perform calculations for you, use `math` to calculate expressions in the command line using GNUs command line calculator. When you're done, just use `quit`. 
 
@@ -222,7 +228,6 @@ Use `man bc` on terminal (outside Virtual Assistant) to learn about the command 
 
 For long arithmetic expressions, the assistant can bring up the calculator for you by using `calculator`.
 ![math_demo](https://user-images.githubusercontent.com/57401083/79321003-5d05f880-7f13-11ea-99db-8ec7e8c2343a.png)
-
   
 # Help
 

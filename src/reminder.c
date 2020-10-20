@@ -127,6 +127,7 @@ return 0;
 //gets schedule of the date mentioned by user
 int schedule()
 {
+getchar();
 daily_reminder();
 printf("Enter the schedule date.(mm/dd/yy):\n");
 fgets(sc_date,10,stdin);
