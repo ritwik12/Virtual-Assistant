@@ -63,7 +63,7 @@ return 0;
 while(fread(&search_event,sizeof(event),1,fp))
 {
 if(!strcmp(search_event.date,sc_date)){
-printf("You have %s on %s at %s", search_event.desc,search_event.date,search_event.time);
+printf("You have %s on %s at %s \n", search_event.desc,search_event.date,search_event.time);
 events += 1;
 }
 }
@@ -134,6 +134,5 @@ fgets(sc_date,10,stdin);
 *strchr(sc_date,'\n')='\0';
 show_schedule(sc_date);
 }
-
 
 

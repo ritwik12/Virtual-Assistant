@@ -88,17 +88,17 @@ const char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
 		{"Find", "places", "to", "eat"}
 	},
 	[REMINDER] = {
-		{"Add"},
-		{"Make"},
-		{"Add","reminder"},
-		{"Make","schedule"},
-		{"make","an","appointment"}
+		{"set, "reminder"},
+		{"remind", "me"},
+		{"Add", "reminder"},
+		{"Make", "schedule"},
+		{"make", "an", "appointment"}
 	},
 	[SCHEDULE] = {
-		{"my","schedule"},
-		{"schedule","today's"},
-		{"What's","my","schedule"},
-		{"Do","I","have","appointments"},
+		{"show", "my", "schedule"},
+		{"schedule", "today's"},
+		{"What's", "my", "schedule"},
+		{"Do", "I", "have", "appointments"},
 	},
 	[MATH] = {}
 	

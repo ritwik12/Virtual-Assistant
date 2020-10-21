@@ -216,9 +216,11 @@ Access the gmail service using `emails`. You will be prompted for your email add
 
 # Reminder and Schedule
 
-You can also schedule your appointments and work and the Virtual-Assistant will remind you of the appointments you have on a particular day.You can also access your schedule for any other day.
-In order to add a reminder simply give commands like "Add a reminder" or "Add an appointment" or "Make a schedule".Enter in the the required details like date,time and event description.
-Every time you run the Virtual-Assistant you will recieve notifications of your schedule for that day.If you wish to access schedule for any other day you can give commands like "whats my schedule" or "what's my appointments"
+You can schedule your appointments and work using Virtual-Assistant. It will remind you of the appointments you have on a particular day. You can also access your schedule for any other day by just using the correct words.
+
+In order to add a reminder simply say `Add a reminder` or `Add an appointment` or `Make a schedule` and other things like that. Once there, just enter the required details like date, time and event description.
+
+Every time you run the Virtual-Assistant you will receive notifications of your schedule for that day. If you wish to access schedule for any other day you can say  `my schedule` or `what's my appointments`.
 
 
 # Arithmetic Calculations
