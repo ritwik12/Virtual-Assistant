@@ -212,9 +212,23 @@ Open your gmail account on any browser, click on profile pick and then `Google a
 
 Access the gmail service using `emails`. You will be prompted for your email address and email password. Once you have input those, your email will be saved and you can choose what actions you would like to use. Currently you can only choose to write and send emails. Once you are done writing your message use `finish` and the email will save and send.
 
-
-
 ![56217042-d4841c00-6062-11e9-9d98-71f7bda8a1d4](https://user-images.githubusercontent.com/20038775/56322188-fde99880-6185-11e9-932b-d2f4a7115cd8.png)
+
+# Reminder and Schedule
+
+You can schedule your appointments and work using Virtual-Assistant. It will remind you of the appointments you have on a particular day. You can also access your schedule for any other day by just using the correct words.
+
+In order to add a reminder simply say `Add a reminder` or `Add an appointment` or `Make a schedule` and other things like that. Once there, just enter the required details like date, time and event description.
+
+Every time you run the Virtual-Assistant you will receive notifications of your schedule for that day. If you wish to access schedule for any other day you can say  `my schedule` or `what's my appointments`.
+
+![notification](https://user-images.githubusercontent.com/65824687/96662367-d0c60980-136b-11eb-9cf7-fa98ce06a411.png)
+
+![addreminder](https://user-images.githubusercontent.com/65824687/96662418-f18e5f00-136b-11eb-9f77-3ca879d5002b.png)
+
+![schedule](https://user-images.githubusercontent.com/65824687/96662448-02d76b80-136c-11eb-9a31-32bea79637e7.png)
+
+
 # Arithmetic Calculations
 Virtual assistant can perform calculations for you, use `math` to calculate expressions in the command line using GNUs command line calculator. When you're done, just use `quit`. 
 
@@ -222,7 +236,6 @@ Use `man bc` on terminal (outside Virtual Assistant) to learn about the command 
 
 For long arithmetic expressions, the assistant can bring up the calculator for you by using `calculator`.
 ![math_demo](https://user-images.githubusercontent.com/57401083/79321003-5d05f880-7f13-11ea-99db-8ec7e8c2343a.png)
-
   
 # Help
 

@@ -4,13 +4,13 @@
  *
  * Created on April 10, 2018, 8:51 AM
  */
-
+if( notification_count == 0)
+daily_reminder();
 int c = 0, d = 0, len = 0;
 bool only_spaces = true;
 char * x = "Hey, How can I help you?";
 printf("%s\n", x);
 fgets(str, 1000, stdin);
-
 //Check for spaces as input
 for (size_t i = 0; str[i]!='\n'; i++)
 {
