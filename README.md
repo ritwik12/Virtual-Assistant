@@ -222,6 +222,12 @@ In order to add a reminder simply say `Add a reminder` or `Add an appointment` o
 
 Every time you run the Virtual-Assistant you will receive notifications of your schedule for that day. If you wish to access schedule for any other day you can say  `my schedule` or `what's my appointments`.
 
+![notification](https://user-images.githubusercontent.com/65824687/96662367-d0c60980-136b-11eb-9cf7-fa98ce06a411.png)
+
+![addreminder](https://user-images.githubusercontent.com/65824687/96662418-f18e5f00-136b-11eb-9f77-3ca879d5002b.png)
+
+![schedule](https://user-images.githubusercontent.com/65824687/96662448-02d76b80-136c-11eb-9a31-32bea79637e7.png)
+
 
 # Arithmetic Calculations
 Virtual assistant can perform calculations for you, use `math` to calculate expressions in the command line using GNUs command line calculator. When you're done, just use `quit`. 
