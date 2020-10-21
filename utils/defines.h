@@ -88,7 +88,7 @@ const char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
 		{"Find", "places", "to", "eat"}
 	},
 	[REMINDER] = {
-		{"set, "reminder"},
+		{"set", "reminder"},
 		{"remind", "me"},
 		{"Add", "reminder"},
 		{"Make", "schedule"},
