@@ -52,57 +52,57 @@ const char *catagories_str[LAST_FIELD] =
 
 /* 3D array of all catagory classifiers*/
 const char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
-	[WEATHER] =
-	{
-		{"please", "show", "outside", "condition"},
-		{"how", " ", "weather", "today"},
-		{"weather", " ", "desired", "place"}
-	},
-	[GREETING] = {
-		{"hey", "how", "are", "you"},
-		{"how", "welcome", "morning", "doing"},
-		{"hello", "there", "good", "afternoon"}
-	},
-	[MEDIA] = {
-		{"can", "you", "list", "media"},
-		{"video", "listen", "play", "music"},
-		{"play", "something", "nice", "song"}
-	},
-	[GOOGLE] = {
-		{"open", "google", "for", "me"},
-		{"I", "want", "search", "browse"},
-		{"can", "you", "open", "google"}
-	},
-	[EMAIL] = {
-		{"can", "I", "send", "email"},
-		{"mail", "new", "mails", "write"},
-		{"Want", "to", "read", "emails"}
-	},
-	[CALENDAR] = {},
-	[YOUTUBE] = {},
-	[HELP] = {},
-	[RESTAURANT] = {
-		{"Please", "find", "some", "restaurants"},
-		{"Find", " ", "some", "restaurants"},
-		{"Show", " ", " ", "restaurants"},
-		{"Find", "places", "to", "eat"}
-	},
-	[REMINDER] = {
-		{"set", "reminder"},
-		{"remind", "me"},
-		{"Add", "reminder"},
-		{"Make", "schedule"},
-		{"make", "an", "appointment"}
-	},
-	[SCHEDULE] = {
-		{"show", "my", "schedule"},
-		{"schedule", "today's"},
-		{"What's", "my", "schedule"},
-		{"Do", "I", "have", "appointments"},
-	},
-	[MATH] = {}
-	
-};
+        [WEATHER] =
+        {
+                {"please", "humid", "outside", "condition"},
+                {"rain", "temprature", "weather", "foggy"},
+                {"cold", "hot", "humidity", "cloudy"}
+        },
+        [GREETING] = {
+                {"hey", "how", "are", "you"},
+                {"how", "welcome", "morning", "doing"},
+                {"hello", "there", "good", "afternoon"}
+        },
+        [MEDIA] = {
+                {"hear", "song", "list", "media"},
+                {"video", "listen", "play", "music"},
+                {"play", "watch", "songs", "song"}
+        },
+        [GOOGLE] = {
+                {"", "google", "", ""},
+                {"know", "", "search", "browse"},
+                {"", "", "", "google"}
+        },
+        [EMAIL] = {
+                {"", "", "send", "email"},
+                {"mail", "new", "mails", "write"},
+                {"Want", "inbox", "read", "emails"}
+        },
+        [CALENDAR] = {},
+        [YOUTUBE] = {},
+        [HELP] = {},
+        [RESTAURANT] = {
+                {"cafe", "hunger", "hungry", "restaurants"},
+                {"find", "food", "tasty", "restaurants"},
+                {"lunch", "drink", "taste", "dinner"},
+                {"breakfast", "places", "snacks", "eat"}
+        },
+        [REMINDER] = {
+                {"set", "reminder"},
+                {"remind", "me"},
+                {"Add", "reminder"},
+                {"Make", "schedule"},
+                {"make", "an", "appointment"}
+        },
+        [SCHEDULE] = {
+                {"show", "my", "schedule"},
+                {"schedule", "today's"},
+                {"What's", "my", "schedule"},
+                {"Do", "I", "have", "appointments"},
+        },
+        [MATH] = {}
+
+}
 
 /* globally defined variables */
 char buf[9999];
