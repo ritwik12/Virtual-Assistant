@@ -102,7 +102,7 @@ const char *classifier[LAST_FIELD][NUM_WORDS][WORD_LEN] = {
         },
         [MATH] = {}
 
-}
+};
 
 /* globally defined variables */
 char buf[9999];
