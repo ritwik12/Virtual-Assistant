@@ -57,11 +57,14 @@ int show_schedule(char * sc_date)
 int events;
 FILE * fp;
 event search_event;
-fp = fopen("events.dat","r");
+fp = fopen("/usr/bin/events.dat","r");
 if(fp == NULL)
 {
-printf("Error opening schedule\n");
-return 0;
+    fp = fopen("events.dat","r");
+    if(fp == NULL){
+        printf("Error opening schedule\n");
+        return 0;
+    }
 }
 while(fread(&search_event,sizeof(event),1,fp))
 {
@@ -95,9 +98,15 @@ add_reminder();
 printf("Time?(hh:mm):\n");
 fgets(cur_event.time,6,stdin);
 
-fp = fopen("events.dat","a");
+fp = fopen("/usr/bin/events.dat","a");
 if(fp == NULL)
 {
+    fp = fopen("events.dat","a");
+    if(fp == NULL){
+        printf("Error opening schedule\n");
+        return 0;
+    }
+}
 printf("Error opening Schedule\n");
 return 0;
 }
