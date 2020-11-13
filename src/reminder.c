@@ -24,27 +24,30 @@ return 1;
 //gets the events of the current day if any
 int cur_schedule()
 {
-int events = 0;
-struct tm * cur_time;
-event search_event;
-time_t cur_timer;
-cur_timer = time(NULL);
-cur_time = localtime( &cur_timer );
-strftime(cur_date,10,"%x", cur_time);
-FILE * fp;
-fp = fopen("events.dat","r");
-if(fp == NULL)
-{
-printf("Error opening schedule\n");
-return 0;
-}
-while(fread(&search_event,sizeof(event),1,fp))
-{
-if(!strcmp(search_event.date,cur_date)){
-events += 1;
-}
-}
-fclose(fp);
+    int events = 0;
+    struct tm * cur_time;
+    event search_event;
+    time_t cur_timer;
+    cur_timer = time(NULL);
+    cur_time = localtime( &cur_timer );
+    strftime(cur_date,10,"%x", cur_time);
+    FILE * fp;
+    fp = fopen("/usr/bin/events.dat","r");
+    if(fp == NULL)
+    {
+    	fp = fopen("events.dat","r");
+	if(fp == NULL){
+    	    printf("Error opening schedule\n");
+       	    return 0;
+	}
+    }
+    while(fread(&search_event,sizeof(event),1,fp))
+    {
+    	if(!strcmp(search_event.date,cur_date)){
+    		events += 1;
+    	}
+    }
+    fclose(fp);
 return events;
 }
 
