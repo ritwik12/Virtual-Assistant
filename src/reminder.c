@@ -107,9 +107,7 @@ if(fp == NULL)
         return 0;
     }
 }
-printf("Error opening Schedule\n");
-return 0;
-}
+
 fwrite(&cur_event,sizeof(struct event),1,fp);
 fclose(fp);
 printf("Scheduled %s on %s at %s\n",cur_event.desc,cur_event.date,cur_event.time);
