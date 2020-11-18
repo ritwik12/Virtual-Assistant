@@ -122,14 +122,19 @@ brew install openssl
 
 To compile with make:
 ```
-make
+sudo make install
 ```
 
-then execute using `./build/virtual_assistant`
+then execute using `virtual_assistant` from any location
 
 To remove all build files
 ```
 make clean
+```
+
+To remove the changes
+```
+sudo make uninstall
 ```
 
 To compile with gcc:
