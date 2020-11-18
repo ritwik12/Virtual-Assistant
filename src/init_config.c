@@ -9,17 +9,18 @@
 FILE *get_Config_File()
 {
     FILE *fp;
-    fp = fopen("config", "rw");
+    fp = fopen("/usr/bin/config", "rw");
     
     if (fp == NULL)
     {
-        fprintf(stderr, "Unable to open config file\n");
-        return NULL;
+    	fp = fopen("config", "rw");
+	if(fp == NULL){
+	
+            fprintf(stderr, "Unable to open config file\n");
+            return NULL;
+	}
     }
-    else
-    {
-        return fp;
-    }
+    return fp;
 }
 char *set_HomeDir_Var(FILE *conf)
 {
