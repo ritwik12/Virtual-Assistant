@@ -117,6 +117,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "aurochs-angels",
+      "name": "A. Nummikallio",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/15906373?v=4",
+      "profile": "http://www.nummikallio.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
