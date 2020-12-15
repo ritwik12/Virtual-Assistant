@@ -1,6 +1,6 @@
 # Virtual-Assistant
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 A virtual assistant is a software agent that can perform tasks or services for an individual. The term
 ”chatbot” is also used to refer to virtual assistants. Remember the time, when you were watching Iron Man and wondered to yourself, how cool it would be if you had your own J.A.R.V.I.S? Well, It's time to make that dream into a reality.
@@ -314,6 +314,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/speedy-software-ch"><img src="https://avatars2.githubusercontent.com/u/12483531?v=4" width="100px;" alt=""/><br /><sub><b>speedy-software-ch</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=speedy-software-ch" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/anindyasen"><img src="https://avatars2.githubusercontent.com/u/7093145?v=4" width="100px;" alt=""/><br /><sub><b>Anindya</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=anindyasen" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/LilyaMel"><img src="https://avatars1.githubusercontent.com/u/47354050?v=4" width="100px;" alt=""/><br /><sub><b>LilyaMel</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=LilyaMel" title="Code">💻</a> <a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=LilyaMel" title="Documentation">📖</a></td>
   </tr>
 </table>
 
