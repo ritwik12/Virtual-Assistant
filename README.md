@@ -1,6 +1,6 @@
 # Virtual-Assistant
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 A virtual assistant is a software agent that can perform tasks or services for an individual. The term
 ”chatbot” is also used to refer to virtual assistants. Remember the time, when you were watching Iron Man and wondered to yourself, how cool it would be if you had your own J.A.R.V.I.S? Well, It's time to make that dream into a reality.
@@ -296,6 +296,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://riya-17.github.io/"><img src="https://avatars2.githubusercontent.com/u/25060937?v=4" width="100px;" alt=""/><br /><sub><b>Riya</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=riya-17" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Rushikesh22"><img src="https://avatars1.githubusercontent.com/u/22569462?v=4" width="100px;" alt=""/><br /><sub><b>Rushikesh Nagle</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=Rushikesh22" title="Code">💻</a> <a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=Rushikesh22" title="Documentation">📖</a> <a href="#infra-Rushikesh22" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/GaelleMarais"><img src="https://avatars0.githubusercontent.com/u/14167172?v=4" width="100px;" alt=""/><br /><sub><b>GaelleMarais</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=GaelleMarais" title="Code">💻</a></td>
   </tr>
 </table>
 
