@@ -313,6 +313,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/speedy-software-ch"><img src="https://avatars2.githubusercontent.com/u/12483531?v=4" width="100px;" alt=""/><br /><sub><b>speedy-software-ch</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=speedy-software-ch" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/anindyasen"><img src="https://avatars2.githubusercontent.com/u/7093145?v=4" width="100px;" alt=""/><br /><sub><b>Anindya</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=anindyasen" title="Code">💻</a></td>
   </tr>
 </table>
 
