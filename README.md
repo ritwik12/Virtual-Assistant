@@ -294,7 +294,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://riya-17.github.io/"><img src="https://avatars2.githubusercontent.com/u/25060937?v=4" width="100px;" alt=""/><br /><sub><b>Riya</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=riya-17" title="Code">💻</a></td>
+    <td align="center"><a href="https://riya-17.github.io/"><img src="https://avatars2.githubusercontent.com/u/25060937?v=4" width="100px;" alt=""/><br /><sub><b>Riya</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=riya-17" title="Code">💻</a> <a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=riya-17" title="Documentation">📖</a></td>
   </tr>
 </table>
 
