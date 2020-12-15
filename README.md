@@ -1,4 +1,7 @@
 # Virtual-Assistant
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 A virtual assistant is a software agent that can perform tasks or services for an individual. The term
 ”chatbot” is also used to refer to virtual assistants. Remember the time, when you were watching Iron Man and wondered to yourself, how cool it would be if you had your own J.A.R.V.I.S? Well, It's time to make that dream into a reality.
 
@@ -281,3 +284,22 @@ Permissions of this strong copyleft license are conditioned on making available 
 This project intitiated with contributions by [Riya](https://github.com/riya-17) and [Ritwik](https://github.com/ritwik12).
 The project is much better and improving with the help of some awesome contributors such as [Rushikesh](https://github.com/Rushikesh22), [ATID-tandem](https://github.com/ATID-tandem), [GaelleMarais](https://github.com/GaelleMarais), [LilyaMel](https://github.com/LilyaMel), [speedy-software-ch](https://github.com/speedy-software-ch), [igo4Jesus](https://github.com/igo4Jesus), [Matheus](https://github.com/mcavazotti), [
 hardikpnsp](https://github.com/hardikpnsp), [vnksnkr](https://github.com/vnksnkr), [Anindya](https://github.com/anindyasen) and [many more](https://github.com/ritwik12/Virtual-Assistant/graphs/contributors)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://riya-17.github.io/"><img src="https://avatars2.githubusercontent.com/u/25060937?v=4" width="100px;" alt=""/><br /><sub><b>Riya</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=riya-17" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
