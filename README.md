@@ -295,6 +295,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/anindyasen"><img src="https://avatars2.githubusercontent.com/u/7093145?v=4" width="100px;" alt=""/><br /><sub><b>Anindya</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=anindyasen" title="Code">💻</a></td>
+    <td align="center"><a href="https://riya-17.github.io/"><img src="https://avatars2.githubusercontent.com/u/25060937?v=4" width="100px;" alt=""/><br /><sub><b>Riya</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=riya-17" title="Code">💻</a></td>
   </tr>
 </table>
 
