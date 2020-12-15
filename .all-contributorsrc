@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "riya-17",
+      "name": "Riya",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/25060937?v=4",
+      "profile": "https://riya-17.github.io/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "Virtual-Assistant",
+  "projectOwner": "ritwik12",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
