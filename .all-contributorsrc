@@ -71,6 +71,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "pavan-pan",
+      "name": "pavan-pan",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13458012?v=4",
+      "profile": "https://github.com/pavan-pan",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
