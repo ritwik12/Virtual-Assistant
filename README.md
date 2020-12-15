@@ -305,6 +305,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/pavan-pan"><img src="https://avatars3.githubusercontent.com/u/13458012?v=4" width="100px;" alt=""/><br /><sub><b>pavan-pan</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=pavan-pan" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/hardikpnsp"><img src="https://avatars3.githubusercontent.com/u/19833489?v=4" width="100px;" alt=""/><br /><sub><b>hardikpnsp</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=hardikpnsp" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Eldart95"><img src="https://avatars2.githubusercontent.com/u/57401083?v=4" width="100px;" alt=""/><br /><sub><b>Eldar Takach</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=Eldart95" title="Code">💻</a> <a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=Eldart95" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.royscodeventure.com"><img src="https://avatars2.githubusercontent.com/u/52980739?v=4" width="100px;" alt=""/><br /><sub><b>Roy Mattar</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=RoyMattar" title="Code">💻</a></td>
   </tr>
 </table>
