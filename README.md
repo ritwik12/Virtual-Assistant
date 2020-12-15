@@ -1,6 +1,6 @@
 # Virtual-Assistant
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 A virtual assistant is a software agent that can perform tasks or services for an individual. The term
 ”chatbot” is also used to refer to virtual assistants. Remember the time, when you were watching Iron Man and wondered to yourself, how cool it would be if you had your own J.A.R.V.I.S? Well, It's time to make that dream into a reality.
@@ -309,6 +309,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://www.royscodeventure.com"><img src="https://avatars2.githubusercontent.com/u/52980739?v=4" width="100px;" alt=""/><br /><sub><b>Roy Mattar</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=RoyMattar" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/jayadevvasudevan"><img src="https://avatars2.githubusercontent.com/u/35390314?v=4" width="100px;" alt=""/><br /><sub><b>Jayadev V</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=jayadevvasudevan" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.nummikallio.com"><img src="https://avatars1.githubusercontent.com/u/15906373?v=4" width="100px;" alt=""/><br /><sub><b>A. Nummikallio</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=aurochs-angels" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/igo4Jesus"><img src="https://avatars2.githubusercontent.com/u/37935466?v=4" width="100px;" alt=""/><br /><sub><b>igo4Jesus</b></sub></a><br /><a href="https://github.com/ritwik12/Virtual-Assistant/commits?author=igo4Jesus" title="Code">💻</a></td>
   </tr>
 </table>
 
