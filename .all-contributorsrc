@@ -14,6 +14,121 @@
         "code",
         "doc"
       ]
+        "code"
+      ]
+    },
+    {
+      "login": "Rushikesh22",
+      "name": "Rushikesh Nagle",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/22569462?v=4",
+      "profile": "https://github.com/Rushikesh22",
+      "contributions": [
+        "code",
+        "doc",
+        "infra"
+      ]
+    },
+    {
+      "login": "GaelleMarais",
+      "name": "GaelleMarais",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/14167172?v=4",
+      "profile": "https://github.com/GaelleMarais",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "vnksnkr",
+      "name": "Vinayak Sankar",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/65824687?v=4",
+      "profile": "https://github.com/vnksnkr",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "mcavazotti",
+      "name": "Matheus",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/27312683?v=4",
+      "profile": "https://github.com/mcavazotti",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "omerdagan84",
+      "name": "Omer Dagan",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/8275697?v=4",
+      "profile": "https://github.com/omerdagan84",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jackycodes",
+      "name": "Jacky Lui",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/8866892?v=4",
+      "profile": "https://github.com/jackycodes",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "pavan-pan",
+      "name": "pavan-pan",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13458012?v=4",
+      "profile": "https://github.com/pavan-pan",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "hardikpnsp",
+      "name": "hardikpnsp",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/19833489?v=4",
+      "profile": "https://github.com/hardikpnsp",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Eldart95",
+      "name": "Eldar Takach",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/57401083?v=4",
+      "profile": "https://github.com/Eldart95",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "RoyMattar",
+      "name": "Roy Mattar",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/52980739?v=4",
+      "profile": "http://www.royscodeventure.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jayadevvasudevan",
+      "name": "Jayadev V",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/35390314?v=4",
+      "profile": "https://github.com/jayadevvasudevan",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "aurochs-angels",
+      "name": "A. Nummikallio",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/15906373?v=4",
+      "profile": "http://www.nummikallio.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
