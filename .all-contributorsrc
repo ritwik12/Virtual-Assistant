@@ -89,6 +89,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Eldart95",
+      "name": "Eldar Takach",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/57401083?v=4",
+      "profile": "https://github.com/Eldart95",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
