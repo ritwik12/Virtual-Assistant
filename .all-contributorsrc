@@ -108,6 +108,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "jayadevvasudevan",
+      "name": "Jayadev V",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/35390314?v=4",
+      "profile": "https://github.com/jayadevvasudevan",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
