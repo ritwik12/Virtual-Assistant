@@ -154,6 +154,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "LilyaMel",
+      "name": "LilyaMel",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/47354050?v=4",
+      "profile": "https://github.com/LilyaMel",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
