@@ -148,6 +148,8 @@ gcc main.c src/init_config.c $(pkg-config --libs --cflags libcurl) -lssl -lcrypt
 # Restaurant
   Virtual Assistant can find restaurants in an area.
 
+  Enter an area for the Virtual Assistant to search (EX: New York). Virtual Assistant will then search for several restaurants and display them for the user; showing name, address, rating, pricing, and if the restaurant is currently open. At the moment the assistant can only show general information and cannot provide ways to contact the restaurant.
+
 ![restaurants](https://user-images.githubusercontent.com/20038775/33029445-9b05b482-ce3e-11e7-8ed4-5782fe468530.png)
 
 
@@ -163,6 +165,8 @@ Or
 ```
 $ sudo yum install curl
 ```
+Ask the Virtual Assistant to tell you the weather forecast.  After entering a location for the assistant to search for it will display the current weather, as well as a chart showing weather predictions for the next several days.  Each day shown will give a general prediction for the morning, noon, evening, and night forecasts.
+
 ![weather](https://user-images.githubusercontent.com/20038775/37968392-9af5446a-31eb-11e8-8008-14b5e935571d.png)
 
 # Media
@@ -202,6 +206,7 @@ Artificial Intelligence is an example here, you can use anything you want to sea
 # Google Search
 
 Virtual assistant can search anything on Google.
+Ask the Virtual Assistant to search on Google.  The assistant will ask the user what to search for, after entering the search criteria the assistant will open a web browser and search for what the user has inputted.
 
 ![gsearch](https://user-images.githubusercontent.com/20038775/37968140-fa07a8d6-31ea-11e8-9ad2-97fe5527bc25.png)
 
