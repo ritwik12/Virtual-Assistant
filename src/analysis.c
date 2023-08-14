@@ -1,62 +1,74 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
-/* 
- * File:   analysis.c
- *
- * Created on April 10, 2018, 9:56 AM
- */
+#define MAX_WORDS 1000
+#define MAX_CLASSIFIERS 100
+#define MAX_WORD_LEN 50
+#define LAST_FIELD 10  // Adjust this as needed
 
-/*
- * split incoming strings to individual words array
- * change uppercase letters in string to lowercase for convenience
- */
+typedef struct {
+    char words[MAX_WORDS][MAX_WORD_LEN];
+    int count;
+} Classifier;
 
+int main() {
+    char example[1000]; // Replace with your input
+    int word = 0;
 
-#include <stdlib.h>
-#include "../utils/defines.h"
-
-size_t word = 0, character = 0;
-for (size_t iter_char = 0; iter_char < strlen(example); iter_char++) {
-    example[iter_char] = tolower(example[iter_char]);
-    if (example[iter_char] == ' ') {
-        if (example[iter_char + 1] != ' ') {
-            split[word][character] = '\0';
-            character = 0;
-            word++;
+    // Splitting the input string into words
+    Classifier split; // Using a dynamic array for words
+    split.count = 0;
+    
+    for (int iter_char = 0; example[iter_char] != '\0'; iter_char++) {
+        example[iter_char] = tolower(example[iter_char]);
+        if (example[iter_char] == ' ') {
+            if (word > 0) {
+                split.words[word][split.count] = '\0';
+                split.count = 0;
+                word++;
+            }
+        } else {
+            split.words[word][split.count++] = example[iter_char];
         }
-        continue;
-    } else {
-        split[word][character++] = example[iter_char];
     }
-}
+    if (split.count > 0) {
+        split.words[word][split.count] = '\0';
+        word++;
+    }
 
-split[word][character] = '\0';
+    // Assuming classifiers are already loaded into a suitable data structure
+    Classifier classifier[LAST_FIELD][MAX_CLASSIFIERS];
+    // ...
 
+    // Classification Scoring
+    int scores[LAST_FIELD] = {0};
+    for (int class = 0; class < LAST_FIELD; class++) {
+        for (int iter_input = 0; iter_input < word; iter_input++) {
+            for (int iter_classifier = 0; iter_classifier < MAX_CLASSIFIERS; iter_classifier++) {
+                for (int iter_classifier_w = 0; iter_classifier_w < classifier[class][iter_classifier].count; iter_classifier_w++) {
+                    if (strcmp(classifier[class][iter_classifier].words[iter_classifier_w], split.words[iter_input]) == 0) {
+                        scores[class]++;
+                    }
+                }
+            }
+        }
+    }
 
-int classification_score = 0;
-WordCategory *search_result;
-for (int i = 0; i < LAST_FIELD; i++)
-	scores[i] = 0;
+    // Finding Highest Classifier Score
+    int maxScore = -1;
+    int maxScoreIndex = -1;
+    for (int class = 0; class < LAST_FIELD; class++) {
+        if (scores[class] > maxScore) {
+            maxScore = scores[class];
+            maxScoreIndex = class;
+        }
+    }
 
-/* performs a binary search for each word in the input array,
-* if the word is found, the score of each class to which this word belongs to is incremented
-*/
-for (size_t iter_input = 0; iter_input <= word; iter_input++) {
-  	search_result = (WordCategory *)bsearch(split[iter_input], word_list,word_list_length,sizeof(WordCategory),_compareFunction);
-  	if (search_result != NULL) {
-	  	for (int class = 0; class < LAST_FIELD; class++)
-	  		scores[class] += (search_result->category & (1 << class)) != 0; // comparing category
-  	}
-}
+    // Print the result
+    if (maxScoreIndex != -1) {
+        printf("Result: %s\n", catagories_str[maxScoreIndex]); // Replace with the correct array
+    }
 
-/*
- * find highest classifier score
- */
-
-int score = 0;
-strcpy(result,"");
-for (size_t class = 0; class < LAST_FIELD; class++) {
-	if (scores[class] > score) {
-		score = scores[class];
-		strcpy(result, catagories_str[class]);
-	}
+    return 0;
 }
