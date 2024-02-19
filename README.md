@@ -28,6 +28,31 @@ It can provide a wide variety of services, These includes:
 
 ![screenshot from 2017-11-04 23 13 18](https://user-images.githubusercontent.com/20038775/32407915-c80e1a72-c1b5-11e7-83f4-efafcf7d3c85.png)
 
+# Table of Contents 
+
+<ul>
+<li>How it all works?
+<li>Artificial Intelligence
+<li>Setup
+<li>Restaurant
+<li>Weather
+<li>Media
+<li>Youtube Search
+<li>Google Search
+<li>Calendar
+<li>Emails
+<li>Remainder and Schedule 
+<li>Arithmetic Calculations
+<li>Help
+<li>Contributing Guide  
+<li>Want to ask something?
+<li>License
+<li>Credits
+<li>Contributors
+</ul>
+
+
+
 # How it all works?
 
 The user's sentence is read and passed through our Natural Language Processing (NLP) code for processing. After the sentence is processed, it's redirected to the action to be performed based on the meaning of the sentence. Our NLP code uses a simplified version of the Multinomial Naive Bayes Algorithm.
@@ -153,6 +178,8 @@ gcc main.c src/init_config.c $(pkg-config --libs --cflags libcurl) -lssl -lcrypt
 
 
 # Weather
+
+Virtual Assistant can return the weather breakdown in an area.
 
 This feature requires curl. To use this feature you need to first install curl as follows-
 
