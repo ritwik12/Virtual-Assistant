@@ -15,7 +15,8 @@
 #include "../utils/defines.h"
 
 size_t word = 0, character = 0;
-for (size_t iter_char = 0; iter_char < strlen(example); iter_char++) {
+size_t example_len = strlen(example);
+for (size_t iter_char = 0; iter_char < example_len; iter_char++) {
     example[iter_char] = tolower(example[iter_char]);
     if (example[iter_char] == ' ') {
         if (example[iter_char + 1] != ' ') {
