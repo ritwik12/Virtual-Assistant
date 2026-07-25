@@ -27,7 +27,7 @@ void fillWordList() {
         for (short phrase_iter = 0; phrase_iter < NUM_WORDS; phrase_iter++) {
             for (short word_iter =0; word_iter < WORD_LEN; word_iter ++) {
               if (classifier[class_iter][phrase_iter][word_iter] != NULL 
-                    && strlen(classifier[class_iter][phrase_iter][word_iter]) 
+                    && classifier[class_iter][phrase_iter][word_iter][0] != '\0' 
                     && strcmp(classifier[class_iter][phrase_iter][word_iter]," ") != 0) {
                 strcpy(tmp[tmp_size].word, classifier[class_iter][phrase_iter][word_iter]);
                 tmp[tmp_size].category = 1 << class_iter;

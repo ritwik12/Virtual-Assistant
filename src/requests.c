@@ -22,8 +22,9 @@ if (only_spaces)
     continue;
 
 //Check for string length to be greater than 1. Since fgets gets the new line character, the length is 1 no matter if any input is given or not
-if ((strlen(str) > 1) && (str[strlen(str) - 1] == '\n'))
-    str[strlen(str) - 1] = '\0';
+len = strlen(str);
+if ((len > 1) && (str[len - 1] == '\n'))
+    str[len - 1] = '\0';
 else
     continue;
 
