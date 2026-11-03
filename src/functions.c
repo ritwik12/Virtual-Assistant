@@ -37,13 +37,14 @@ WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp) {
     size_t realsize = size * nmemb;
     struct MemoryStruct *mem = (struct MemoryStruct *) userp;
 
-    mem->memory = realloc(mem->memory, mem->size + realsize + 1);
-
-    if (mem->memory == NULL) {
+    //mem->memory = realloc(mem->memory, mem->size + realsize + 1);
+    char *tmp = realloc(mem->memory, mem->size + realsize + 1);
+    if (tmp == NULL) {
         /* out of memory! */
         printf("not enough memory (realloc returned NULL)\n");
         return 0;
     }
+    mem->memory = tmp;
 
     memcpy(&(mem->memory[mem->size]), contents, realsize);
     mem->size += realsize;
@@ -106,7 +107,11 @@ int find_restaurants() {
     sprintf(tmp_string, "%s \"Please enter your area/locality\" 2>/dev/null", TTS);
     system(tmp_string);
     printf("Please enter your area/locality\n\n");
-    fgets(address, 1000, stdin);
+    if(fgets(address, 1000, stdin) == NULL){
+        fprintf(stderr, "Error: failed to read location\n");
+        exit(EXIT_FAILURE);
+    }
+    address[strlen(address) - 1] = '\0';
 
     //-----------------------Google Geocoding API to convert Area name into co-ordinates needed by Places API------------------------	
 
@@ -115,14 +120,18 @@ int find_restaurants() {
         if (!encoded_address) {
             fprintf(stderr, "Could not encode address\n");
             curl_easy_cleanup(curl);
+            free(geo.memory);
+            free(places.memory);
             return -1;
         }
 
         url = malloc(strlen(encoded_address) + 200);
         if (!url) {
             fprintf(stderr, "Could not allocate memory for url\n");
-            free(encoded_address);
+            curl_free(encoded_address);
             curl_easy_cleanup(curl);
+            free(geo.memory);
+            free(places.memory);
             return -1;
         }
 
@@ -293,14 +302,16 @@ int find_restaurants() {
         }
 
 
-        free(places.memory);
-        free(geo.memory);
         free(url);
-        free(encoded_address);
+        curl_free(encoded_address);
         curl_easy_cleanup(curl);
+        json_object_put(jobj);
+        json_object_put(pl1);
 
     }
 
+    free(places.memory);    
+    free(geo.memory);
 
     return 0;
 
@@ -310,15 +321,19 @@ int show_weather(char* weather) {
     CURL *curl_weather = NULL;
     CURLcode result_weather;
     curl_weather = curl_easy_init();
-    struct string s;
-    init_string(&s);
-    curl_easy_setopt(curl_weather, CURLOPT_URL, weather);
-    curl_easy_setopt(curl_weather, CURLOPT_HTTPGET, 1);
-    curl_easy_setopt(curl_weather, CURLOPT_FOLLOWLOCATION, 1);
-    curl_easy_setopt(curl_weather, CURLOPT_USERAGENT, "curl");
-    curl_easy_setopt(curl_weather, CURLOPT_WRITEFUNCTION, &WriteFunct);
-    curl_easy_setopt(curl_weather, CURLOPT_WRITEDATA, (void *) &s);
-    result_weather = curl_easy_perform(curl_weather);
+    if(curl_weather){
+        struct string s;
+        init_string(&s);
+        curl_easy_setopt(curl_weather, CURLOPT_URL, weather);
+        curl_easy_setopt(curl_weather, CURLOPT_HTTPGET, 1);
+        curl_easy_setopt(curl_weather, CURLOPT_FOLLOWLOCATION, 1);
+        curl_easy_setopt(curl_weather, CURLOPT_USERAGENT, "curl");
+        curl_easy_setopt(curl_weather, CURLOPT_WRITEFUNCTION, &WriteFunct);
+        curl_easy_setopt(curl_weather, CURLOPT_WRITEDATA, (void *) &s);
+        result_weather = curl_easy_perform(curl_weather);
+        curl_easy_cleanup(curl_weather);
+        free(s.ptr);
+    }
     return 0;
 }
 

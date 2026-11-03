@@ -8,6 +8,7 @@
 #include "utils/defines.h"
 #include <stdbool.h>
 #include "src/init_config.h"
+#include "src/safe_system.h"
 #include "src/functions.c"
 #include "src/email.c"
 #include "src/reminder.c"
@@ -29,7 +30,7 @@ int main()
         } else if (!system("espeak --version 2>/dev/null")) {
                 strcpy(TTS,"espeak -g 3");
         } else {
-                printf("Could not find a text-to-speech program. Echoing messages to console");
+                printf("Could not find a text-to-speech program. Echoing messages to console\n");
                 strcpy(TTS,"echo");
         }
 

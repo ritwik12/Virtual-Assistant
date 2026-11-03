@@ -4,7 +4,8 @@
  *
  * Created on April 10, 2018, 8:51 AM
  */
-
+#define system(cmd) safe_system(cmd)
+#include "safe_system.h"
 
 if ((strcmp(result, "greeting") == 0)) {
     sprintf(tmp_string, "%s \"I am good\" 2>/dev/null", TTS);
@@ -21,12 +22,15 @@ if ((strcmp(result, "greeting") == 0)) {
 }// Weather
 else if ((strcmp(result, "weather") == 0)) {
     printf("Please enter location to get weather forecast \n");
-    fgets(location, 1000, stdin);
+    if (fgets(location, 1000, stdin) == NULL) {
+        fprintf(stderr, "Error: failed to read location\n");
+        exit(EXIT_FAILURE);
+    }
     sprintf(tmp_string, "%s \"showing weather\" 2>/dev/null", TTS);
     system(tmp_string);
     sprintf(weather, "http://wttr.in/\%s", location);
     int counter_weather = 0;
-    while (weather[counter_weather] != '\n') {
+    while (weather[counter_weather] != '\n' && counter_weather < 999) {
         counter_weather++;
     }
     weather[counter_weather] = '\0';
@@ -35,7 +39,7 @@ else if ((strcmp(result, "weather") == 0)) {
 } else if (strstr(str, "search youtube") != NULL) {
     //Extract substring after "FOR"
     len = strlen(str);
-    strncpy(youtube, str + 19, len);
+    strncpy(youtube, str + 19, len - 19);
     //Youtube search
     //-------------------------------------------------
     start = malloc(strlen(youtube) + 1);
@@ -60,6 +64,7 @@ else if ((strcmp(result, "weather") == 0)) {
     system(buff);
     sprintf(buf, "%s https://www.youtube.com/results?search_query=\%s", WebBrowser, start);
     system(buf);
+    free(start);
 
 } else if ((strcmp(result, "media") == 0)) {
     sprintf(tmp_string, "%s \"here are the list of available media\" 2>/dev/null", TTS);
@@ -70,15 +75,22 @@ else if ((strcmp(result, "weather") == 0)) {
     sprintf(tmp_string, "%s \"which media do you want me to play\" 2>/dev/null", TTS);
     system(tmp_string);
     printf("Which media do you want me to play? \n");
-    fgets(songs, 1000, stdin);
+    if (fgets(songs, 1000, stdin) == NULL) {
+        fprintf(stderr, "Error: failed to read media name\n");
+        exit(EXIT_FAILURE);
+    }
     sprintf(song, "%s %smedia/\%s", MediaPlayer, HOMEDIR, songs);
     system(song);
-
-} else if ((strcmp(str, "calendar") == 0) || (strcmp(str, "open calendar") == 0)) {
+    
+} else if ((strcmp(str, "calendstrlenar") == 0) || (strcmp(str, "open calendar") == 0)) {
     sprintf(tmp_string, "%s \"which year calendar you want to see\" 2>/dev/null", TTS);
     system(tmp_string);
     printf("Which year calendar you want to see? \n");
-    fgets(cal, 1000, stdin);
+    printf("Which year calendar you want to see? \n");
+    if (fgets(cal, 1000, stdin) == NULL) {
+        fprintf(stderr, "Error: failed to read year\n");
+        exit(EXIT_FAILURE);
+    }
     sprintf(calendar, "cal \%s", cal);
     system(calendar);
     
@@ -143,7 +155,11 @@ else if ((strcmp(str, "help") == 0)) {
         }
     } else {
         printf("What can I search for you on Google?\n");
-        fgets(search, 1000, stdin);
+        if (fgets(search, 1000, stdin) == NULL) {
+            fprintf(stderr, "Error: failed to read search text\n");
+            exit(EXIT_FAILURE);
+        }
+        search[strlen(search) - 1] = '\0';
         //-------------------------------------------------
         start = malloc(strlen(str) + 1);
 
@@ -168,5 +184,7 @@ else if ((strcmp(str, "help") == 0)) {
         system(buf);
 
     }
+    free(start);
 
 }
+
