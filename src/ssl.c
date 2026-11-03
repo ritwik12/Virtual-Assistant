@@ -25,9 +25,18 @@ int SMTP_request(SSL *ssl, char* to, char* title, char* body){
 
   FILE* config_email = NULL;
   config_email = fopen("config_email", "r+");
-  fgets(from,BUFFER_SIZE,config_email);
-  fgets(authlog,BUFFER_SIZE,config_email);
-  fgets(authpass,BUFFER_SIZE,config_email);
+  if (fgets(from,BUFFER_SIZE,config_email) == NULL) {
+    fprintf(stderr, "Error: failed to read email address from config_email\n");
+    exit(EXIT_FAILURE);
+  }
+  if (fgets(authlog,BUFFER_SIZE,config_email) == NULL) {
+    fprintf(stderr, "Error: failed to read login from config_email\n");
+    exit(EXIT_FAILURE);
+  }
+  if (fgets(authpass,BUFFER_SIZE,config_email) == NULL) {
+    fprintf(stderr, "Error: failed to read password from config_email\n");
+    exit(EXIT_FAILURE);
+  }
   from[strlen(from) - 1] = '\0';
   authlog[strlen(authlog) - 1] = '\0';
   authpass[strlen(authpass) - 1] = '\0';
@@ -68,8 +77,10 @@ int SMTP_request(SSL *ssl, char* to, char* title, char* body){
   SSL_write(ssl, buff, strlen(buff));
   //DEBUG  printf("\n[Send] %s\n", buff);
   SSL_read(ssl,resp_buff, sizeof (resp_buff));
-  if (strstr(resp_buff, "OK")== NULL)
+  if (strstr(resp_buff, "OK")== NULL){
+    fclose(config_email);
     return 1;
+  }
   //DEBUG  printf("[RECEIVED] %s",resp_buff);
   bzero(resp_buff,sizeof(resp_buff));
 
@@ -105,6 +116,7 @@ int SMTP_request(SSL *ssl, char* to, char* title, char* body){
   SSL_read(ssl,resp_buff, sizeof (resp_buff));
   //DEBUG printf("[RECEIVED] %s",resp_buff);
 
+  fclose(config_email);
   return 0;
 }
 
@@ -175,14 +187,28 @@ int ssl_connect(char *arg) {
 
             //Asking infos to user (to, title,body)
             printf("To :");
-            scanf("%s", to);
+            if (fgets(to, BUFFER_SIZE, stdin) == NULL) {
+              fprintf(stderr, "Error: failed to read recipient\n");
+              exit(EXIT_FAILURE);
+            }
+            to[strlen(to) - 1] = '\0';
             printf("Subject :");
-            scanf("%s", title);
+            if (fgets(title, BUFFER_SIZE, stdin) == NULL) {
+              fprintf(stderr, "Error: failed to read subject\n");
+              exit(EXIT_FAILURE);
+            }
+            title[strlen(title) - 1] = '\0';
             printf("Write your email and type 'finish' on one line to end your email: \n\n");
-            fgets(line,BUFFER_SIZE,stdin);
+            if (fgets(line,BUFFER_SIZE,stdin) == NULL) {
+              fprintf(stderr, "Error: failed to read email body\n");
+              exit(EXIT_FAILURE);
+            }
             while(strcmp(line,"finish\n")!=0){
               strcat(body,line);
-              fgets(line,BUFFER_SIZE,stdin);
+              if (fgets(line,BUFFER_SIZE,stdin) == NULL) {
+                fprintf(stderr, "Error: failed to read email body\n");
+                exit(EXIT_FAILURE);
+              }
             }
             printf("\nSending email ... ");
             if(SMTP_request(ssl,to,title,body)==0){
@@ -201,5 +227,9 @@ int ssl_connect(char *arg) {
       }
     }
   }
+    if (ssl) { SSL_shutdown(ssl); SSL_free(ssl); }
+    if (connceted_fd >= 0) close(connceted_fd);
+    if (ctx) SSL_CTX_free(ctx);
+    if (obj_out) BIO_free(obj_out);
     return (EXIT_SUCCESS);
 }
